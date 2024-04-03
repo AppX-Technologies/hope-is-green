@@ -7,9 +7,11 @@ const ProtectedRouteLayout = ({ headerVisible = true }) => {
   return (
     <div className="bg-white">
       {headerVisible && <Header />}
-      <AppChoicesProvider>
-        <Outlet />
-      </AppChoicesProvider>
+      <div className="px-4 sm:px-6 lg:px-8 pt-2">
+        <AppChoicesProvider>
+          <Outlet />
+        </AppChoicesProvider>
+      </div>
     </div>
   );
 };

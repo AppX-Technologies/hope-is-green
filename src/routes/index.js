@@ -8,6 +8,10 @@ import ProtectedRouteLayout from "../layouts/ProtectedRouteLayout";
 import PublicRouteLayout from "../layouts/PublicRouteLayout";
 import ProtectedRoute from "./ProtectedRoute";
 import PublicRoute from "./PublicRoute";
+import Dashboard from "../components/dashboard/Dashboard";
+import Orders from "../components/orders/Orders";
+import Discussion from "../components/discussion/Discussion";
+import Profile from "../components/profile/Profile";
 
 const AppRoutes = () => {
   const { pathname } = useLocation();
@@ -31,9 +35,20 @@ const AppRoutes = () => {
         <Route element={<ProtectedRoute />}>
           <Route element={<ProtectedRouteLayout />}>
             {role === ADMIN_ROLE && (
-              <Route path="dashboard">
-                <Route path="" element={<h6>dashboard</h6>} />
-              </Route>
+              <>
+                <Route path="dashboard">
+                  <Route path="" element={<Dashboard />} />
+                </Route>
+                <Route path="orders">
+                  <Route path="" element={<Orders />} />
+                </Route>
+                <Route path="discussions">
+                  <Route path="" element={<Discussion />} />
+                </Route>
+                <Route path="profile">
+                  <Route path="" element={<Profile />} />
+                </Route>
+              </>
             )}
             <Route path="*" element={<NotFound />} />
           </Route>
