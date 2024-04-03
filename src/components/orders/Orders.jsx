@@ -6,24 +6,25 @@ import AppModal from "../AppModal";
 import InputField from "../common/form-controls/InputField";
 
 const OrderCard = ({ item, quantity, itemNumber, status, weight }) => {
-  return (
-    <div className="bg-white text-dark p-4 flex items-center gap-3 w-full max-w-sm rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 ease-in-out">
-      <h6 className="text-sm font-semibold">{itemNumber}.</h6>
-      <h6 className="font-normal text-sm flex-1">
-        {item}{" "}
-        <span className="mx-2 text-secondary text-xs">({weight} gram)</span>{" "}
-      </h6>
-      <span
-        className={`px-3 py-1 text-xs rounded-full text-white ${
-          status === "Pending" ? "bg-red-500" : "bg-green-500"
-        }`}
-      >
-        {status}
-      </span>
-      <h6 className="font-bold text-right">${quantity}</h6>
-    </div>
-  );
-};
+    return (
+      <div className="bg-white text-dark py-6 px-8 flex items-center gap-4 w-full max-w-2xl rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out">
+        <h6 className="text-base font-semibold">{itemNumber}.</h6>
+        <div className="flex-1">
+          <h5 className="font-semibold text-lg">{item}</h5>
+          <p className="text-secondary text-sm mt-1">{weight} gram</p>
+        </div>
+        <span
+          className={`px-4 py-2 text-sm rounded-full text-white ${
+            status === "Pending" ? "bg-red-600" : "bg-green-600"
+          }`}
+        >
+          {status}
+        </span>
+        <h6 className="font-bold text-lg text-right">${quantity}</h6>
+      </div>
+    );
+  };
+  
 
 const Orders = () => {
   const [addEditOrderMeta, setAddEditOrderMeta] = useState(null);
