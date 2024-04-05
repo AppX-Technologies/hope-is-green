@@ -33,7 +33,7 @@ function ClubListItems({ setSelectedClub, selectedClub }) {
               }`}
             >
               <img
-                className="w-14 h-14 rounded"
+                className="h-14 aspect-square rounded"
                 src={`https://source.unsplash.com/random?${item.name}`}
                 alt=""
               />
