@@ -7,7 +7,6 @@ function ClubListItems({ setSelectedClub, selectedClub }) {
     item.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  console.log(selectedClub);
   return (
     <>
       <input

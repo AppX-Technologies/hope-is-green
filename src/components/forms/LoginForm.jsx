@@ -36,7 +36,9 @@ const LoginForm = ({ isLoggingIn, loginError, onSubmit }) => {
             },
           ].map((field) => (
             <div key={field.name} className="mb-2">
-              <label className="mid mb-1">{translate(field.label)}</label>
+              <label className="mid mb-1 required">
+                {translate(field.label)}
+              </label>
               <Field
                 name={field.name}
                 type={field.type}
@@ -56,7 +58,10 @@ const LoginForm = ({ isLoggingIn, loginError, onSubmit }) => {
           )}
           {loginError && (
             <div className="mt-3">
-              <div className="bg-red-100 border border-red-400 text-red-700 p-3 rounded relative" role="alert">
+              <div
+                className="bg-red-100 border border-red-400 text-red-700 p-3 rounded relative"
+                role="alert"
+              >
                 <span className="block sm:inline text-base">{loginError}</span>
               </div>
             </div>

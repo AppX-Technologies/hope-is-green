@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import useAuth from "../../hooks/useAuth";
 import useLocalization from "../../hooks/useLocalization";
 import UnderlineButton from "../common/UnderlineButton";
@@ -8,6 +8,7 @@ import ClubListItems from "./ClubListItems";
 
 const SignUp = () => {
   const { translate } = useLocalization();
+  const formRef = useRef(null);
   const navigate = useNavigate();
   const { login, isLoggingIn, loginError } = useAuth();
 
@@ -18,8 +19,14 @@ const SignUp = () => {
     login(email, password);
   };
 
-  const handleStepper = () => {
-    setCurrentStep(2);
+  const handleSubmit = () => {
+    if (currentStep === 1) {
+      setCurrentStep(2);
+    } else {
+      if (formRef.current) {
+        formRef.current.submitForm();
+      }
+    }
   };
 
   return (
@@ -48,10 +55,21 @@ const SignUp = () => {
               isRegistering={isLoggingIn}
               signUpError={loginError}
               onSubmit={onSubmit}
+              submitFormRef={formRef}
             />
           </>
         )}
         <div className="flex gap-3 mt-auto flex-col pt-2">
+          <button
+            className={`mt-auto w-full bg-primary hover:bg-green-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${
+              isLoggingIn ? "opacity-50 cursor-not-allowed" : ""
+            }`}
+            type="button"
+            onClick={handleSubmit}
+            disabled={isLoggingIn || !selectedClub}
+          >
+            {translate(currentStep === 1 ? "next" : "sign_up")}
+          </button>
           <div className="flex flex-col gap-2">
             <UnderlineButton
               text={translate("already_have_an_account")}
@@ -64,17 +82,6 @@ const SignUp = () => {
               onClick={() => navigate("/auth/register")}
             />
           </div>
-
-          <button
-            className={`mt-auto w-full bg-primary hover:bg-green-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${
-              isLoggingIn ? "opacity-50 cursor-not-allowed" : ""
-            }`}
-            type="button"
-            onClick={currentStep === 1 ? handleStepper : onSubmit}
-            disabled={isLoggingIn || !selectedClub}
-          >
-            {translate(currentStep === 1 ? "next" : "sign_up")}
-          </button>
         </div>
       </div>
     </div>

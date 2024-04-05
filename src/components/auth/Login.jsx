@@ -17,7 +17,7 @@ const Login = () => {
 
   return (
     <div className="h-[calc(100vh-200px)] flex flex-col justify-center items-center">
-      <div className="bg-white shadow-md rounded  w-[300px] sm:w-[350px] md:w-[400px] xl:w-[450px] p-6">
+      <div className="bg-white shadow-md rounded w-[300px] sm:w-[350px] md:w-[400px] xl:w-[450px] p-6">
         <h6 className="text-dark text-xl mb-2">
           Welcome to Hope is
           <span className="text-primary font-bold">Green</span>{" "}

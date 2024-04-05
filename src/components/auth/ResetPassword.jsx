@@ -14,8 +14,11 @@ const ResetPassword = () => {
     <div className="h-[calc(100vh-200px)] flex flex-col justify-center items-center">
       <div className="bg-white shadow-md rounded  w-[300px] sm:w-[350px] md:w-[400px] xl:w-[450px] p-6">
         <h6 className="text-dark text-xl mb-2">
-          Welcome to Hope is
+          Welcome to Hope is{" "}
           <span className="text-primary font-bold">Green</span>{" "}
+        </h6>
+        <h6 className="text-gray-500 mb-2 text-base">
+          <b className="">{translate("enter_your_new_password")}</b>
         </h6>
         <hr className="my-4" />
         <ResetPasswordForm

@@ -17,7 +17,12 @@ const validationSchema = Yup.object().shape({
     .oneOf([Yup.ref("password"), null], "Passwords must match"),
 });
 
-const SignUpForm = ({ isRegistering, signUpError, onSubmit }) => {
+const SignUpForm = ({
+  isRegistering,
+  signUpError,
+  onSubmit,
+  submitFormRef,
+}) => {
   const { translate } = useLocalization();
 
   return (
@@ -33,8 +38,9 @@ const SignUpForm = ({ isRegistering, signUpError, onSubmit }) => {
       validateOnBlur={false}
       validateOnChange={false}
       onSubmit={onSubmit}
+      innerRef={submitFormRef}
     >
-      {({ submitForm }) => (
+      {() => (
         <Form noValidate className="p-2">
           {[
             {
@@ -51,6 +57,7 @@ const SignUpForm = ({ isRegistering, signUpError, onSubmit }) => {
               name: "phone",
               type: "phone",
               label: "phone",
+              notCompulsory: true,
             },
             {
               name: "password",
@@ -64,7 +71,12 @@ const SignUpForm = ({ isRegistering, signUpError, onSubmit }) => {
             },
           ].map((field) => (
             <div key={field.name} className="mb-2">
-              <label className="mid mb-1">{translate(field.label)}</label>
+              <label
+                className={`mid mb-1 ${field?.notCompulsory ? "" : "required"}`}
+              >
+                {translate(field.label)}
+              </label>
+
               <Field
                 name={field.name}
                 type={field.type}
@@ -92,17 +104,6 @@ const SignUpForm = ({ isRegistering, signUpError, onSubmit }) => {
               </div>
             </div>
           )}
-
-          {/* <button
-            className={`mt-2  w-full bg-primary hover:bg-green-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${
-              isRegistering ? "opacity-50 cursor-not-allowed" : ""
-            }`}
-            type="button"
-            onClick={submitForm}
-            disabled={isRegistering}
-          >
-            {translate("sign_up")}
-          </button> */}
         </Form>
       )}
     </Formik>

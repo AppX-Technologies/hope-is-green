@@ -906,6 +906,7 @@ export const languageContent = {
       "Want to create your own club? Click here.",
     user_email_address: "User's email address",
     next: "Next",
+    enter_your_new_password: "Enter your new password",
   },
 };
 
