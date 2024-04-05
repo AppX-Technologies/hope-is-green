@@ -3,45 +3,78 @@ import useAuth from "../../hooks/useAuth";
 import useLocalization from "../../hooks/useLocalization";
 import UnderlineButton from "../common/UnderlineButton";
 import SignUpForm from "../forms/SignupForm";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import ClubListItems from "./ClubListItems";
 
 const SignUp = () => {
   const { translate } = useLocalization();
   const navigate = useNavigate();
   const { login, isLoggingIn, loginError } = useAuth();
-  const [isOpenModal, setIsOpenModal] = useState(false);
+
+  const [currentStep, setCurrentStep] = useState(1);
+  const [selectedClub, setSelectedClub] = useState(null);
 
   const onSubmit = async ({ email, password }) => {
     login(email, password);
   };
 
+  const handleStepper = () => {
+    setCurrentStep(2);
+  };
+
   return (
-    <div className="h-[calc(100vh-200px)] flex flex-col justify-center items-center">
-      <div className="bg-white shadow-md rounded  w-[300px] sm:w-[350px] md:w-[400px] xl:w-[450px] p-6">
+    <div className="flex flex-col justify-center items-center">
+      <div className="bg-white shadow-md rounded flex flex-col w-[300px] sm:w-[350px] md:w-[400px] xl:w-[450px] p-6 h-[calc(100vh-200px)]">
         <h6 className="text-dark text-xl mb-2">
           Welcome to Hope is{" "}
           <span className="text-primary font-bold">Green</span>{" "}
         </h6>
         <h6 className="text-gray-500 mb-2 text-base">
-          <b className="">{translate("register_to_continue")}</b>
+          <b className="">
+            {translate(
+              currentStep === 1 ? "select_a_club" : "register_to_continue"
+            )}
+          </b>
         </h6>
         <hr className="my-4" />
-        <SignUpForm
-          isLoggingIn={isLoggingIn}
-          loginError={loginError}
-          onSubmit={onSubmit}
-        />
-        <div className="flex items-center">
-          <UnderlineButton
-            text={translate("already_have_an_account")}
-            className="text-sm"
+        {currentStep === 1 ? (
+          <ClubListItems
+            setSelectedClub={setSelectedClub}
+            selectedClub={selectedClub}
           />
-          <Link
-            to="/auth/login"
-            className="hover:text-blue-600 text-sm mt-[2px]"
+        ) : (
+          <>
+            <SignUpForm
+              isRegistering={isLoggingIn}
+              signUpError={loginError}
+              onSubmit={onSubmit}
+            />
+          </>
+        )}
+        <div className="flex gap-3 mt-auto flex-col pt-2">
+          <div className="flex flex-col gap-2">
+            <UnderlineButton
+              text={translate("already_have_an_account")}
+              className="text-sm hover:text-blue-600 cursor-pointer"
+              onClick={() => navigate("/auth/login")}
+            />
+            <UnderlineButton
+              text={translate("want_to_create_your_own_club_click_here")}
+              className="text-sm hover:text-blue-600 cursor-pointer"
+              onClick={() => navigate("/auth/register")}
+            />
+          </div>
+
+          <button
+            className={`mt-auto w-full bg-primary hover:bg-green-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${
+              isLoggingIn ? "opacity-50 cursor-not-allowed" : ""
+            }`}
+            type="button"
+            onClick={currentStep === 1 ? handleStepper : onSubmit}
+            disabled={isLoggingIn || !selectedClub}
           >
-            Click here to login
-          </Link>
+            {translate(currentStep === 1 ? "next" : "sign_up")}
+          </button>
         </div>
       </div>
     </div>

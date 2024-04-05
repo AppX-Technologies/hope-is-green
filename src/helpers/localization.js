@@ -894,8 +894,18 @@ export const languageContent = {
     phone: "Phone",
     confirm_password: "Confirm Password",
     sign_up: "SignUp",
-    already_have_an_account: "Already have an account?",
-    register_to_continue:"Register to continue"
+    signing_up: "Signing Up",
+    already_have_an_account: "Already have an account? Click here to login.",
+    register_to_continue: "Register to continue",
+    click_here_if_you_have_forgotten_your_password:
+      "Click here if you have forgotten your password.",
+    select_a_club: "Please select a club",
+    please_wait: "Please wait",
+    new_password: "New Password",
+    want_to_create_your_own_club_click_here:
+      "Want to create your own club? Click here.",
+    user_email_address: "User's email address",
+    next: "Next",
   },
 };
 

@@ -13,6 +13,7 @@ import Orders from "../components/orders/Orders";
 import Discussion from "../components/discussion/Discussion";
 import Profile from "../components/profile/Profile";
 import SignUp from "../components/auth/SignUp";
+import ResetPassword from "../components/auth/ResetPassword";
 
 const AppRoutes = () => {
   const { pathname } = useLocation();
@@ -30,6 +31,7 @@ const AppRoutes = () => {
             <Route path="auth">
               <Route path="login" element={<Login />} />
               <Route path="register" element={<SignUp />} />
+              <Route path="reset-password" element={<ResetPassword />} />
             </Route>
           </Route>
         </Route>
