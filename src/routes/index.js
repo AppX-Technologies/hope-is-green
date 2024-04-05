@@ -12,6 +12,7 @@ import Dashboard from "../components/dashboard/Dashboard";
 import Orders from "../components/orders/Orders";
 import Discussion from "../components/discussion/Discussion";
 import Profile from "../components/profile/Profile";
+import SignUp from "../components/auth/SignUp";
 
 const AppRoutes = () => {
   const { pathname } = useLocation();
@@ -28,6 +29,7 @@ const AppRoutes = () => {
           <Route element={<PublicRouteLayout />}>
             <Route path="auth">
               <Route path="login" element={<Login />} />
+              <Route path="register" element={<SignUp />} />
             </Route>
           </Route>
         </Route>

@@ -794,7 +794,7 @@ export const languageContent = {
     contract_sent: "Contract Sent",
     contract_signed: "Contract Signed",
     doesnt_meet_our_requirements: `Doesn’t Meet Our Requirements`,
-    meeting_scheduled:'Meeting Scheduled',
+    meeting_scheduled: "Meeting Scheduled",
     didnt_answer_5_times: `Didn’t Answer 5 Times`,
     asked_to_not_be_contacted: "Asked To Not be Contacted",
     not_interested_now: "Not Interested Now",
@@ -890,9 +890,13 @@ export const languageContent = {
     export_as_csv: "Export as CSV",
     cancel: "Cancel",
     clear_filters: "Clear Filters",
-    nothing_added:'Nothing Added!'
+    nothing_added: "Nothing Added!",
+    phone: "Phone",
+    confirm_password: "Confirm Password",
+    sign_up: "SignUp",
+    already_have_an_account: "Already have an account?",
+    register_to_continue:"Register to continue"
   },
- 
 };
 
 export const languageOptions = Object.keys(languageContent);
