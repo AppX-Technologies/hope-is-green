@@ -19,7 +19,7 @@ const UnderlineButton = ({
       href={href}
       target={target}
       className={`d-${display} rounded underline px-1 text-${
-        disabled ? "muted" : variant
+        disabled ? "gray-500" : variant
       } ${!disabled ? "hover-light" : ""} ${className} ${fontSize}`}
       onClick={(e) => {
         if (disabled) {
@@ -37,7 +37,7 @@ const UnderlineButton = ({
   ) : (
     <span
       className={`d-${display} rounded underline px-1 text-${
-        disabled ? "muted" : variant
+        disabled ? "gray-500" : variant
       } ${!disabled ? "hover-light" : ""} ${className} ${fontSize}`}
       onClick={(e) => !disabled && onClick && onClick(e)}
     >

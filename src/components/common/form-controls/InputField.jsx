@@ -3,7 +3,7 @@ import React from "react";
 const InputField = ({ type, label, placeholder, value, onChange }) => {
   return (
     <div className="px-1">
-      <h6 className="text-base text-gray-500">{label}</h6>{" "}
+      {label && <h6 className="text-base text-gray-500">{label}</h6>}
       <input
         type={type}
         placeholder={placeholder}

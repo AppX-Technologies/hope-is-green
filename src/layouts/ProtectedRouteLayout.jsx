@@ -1,18 +1,22 @@
 import React from "react";
 import { Outlet } from "react-router";
-import Header from "../components/common/Header";
+import SideNavbar from "../components/common/side-navbar/SideNavbar";
 import { AppChoicesProvider } from "../context/AppChoicesContext";
+import Breadcrumb from "../components/common/bread-crumb/BreadCrumb";
 
 const ProtectedRouteLayout = ({ headerVisible = true }) => {
   return (
-    <div className="bg-white">
-      {headerVisible && <Header />}
-      <div className="px-4 sm:px-6 lg:px-8 pt-2">
-        <AppChoicesProvider>
-          <Outlet />
-        </AppChoicesProvider>
+    <AppChoicesProvider>
+      <div className="bg-white flex min-h-screen min-w-screen">
+        {headerVisible && <SideNavbar />}
+        <div className="grow p-2 flex flex-col gap-2">
+          <Breadcrumb baseUrl={"/"} />
+          <div className="grow">
+            <Outlet />
+          </div>
+        </div>
       </div>
-    </div>
+    </AppChoicesProvider>
   );
 };
 

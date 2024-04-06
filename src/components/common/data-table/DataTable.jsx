@@ -1,14 +1,14 @@
-import { debounce, snakeCase } from "lodash";
+import { debounce } from "lodash";
 import React, { useEffect, useRef } from "react";
-import { Table } from "react-bootstrap";
+import { CiCirclePlus } from "react-icons/ci";
+import { FaCheck } from "react-icons/fa6";
+import { IoCloseSharp } from "react-icons/io5";
 import useLocalization from "../../../hooks/useLocalization";
+import UnderlineButton from "../UnderlineButton";
 import CircularProgressBar from "../circular-progress";
 import ColumnFilterCell from "./ColumnFilterCell";
 import SortSwitch from "./SortSwitch";
 import TableCell from "./TableCell";
-import { Check, PlusCircle, X, XCircle } from "react-bootstrap-icons";
-import UnderlineButton from "../UnderlineButton";
-
 /**
  * Types: ["text", "url" , "email", "phone", "date"]
  * when type is date, a dateFormat is taken [have some value by default]
@@ -57,8 +57,6 @@ const DataTable = ({
   onSaveNewRow,
   addingNewRow,
 }) => {
-  const { translate } = useLocalization();
-
   const tableContainerRef = useRef(null); // Create a ref for the table
 
   useEffect(() => {
@@ -68,7 +66,6 @@ const DataTable = ({
       if (element) {
         const distanceFromBottom =
           element.scrollHeight - element.scrollTop - element.clientHeight;
-        console.log({ distanceFromBottom, bottomOffset });
 
         if (distanceFromBottom <= bottomOffset) {
           onBottomReached && onBottomReached();
@@ -147,10 +144,10 @@ const DataTable = ({
   };
 
   return (
-    <div className="position-relative w-100 h-100">
+    <div className="relative w-full h-full">
       {loadingFirstPageData && (
         <div
-          className="position-absolute top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center bg-white bg-opacity-50"
+          className="absolute top-0 left-0 w-full h-full flex justify-center items-center bg-white bg-opacity-50"
           style={{ zIndex: 10 }}
         >
           <CircularProgressBar size={20} />
@@ -159,14 +156,14 @@ const DataTable = ({
       <div
         id="table-container"
         ref={tableContainerRef}
-        className={`position-relative w-100 ${
+        className={`relative w-full ${
           loadingFirstPageData ? "overflow-hidden" : "overflow-auto"
         }`}
         style={{ maxHeight: "93vh" }} // Ensure this container has a max-height or fixed height
       >
-        <Table bordered className="mid">
+        <table className="w-full mid">
           <thead className="sticky-header">
-            <tr className="">
+            <tr>
               {columns.map(
                 ({ key, label, labelRenderer, width, disableSort }) => (
                   <th
@@ -179,10 +176,8 @@ const DataTable = ({
                     }}
                     onClick={() => allowSort && !disableSort && handleSort(key)}
                   >
-                    <div className="d-flex align-items-center justify-content-center">
-                      {labelRenderer
-                        ? labelRenderer(key)
-                        : translate(snakeCase(label)) || label}
+                    <div className="flex items-center justify-center">
+                      {labelRenderer ? labelRenderer(key) : label}
                       {allowSort && !disableSort && (
                         <SortSwitch
                           sortOrder={
@@ -220,27 +215,27 @@ const DataTable = ({
                   className="bg-primary-light border-primary-dark"
                   style={{ borderWidth: 2 }}
                 >
-                  <td colSpan={columns.length} className=" text-dark">
-                    <div className=" d-flex align-items-center">
-                      <h6 className="mid mb-0 fw-bold">
-                        <PlusCircle className="mx-2" />
-                        {translate("adding_new_row")}
+                  <td colSpan={columns.length} className="text-dark">
+                    <div className="flex items-center">
+                      <h6 className="mid mb-0 font-bold">
+                        <CiCirclePlus className="mx-2" />
+                        Adding new row
                       </h6>
                       {!addingNewRow && (
                         <>
                           <UnderlineButton
                             className="mx-2"
                             variant="danger"
-                            text={translate("close")}
-                            Icon={X}
+                            text={"Close"}
+                            Icon={IoCloseSharp}
                             disabled={addingNewRow}
                             onClick={onHideNewRow}
                           />
                           <UnderlineButton
                             className=""
                             variant="success"
-                            text={translate("save")}
-                            Icon={Check}
+                            text={"Save"}
+                            Icon={FaCheck}
                             disabled={addingNewRow}
                             onClick={onSaveNewRow}
                           />
@@ -253,7 +248,7 @@ const DataTable = ({
                   </td>
                 </tr>
                 <tr className="border-primary-dark" style={{ borderWidth: 2 }}>
-                  <td colSpan={columns.length} className="bg-light-grey">
+                  <td colSpan={columns.length} className="bg-light-gray">
                     <div style={{ width: "92vw" }} className="">
                       {renderNewRow && renderNewRow()}
                     </div>
@@ -268,27 +263,27 @@ const DataTable = ({
                   className="bg-primary-light border-primary-dark"
                   style={{ borderWidth: 2 }}
                 >
-                  <td colSpan={columns.length} className=" text-dark">
-                    <div className="d-flex align-items-center">
-                      <h6 className="mid mb-0 fw-bold">
-                        <PlusCircle className="mx-2" />
-                        {translate("edit_multiple_row")}
+                  <td colSpan={columns.length} className="text-dark">
+                    <div className="flex items-center">
+                      <h6 className="mid mb-0 font-bold">
+                        <CiCirclePlus className="mx-2" />
+                        Edit multiple
                       </h6>
                       {!editingMultipleRow && (
                         <>
                           <UnderlineButton
                             className="mx-2"
                             variant="danger"
-                            text={translate("close")}
-                            Icon={X}
+                            text={"Close"}
+                            Icon={IoCloseSharp}
                             disabled={editingMultipleRow}
                             onClick={onHideEditMultipleRow}
                           />
                           <UnderlineButton
                             className=""
                             variant="success"
-                            text={translate("save")}
-                            Icon={Check}
+                            text={"Save"}
+                            Icon={FaCheck}
                             disabled={editingMultipleRow}
                             onClick={onSaveMultipleRow}
                           />
@@ -301,7 +296,7 @@ const DataTable = ({
                   </td>
                 </tr>
                 <tr className="border-primary-dark" style={{ borderWidth: 2 }}>
-                  <td colSpan={columns.length} className="bg-light-grey ">
+                  <td colSpan={columns.length} className="bg-light-gray">
                     <div style={{ width: "92vw" }} className="">
                       {renderEditMultipleRow && renderEditMultipleRow()}
                     </div>
@@ -352,7 +347,7 @@ const DataTable = ({
                       >
                         <td
                           colSpan={columns.length}
-                          className="bg-light-grey bg-opacity-50"
+                          className="bg-light-gray bg-opacity-50"
                           style={{ zIndex: 0 }}
                         >
                           <div style={{ width: "92vw" }} className="pb-2">
@@ -368,19 +363,19 @@ const DataTable = ({
               <tr>
                 <td colSpan={columns.length}>
                   <h6 className="text-muted text-center mb-0">
-                    {translate("nothing_to_show")}
+                    Nothing to show
                   </h6>
                 </td>
               </tr>
             )}
 
             <tr>
-              <td className="text-start" colSpan={columns.length}>
+              <td className="text-left" colSpan={columns.length}>
                 {loadingMoreData ? (
-                  <div className="d-flex align-items-center">
+                  <div className="flex items-center">
                     <CircularProgressBar size={16} />
-                    <h6 className="mx-2 mb-0 smallFont text-muted fw-bold">
-                      {translate("please_wait")}
+                    <h6 className="mx-2 mb-0 text-sm text-muted font-bold">
+                      Please wait{" "}
                     </h6>
                   </div>
                 ) : (
@@ -389,7 +384,7 @@ const DataTable = ({
               </td>
             </tr>
           </tbody>
-        </Table>
+        </table>
       </div>
     </div>
   );

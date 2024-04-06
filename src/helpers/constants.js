@@ -148,23 +148,6 @@ export const INBOUND_SOURCE = [
   "Manually Added",
 ];
 
-//User Permissions
-export const BLOCK = "Block";
-export const VIEW_ASSIGNED_EDIT_NONE = "View Assigned | Edit None";
-export const VIEW_ASSIGNED_EDIT_ASSIGNED = "View Assigned | Edit Assigned";
-export const VIEW_ALL_EDIT_NONE = "View All | Edit None";
-export const VIEW_ALL_EDIT_ASSIGNED = "View All | Edit Assigned";
-export const VIEW_ALL_EDIT_ALL = "View All | Edit All";
-
-export const specialRolesEnum = [
-  BLOCK,
-  VIEW_ALL_EDIT_NONE,
-  VIEW_ALL_EDIT_ASSIGNED,
-  VIEW_ALL_EDIT_ALL,
-  VIEW_ASSIGNED_EDIT_NONE,
-  VIEW_ASSIGNED_EDIT_ASSIGNED,
-];
-
 export const ADMIN_ROLE = "Admin";
 export const SALES_ROLE = "Salesperson";
 export const FINANCIAL_STRATEGIST_ROLE = "Financial Strategist";
@@ -186,136 +169,6 @@ export const APP_OPTION = ["crm", "app"];
 export const ACTION_OPTION = ["view", "edit"];
 export const RULE_OPTION = ["restrict", "permit"];
 
-export const contactOverviewFields = (
-  users,
-  allTags,
-  addMode,
-  updateManyMode
-) => {
-  return [
-    {
-      key: "status",
-      label: "Status",
-      show: true,
-      options: STATUS,
-      cellSizeMD: updateManyMode ? 3 : 2,
-      type: "grouped-dropdown",
-    },
-    {
-      key: "firstName",
-      label: "First Name",
-      cellSizeMD: 2,
-      show: !updateManyMode,
-    },
-    {
-      key: "lastName",
-      label: "Last Name",
-      cellSizeMD: 2,
-      show: !updateManyMode,
-    },
-    {
-      key: "spouseFirstName",
-      label: "Spouse First Name",
-      cellSizeMD: 2,
-      show: !updateManyMode,
-    },
-    {
-      key: "spouseLastName",
-      label: "Spouse Last Name",
-      cellSizeMD: 2,
-      show: !updateManyMode,
-    },
-    { key: "address", label: "Address", cellSizeMD: 2, show: !updateManyMode },
-    {
-      key: "phoneNumbers",
-      label: "Phone Numbers",
-      type: "phone",
-      cellSizeMD: 6,
-      isMultiple: true,
-      show: !updateManyMode,
-    },
-    {
-      key: "emails",
-      label: "Emails",
-      type: "email",
-      cellSizeMD: 6,
-      isMultiple: true,
-      show: !updateManyMode,
-    },
-    {
-      key: "tags",
-      label: "Tags",
-      type: "multi-select",
-      options: allTags.map((tag) => ({ label: tag.name, value: tag.name })),
-      cellSizeMD: 4,
-      show: !updateManyMode,
-    },
-    {
-      key: "referral",
-      label: "Referral",
-      cellSizeMD: 4,
-      show: !updateManyMode,
-    },
-    {
-      key: "followupDate",
-      label: "Followup Date",
-      type: "followUpDate",
-      hideTitle: true,
-      cellSizeMD: 4,
-      show: !updateManyMode,
-    },
-    {
-      key: "salesperson",
-      label: "Sales person",
-      type: "dropdown",
-      options: [
-        { id: "unassign", name: "Unassigned" },
-        ...users
-          .filter((user) => user.role === SALES_ROLE)
-          .map((user) => ({ id: user._id, name: user.name })),
-      ],
-      cellSizeMD: updateManyMode ? 3 : 4,
-      show: true,
-      required: !updateManyMode,
-    },
-    {
-      key: "financialStrategist",
-      label: "Financial Strategist",
-      type: "dropdown",
-      options: [
-        { id: "unassign", name: "Unassigned" },
-        ...users
-          .filter((user) => user.role === FINANCIAL_STRATEGIST_ROLE)
-          .map((user) => ({ id: user._id, name: user.name })),
-      ],
-      cellSizeMD: updateManyMode ? 3 : 4,
-      show: true,
-      required: !updateManyMode,
-    },
-    {
-      key: "realEstateAnalyst",
-      label: "Real Estate Analyst",
-      type: "dropdown",
-      options: [
-        { id: "unassign", name: "Unassigned" },
-        ...users
-          .filter((user) => user.role === REAL_ESTATE_ANALYST_ROLE)
-          .map((user) => ({ id: user._id, name: user.name })),
-      ],
-      cellSizeMD: updateManyMode ? 3 : 4,
-      show: true,
-      required: !updateManyMode,
-    },
-    {
-      key: "comment",
-      label: "Comment",
-      type: "text-area",
-      cellSizeMD: 12,
-      as: "textarea",
-      show: addMode,
-    },
-  ].filter((l) => l.show);
-};
 
 export const SEARCH_BOX_VISIBLE_PATH = ["/contacts"];
 
@@ -329,3 +182,9 @@ export const APPOINTMENT_TYPES = [
   "Zoom Meeting",
   "Phone Call",
 ];
+export const breadcrumbLabel = {
+  goBack: "Go Back",
+  home: "Home",
+  'study-abroad': "Study Abroad",
+  news: "News",
+};

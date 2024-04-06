@@ -15,31 +15,6 @@ import { userService } from "../services/userService";
 //we only store the user access token
 //from this access token, we fetch user info on every refresh
 
-const getUserPermissions = (user) => {
-  let permissions;
-  if (user.role === ADMIN_ROLE) {
-    permissions = {
-      view: "All",
-      edit: "All",
-    };
-  } else {
-    let userCRMPermissions = user?.specialRoles?.crm;
-    if (userCRMPermissions === BLOCK) {
-      permissions = {
-        view: "Block",
-        edit: "Block",
-      };
-    } else {
-      let userPermissions = userCRMPermissions.split(" | ");
-      permissions = {
-        view: (userPermissions[0]?.split(" ") || [])[1],
-        edit: (userPermissions[1]?.split(" ") || [])[1],
-      };
-    }
-  }
-  return permissions;
-};
-
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
@@ -70,7 +45,6 @@ export const UserProvider = ({ children }) => {
         const { response } = await userService.getUsers({}, undefined, true);
         const user = response?.results.find((user) => user._id === as);
         if (user) {
-          user.specialRoles = getUserPermissions(user);
           sessionStorage.setItem("updating-user", JSON.stringify(user));
           setViewAsUserMode(true);
           setUser(user);
@@ -102,7 +76,6 @@ export const UserProvider = ({ children }) => {
       toast.error(error);
       return;
     }
-    response.specialRoles = getUserPermissions(response);
     setUser(response);
     setParentsUser(response);
   };

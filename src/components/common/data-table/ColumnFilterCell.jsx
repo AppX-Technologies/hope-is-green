@@ -2,15 +2,14 @@ import React, { useMemo } from "react";
 import { FormControl } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import useLocalization from "../../../hooks/useLocalization";
 import TextDropdownToggle from "../TextDropdownToggle";
+import InputField from "../form-controls/InputField";
 
 const ColumnFilterCell = ({
   column: { key, type, searchOptions },
   filterValues = [],
   onColumnFilterChange,
 }) => {
-  const { translate } = useLocalization();
   const filterValue = useMemo(
     () => filterValues.find((sv) => sv.key === key),
     [filterValues, key]
@@ -50,13 +49,13 @@ const ColumnFilterCell = ({
   }
 
   return (
-    <FormControl
-      type="text"
-      className="h-100"
-      value={filterValue?.value || ""}
-      onChange={(e) => onColumnFilterChange(key, e.target.value)}
-      size="sm"
-    />
+    <>
+      <InputField
+        type={"text"}
+        value={filterValue?.value || ""}
+        onChange={(e) => onColumnFilterChange(key, e.target.value)}
+      />
+    </>
   );
 };
 
