@@ -1,10 +1,8 @@
 import { AiOutlineClose } from "react-icons/ai";
-import { FaCheck, FaRegTrashAlt } from "react-icons/fa";
+import { FaRegTrashAlt } from "react-icons/fa";
 import { GoCheck } from "react-icons/go";
-import { IoCloseSharp } from "react-icons/io5";
-import { MdClose } from "react-icons/md";
 
-export const getMemberColumns = (onDeleteProductClick) => {
+export const getMemberColumns = (onDeleteMemberClick, handleStatusChange) => {
   const allLabels = [
     {
       key: "name",
@@ -26,8 +24,8 @@ export const getMemberColumns = (onDeleteProductClick) => {
     {
       key: "status",
       label: "Status",
-      cellRenderer: (order) => {
-        const { status } = order;
+      cellRenderer: (member) => {
+        const { status } = member;
         const color =
           status === "Approved"
             ? "green"
@@ -39,13 +37,21 @@ export const getMemberColumns = (onDeleteProductClick) => {
             className={`inline-flex h-6 rounded-md  text-xs font-medium text-${color}-800 bg-${color}-100`}
           >
             {status === "Pending" && (
-              <div title="Decline" className="bg-red-100 grow flex items-center hover:bg-red-300 text-red-800  px-1 rounded-l-md">
+              <div
+                title="Decline"
+                onClick={() => handleStatusChange(member, "Declined")}
+                className="bg-red-100 grow flex items-center hover:bg-red-300 text-red-800  px-1 rounded-l-md"
+              >
                 <AiOutlineClose />
               </div>
             )}
-            <div className="flex items-center mx-2">{order.status}</div>
+            <div className="flex items-center mx-2">{member.status}</div>
             {status === "Pending" && (
-              <div title="Approve" className="bg-green-100 flex items-center text-green-800 hover:bg-green-300 px-1 rounded-r-md">
+              <div
+                title="Approve"
+                onClick={() => handleStatusChange(member, "Approved")}
+                className="bg-green-100 flex items-center text-green-800 hover:bg-green-300 px-1 rounded-r-md"
+              >
                 <GoCheck />
               </div>
             )}
@@ -64,11 +70,11 @@ export const getMemberColumns = (onDeleteProductClick) => {
     {
       key: "view",
       label: "Actions",
-      cellRenderer: (product) => (
+      cellRenderer: (member) => (
         <div className="flex justify-center gap-2">
           <FaRegTrashAlt
             className="text-danger cursor-pointer"
-            onClick={() => onDeleteProductClick(product)}
+            onClick={() => onDeleteMemberClick(member)}
           />
         </div>
       ),

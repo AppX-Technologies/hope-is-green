@@ -3,6 +3,7 @@ import { RiShoppingCartLine } from "react-icons/ri";
 import { getOrderColumns } from "../../helpers/dataTableColumns";
 import Label from "../common/Label";
 import DataTable from "../common/data-table/DataTable";
+import OrderSearchAndFilter from "./OrderSearchAndFilter";
 
 const Orders = () => {
   const tableColumns = useMemo(() => getOrderColumns(), []);
@@ -74,13 +75,15 @@ const Orders = () => {
   ];
   return (
     <div className="w-[calc(100vw-320px)] p-2">
-    
       <Label
         label={"Orders"}
         size={"2xl"}
         className={"mb-2"}
         icon={RiShoppingCartLine}
       />
+      
+      <OrderSearchAndFilter />
+
       <DataTable
         rowKey={"_id"}
         columns={tableColumns}

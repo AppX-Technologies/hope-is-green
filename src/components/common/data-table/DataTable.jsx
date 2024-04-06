@@ -364,8 +364,8 @@ const DataTable = ({
             ) : (
               <tr>
                 <td colSpan={columns.length}>
-                  <h6 className="text-muted text-center mb-0">
-                    Nothing to show
+                  <h6 className="text-muted text-center my-3">
+                    Nothing to show!
                   </h6>
                 </td>
               </tr>

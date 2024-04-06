@@ -62,7 +62,7 @@ const SideNavbar = () => {
   const [toggleSideNavbar, setToggleSideNavbar] = useState(false);
 
   return (
-    <div className="flex flex-col items-center w-72 max-h-screen overflow-hidden text-gray-400 bg-gray-900">
+    <div className="flex flex-col items-center w-72 min-h-screen overflow-hidden text-gray-400 bg-gray-900">
       <div className="flex w-full px-3 mt-3">
         <Link to={"/"}>
           <div className="flex items-center gap-2">

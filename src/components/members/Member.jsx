@@ -1,91 +1,113 @@
 import React, { useMemo, useState } from "react";
-import { getMemberColumns } from "../../helpers/dataTableColumns";
-import DataTable from "../common/data-table/DataTable";
-import Label from "../common/Label";
 import { BsPersonGear } from "react-icons/bs";
-import AppModal from "../AppModal";
 import { FaPlus } from "react-icons/fa";
+import { RiMailSendLine, RiSendPlaneFill } from "react-icons/ri";
+import { getMemberColumns } from "../../helpers/dataTableColumns";
+import AppModal from "../AppModal";
+import Button from "../common/Button";
+import Label from "../common/Label";
+import DataTable from "../common/data-table/DataTable";
+import InputField from "../common/form-controls/InputField";
 import MemberSearchAndFilter from "./MemberSearchAndFilter";
-import { RiMailSendLine } from "react-icons/ri";
-
+import { toast } from "react-toastify";
+import InviteMemberModal from "./InviteMemberModal";
+import AlertModal from "../common/AlertModal";
+const dummyMembers = [
+  {
+    _id: 231243,
+    name: "Alice Smith",
+    role: "Site Moderator",
+    createdAt: "2024/09/15",
+    status: "Approved",
+    quantity: "23 gram",
+  },
+  {
+    _id: 2243123,
+    name: "John Doe",
+    role: "Club Owner",
+    createdAt: "2024/11/03",
+    status: "Pending",
+    quantity: "23 gram",
+  },
+  {
+    _id: 231323,
+    name: "Emily Johnson",
+    role: "Club Moderator",
+    createdAt: "2024/08/21",
+    status: "Approved",
+    quantity: "23 gram",
+  },
+  {
+    _id: 235123,
+    name: "Michael Brown",
+    role: "Admin",
+    createdAt: "2024/07/17",
+    status: "Pending",
+    quantity: "213 gram",
+  },
+  {
+    _id: 231263,
+    name: "Sophia Martinez",
+    role: "Club Member",
+    createdAt: "2024/12/05",
+    status: "Approved",
+    quantity: "423 gram",
+  },
+  {
+    _id: 236123,
+    name: "Liam Wilson",
+    role: "Club Moderator",
+    createdAt: "2024/06/12",
+    status: "Denied",
+    quantity: "232 gram",
+  },
+  {
+    _id: 2312663,
+    name: "Emma Taylor",
+    role: "Club Member",
+    createdAt: "2024/05/28",
+    status: "Denied",
+    quantity: "842 gram",
+  },
+  {
+    _id: 2314423,
+    name: "Noah Anderson",
+    role: "Club Owner",
+    createdAt: "2024/04/02",
+    status: "Pending",
+    quantity: "982 gram",
+  },
+  {
+    _id: 2312423,
+    name: "Olivia Garcia",
+    role: "Club Moderator",
+    createdAt: "2024/03/19",
+    status: "Approved",
+    quantity: "623 gram",
+  },
+];
 const Member = () => {
-  const tableColumns = useMemo(() => getMemberColumns(), []);
+  const [members, setMembers] = useState(dummyMembers);
   const [addEditMemberMeta, setAddEditMemberMeta] = useState(false);
+  const [deleteMemberMeta, setDeleteMemberMeta] = useState(null);
 
-  const dummyMembers = [
-    {
-      _id: 231243,
-      name: "Alice Smith",
-      role: "Site Moderator",
-      createdAt: "2024/09/15",
-      status: "Approved",
-      quantity: "23 gram",
-    },
-    {
-      _id: 2243123,
-      name: "John Doe",
-      role: "Club Owner",
-      createdAt: "2024/11/03",
-      status: "Pending",
-      quantity: "23 gram",
-    },
-    {
-      _id: 231323,
-      name: "Emily Johnson",
-      role: "Club Moderator",
-      createdAt: "2024/08/21",
-      status: "Approved",
-      quantity: "23 gram",
-    },
-    {
-      _id: 235123,
-      name: "Michael Brown",
-      role: "Admin",
-      createdAt: "2024/07/17",
-      status: "Pending",
-      quantity: "213 gram",
-    },
-    {
-      _id: 231263,
-      name: "Sophia Martinez",
-      role: "Club Member",
-      createdAt: "2024/12/05",
-      status: "Approved",
-      quantity: "423 gram",
-    },
-    {
-      _id: 236123,
-      name: "Liam Wilson",
-      role: "Club Moderator",
-      createdAt: "2024/06/12",
-      status: "Denied",
-      quantity: "232 gram",
-    },
-    {
-      _id: 2312663,
-      name: "Emma Taylor",
-      role: "Club Member",
-      createdAt: "2024/05/28",
-      status: "Denied",
-      quantity: "842 gram",
-    },
-    {
-      _id: 2314423,
-      name: "Noah Anderson",
-      role: "Club Owner",
-      createdAt: "2024/04/02",
-      status: "Pending",
-      quantity: "982 gram",
-    },
-    {
-      _id: 2312423,
-      name: "Olivia Garcia",
-      role: "Club Moderator",
-      createdAt: "2024/03/19",
-      status: "Approved",
-      quantity: "623 gram",
-    },
-  ];
+  const onDeleteMemberClick = () => {
+    setMembers(members.filter((m) => m._id !== deleteMemberMeta._id));
+    toast.success(`${deleteMemberMeta?.name} has been deleted`);
+    setDeleteMemberMeta(null);
+  };
+
+  const handleStatusChange = (member, status) => {
+    setMembers(
+      members.map((m) => (m._id === member._id ? { ...m, status } : m))
+    );
+    toast.success(`${member?.name}'s request has been ${status}`);
+  };
+
+  const tableColumns = useMemo(
+    () => getMemberColumns(setDeleteMemberMeta, handleStatusChange),
+    [setDeleteMemberMeta, handleStatusChange]
+  );
 
   return (
     <div className="w-[calc(100vw-320px)] p-2">
@@ -96,25 +118,38 @@ const Member = () => {
           className={"mb-2"}
           icon={BsPersonGear}
         />
-        
-        <RiMailSendLine />
+        <Button
+          rightIcon={RiMailSendLine}
+          title={"Invite"}
+          variant="primary"
+          size="sm"
+          onClick={() => setAddEditMemberMeta(true)}
+        />
       </div>
       <MemberSearchAndFilter />
       <DataTable
         rowKey={"_id"}
         columns={tableColumns}
-        data={dummyMembers}
+        data={members}
         bottomOffset={300}
         onRowClick={() => {}}
         allowFilter={false}
         allowSort={false}
       />
-      <AppModal
+      <InviteMemberModal
         show={addEditMemberMeta}
         onHide={() => setAddEditMemberMeta(false)}
-        TitleIcon={FaPlus}
-        title={"Add New Order"}
-      ></AppModal>
+      />
+      <AlertModal
+        onContinue={onDeleteMemberClick}
+        show={Boolean(deleteMemberMeta)}
+        text={
+          <span>
+            Are you sure you want to delete <b>{deleteMemberMeta?.name}</b>?
+          </span>
+        }
+        onHide={() => setDeleteMemberMeta(null)}
+      />
     </div>
   );
 };
