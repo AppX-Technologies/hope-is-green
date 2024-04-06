@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 import CircularProgressBar from "../components/common/circular-progress";
 import { makeApiRequests } from "../helpers/api";
-import { ADMIN_ROLE, BLOCK, ENDPOINTS } from "../helpers/constants";
+import { ENDPOINTS } from "../helpers/constants";
 import {
   getIsUserLoggedInFromLocal,
   setIsUserLoggedInToLocal,

@@ -9,7 +9,7 @@ const TextDropdownToggle = ({
   onOptionClick,
   disabled,
   renderExtraInfo,
-  hint = "please_select_one",
+  hint = "Please select one",
   required = true,
 }) => {
   const { translate } = useLocalization();
@@ -17,19 +17,19 @@ const TextDropdownToggle = ({
   return (
     <div>
       <select
-        className={`cursor-pointer w-fit truncate appearance-none bg-white border border-gray-400 text-gray-700 py-1 px-2 rounded focus:outline-none focus:bg-white focus:border-gray-500`}
+        className={`border cursor-pointer bg-white border-gray-300 rounded px-2 py-2 text-base focus:outline-none truncate `}
         disabled={disabled}
         style={{ fontSize: 12 }}
         onChange={(e) => onOptionClick(e.target.value)}
         value={value}
       >
         <option value="" className="mt-2" disabled={required}>
-          {translate(snakeCase(hint) ?? "") || hint}
+          {hint}
         </option>
         {options.map((option) => {
           if (typeof option === "string") {
             return (
-              <option value={option} key={option}>
+              <option value={option} key={option} className="">
                 {translate(snakeCase(option ?? "") ?? "") || option}
                 {renderExtraInfo && renderExtraInfo(option)}
               </option>

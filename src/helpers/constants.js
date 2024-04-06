@@ -149,14 +149,16 @@ export const INBOUND_SOURCE = [
 ];
 
 export const ADMIN_ROLE = "Admin";
-export const SALES_ROLE = "Salesperson";
-export const FINANCIAL_STRATEGIST_ROLE = "Financial Strategist";
-export const REAL_ESTATE_ANALYST_ROLE = "Real Estate Analyst";
+export const SITE_MODERATOR = "Site Moderator";
+export const CLUB_OWNER = "Club Owner";
+export const CLUB_MODERATOR = "Club Moderator";
+export const CLUB_MEMBER = "Club Member";
 export const ALL_ROLES = [
   ADMIN_ROLE,
-  SALES_ROLE,
-  FINANCIAL_STRATEGIST_ROLE,
-  REAL_ESTATE_ANALYST_ROLE,
+  SITE_MODERATOR,
+  CLUB_OWNER,
+  CLUB_MODERATOR,
+  CLUB_MEMBER,
 ];
 
 export const LOGIN_MODE = "login";
@@ -168,7 +170,6 @@ export const DEFAULT_DATE_TIME_FORMAT = "MMMM Do YYYY HH:mm";
 export const APP_OPTION = ["crm", "app"];
 export const ACTION_OPTION = ["view", "edit"];
 export const RULE_OPTION = ["restrict", "permit"];
-
 
 export const SEARCH_BOX_VISIBLE_PATH = ["/contacts"];
 
@@ -185,6 +186,6 @@ export const APPOINTMENT_TYPES = [
 export const breadcrumbLabel = {
   goBack: "Go Back",
   home: "Home",
-  'study-abroad': "Study Abroad",
+  "study-abroad": "Study Abroad",
   news: "News",
 };

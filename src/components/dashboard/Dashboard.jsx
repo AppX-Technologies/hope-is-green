@@ -42,6 +42,8 @@ const Dashboard = () => {
       title: "Total Quantity Last Month",
       value: 670,
       icon: MdOutlineProductionQuantityLimits,
+      extraInfo: "+38",
+
     },
   ];
   return (

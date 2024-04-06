@@ -9,7 +9,7 @@ const InputField = ({ type, label, placeholder, value, onChange }) => {
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-        className="border border-gray-300 rounded px-2 py-1 text-base focus:outline-none focus:ring-1 focus:ring-gray-400"
+        className="border border-gray-300 rounded px-2 py-1 text-base focus:outline-none"
       />
     </div>
   );

@@ -1,4 +1,8 @@
-import { FaRegTrashAlt } from "react-icons/fa";
+import { AiOutlineClose } from "react-icons/ai";
+import { FaCheck, FaRegTrashAlt } from "react-icons/fa";
+import { GoCheck } from "react-icons/go";
+import { IoCloseSharp } from "react-icons/io5";
+import { MdClose } from "react-icons/md";
 
 export const getMemberColumns = (onDeleteProductClick) => {
   const allLabels = [
@@ -25,17 +29,27 @@ export const getMemberColumns = (onDeleteProductClick) => {
       cellRenderer: (order) => {
         const { status } = order;
         const color =
-          status === "Accepted"
+          status === "Approved"
             ? "green"
             : status === "Pending"
-            ? "yellow"
+            ? "amber"
             : "red";
         return (
-          <span
-            className={`inline-flex items-center rounded-md  px-2 py-1 text-xs font-medium text-${color}-800 bg-${color}-100`}
+          <div
+            className={`inline-flex h-6 rounded-md  text-xs font-medium text-${color}-800 bg-${color}-100`}
           >
-            {order.status}
-          </span>
+            {status === "Pending" && (
+              <div title="Decline" className="bg-red-100 grow flex items-center hover:bg-red-300 text-red-800  px-1 rounded-l-md">
+                <AiOutlineClose />
+              </div>
+            )}
+            <div className="flex items-center mx-2">{order.status}</div>
+            {status === "Pending" && (
+              <div title="Approve" className="bg-green-100 flex items-center text-green-800 hover:bg-green-300 px-1 rounded-r-md">
+                <GoCheck />
+              </div>
+            )}
+          </div>
         );
       },
       width: 80,

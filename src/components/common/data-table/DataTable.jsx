@@ -161,14 +161,16 @@ const DataTable = ({
         }`}
         style={{ maxHeight: "93vh" }} // Ensure this container has a max-height or fixed height
       >
-        <table className="w-full text-sm">
+        <table className="w-full border text-sm">
           <thead className="sticky-header ">
             <tr>
               {columns.map(
                 ({ key, label, labelRenderer, width, disableSort }) => (
                   <th
                     key={key}
-                    className={`text-white bg-green-900 py-2 ${!disableSort && "hover"}`}
+                    className={`text-white bg-green-900 py-2 ${
+                      !disableSort && "hover"
+                    }`}
                     style={{
                       minWidth: width,
                       textAlign: headerHorizontalAlign,
@@ -369,20 +371,18 @@ const DataTable = ({
               </tr>
             )}
 
-            <tr>
-              <td className="text-left" colSpan={columns.length}>
-                {loadingMoreData ? (
+            {loadingMoreData && (
+              <tr>
+                <td className="text-left" colSpan={columns.length}>
                   <div className="flex items-center">
                     <CircularProgressBar size={16} />
                     <h6 className="mx-2 mb-0 text-sm text-muted font-bold">
                       Please wait{" "}
                     </h6>
                   </div>
-                ) : (
-                  <div className="p-2"></div>
-                )}
-              </td>
-            </tr>
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>
