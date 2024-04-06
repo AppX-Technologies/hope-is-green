@@ -1,11 +1,24 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { IoMdArrowBack } from "react-icons/io";
+import { Menu, Transition } from "@headlessui/react";
+import { Fragment } from "react";
+import { BsPersonCircle } from "react-icons/bs";
+import { IoIosLogOut } from "react-icons/io";
+import { IoPersonCircleOutline } from "react-icons/io5";
 import { LuHome } from "react-icons/lu";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { breadcrumbLabel } from "../../../helpers/constants";
+import useAuth from "../../../hooks/useAuth";
 
 const Breadcrumb = ({ baseUrl }) => {
-  const navigate = useNavigate();
+  const { user } = useAuth();
   const location = useLocation();
+
+  const navigate = useNavigate();
+
+  const logoutLocal = () => {
+    logout();
+    navigate("/auth/login");
+  };
+
   const segments = location.pathname
     .split("/")
     .slice(1)
@@ -37,10 +50,7 @@ const Breadcrumb = ({ baseUrl }) => {
             </li>
           ) : (
             <li>
-              <Link
-                to="/dashboard"
-                className="no-underline text-xs"
-              >
+              <Link to="/dashboard" className="no-underline text-xs">
                 {formatBreadcrumbLabel("dashboard")}
               </Link>
             </li>
@@ -63,13 +73,56 @@ const Breadcrumb = ({ baseUrl }) => {
           )}
         </ol>
       </nav>
-      <button
-        onClick={() => navigate(-1)}
-        className="flex items-center px-2 py-1 border border-[Colors.primaryColor] text-xs cursor-pointer rounded-md"
-      >
-        <IoMdArrowBack />
-        <span className="ml-1">Go Back</span>
-      </button>
+      <Menu as="div" className="relative inline-block text-left">
+        <div>
+          <Menu.Button className="inline-flex w-full justify-center rounded-md   px-2 py-1 text-sm font-medium bg-purple-400 hover:bg-purple-500 text-white hover:text-violet-10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75">
+            <span className="font-medium  ">{user?.name}</span>
+            <BsPersonCircle
+              className="-mr-1 ml-2 h-5 w-5 "
+              aria-hidden="true"
+            />
+          </Menu.Button>
+        </div>
+        <Transition
+          as={Fragment}
+          className='z-10'
+          enter="transition ease-out duration-100"
+          enterFrom="transform opacity-0 scale-95"
+          enterTo="transform opacity-100 scale-100"
+          leave="transition ease-in duration-75"
+          leaveFrom="transform opacity-100 scale-100"
+          leaveTo="transform opacity-0 scale-95"
+        >
+          <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none">
+            <div className="px-1 py-1 ">
+              <Menu.Item className="border-b-orange-50">
+                {({ active }) => (
+                  <Link
+                    to={"/profile"}
+                    className={`${
+                      active ? "bg-purple-300 text-white" : "text-gray-900"
+                    } group flex gap-1 w-full items-center rounded-md px-2 py-2 text-sm`}
+                  >
+                    <IoPersonCircleOutline size={20} /> My Profile
+                  </Link>
+                )}
+              </Menu.Item>
+              <Menu.Item>
+                {({ active }) => (
+                  <button
+                    onClick={logoutLocal}
+                    className={`${
+                      active ? "bg-purple-300 text-white" : "text-gray-900"
+                    } group flex gap-1 w-full items-center rounded-md px-2 py-2 text-sm`}
+                  >
+                    <IoIosLogOut size={20} /> Log out{" "}
+                  </button>
+                )}
+              </Menu.Item>
+            </div>
+          </Menu.Items>
+        </Transition>
+      </Menu>
     </div>
   );
 };

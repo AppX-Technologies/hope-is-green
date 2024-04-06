@@ -14,6 +14,8 @@ import Discussion from "../components/discussion/Discussion";
 import Profile from "../components/profile/Profile";
 import SignUp from "../components/auth/SignUp";
 import ResetPassword from "../components/auth/ResetPassword";
+import Member from "../components/members/Member";
+import ClubSettings from "../components/club-settings/ClubSettings";
 
 const AppRoutes = () => {
   const { pathname } = useLocation();
@@ -51,6 +53,12 @@ const AppRoutes = () => {
                 </Route>
                 <Route path="profile">
                   <Route path="" element={<Profile />} />
+                </Route>
+                <Route path="members">
+                  <Route path="" element={<Member />} />
+                </Route>
+                <Route path="club-settings">
+                  <Route path="" element={<ClubSettings />} />
                 </Route>
               </>
             )}

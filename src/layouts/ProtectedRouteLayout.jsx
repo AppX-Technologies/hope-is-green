@@ -11,7 +11,7 @@ const ProtectedRouteLayout = ({ headerVisible = true }) => {
         {headerVisible && <SideNavbar />}
         <div className="grow p-2 flex flex-col gap-2">
           <Breadcrumb baseUrl={"/"} />
-          <div className="grow">
+          <div className="grow border rounded">
             <Outlet />
           </div>
         </div>

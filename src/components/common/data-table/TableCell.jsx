@@ -50,16 +50,20 @@ const Cell = ({
 
   return truncate && returnElement ? (
     <td
-      className={isRowExpanded ? "bg-green-300 font-bold" : "bg-white"}
+      className={
+        isRowExpanded ? "bg-green-300 font-bold py-2" : "bg-white py-3"
+      }
       style={{ textAlign: horizontalAlign, verticalAlign }}
     >
-      <div className="truncate" style={{ width: 160 }}>
+      <div className="truncate" style={{ width: 100 }}>
         {returnElement}
       </div>
     </td>
   ) : (
     <td
-      className={isRowExpanded ? "bg-green-300 font-bold" : "bg-white"}
+      className={
+        isRowExpanded ? "bg-green-300 font-bold py-2" : "bg-white py-3"
+      }
       style={{ textAlign: horizontalAlign, verticalAlign }}
     >
       {returnElement || "-"}

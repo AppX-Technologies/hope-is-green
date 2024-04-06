@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Label from "../common/Label";
+import { FaUsersGear } from "react-icons/fa6";
 
 function ClubSettings() {
   const [clubName, setClubName] = useState("");
@@ -28,9 +30,9 @@ function ClubSettings() {
   };
 
   return (
-    <div className="container mx-auto py-8">
-      <h1 className="text-3xl font-semibold mb-4">Club Settings</h1>
-      <div className="max-w-md mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+    <div className="p-2">
+      <Label label={"Club Settings"} icon={FaUsersGear} size={"2xl"} />
+      <div className="shadow-md overflow-hidden">
         <form className="p-4" onSubmit={handleSubmit}>
           <div className="mb-6">
             <h2 className="text-xl font-semibold mb-2">Profile Information</h2>

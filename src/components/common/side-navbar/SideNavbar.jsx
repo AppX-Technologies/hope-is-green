@@ -13,12 +13,12 @@ const NavItem = (props) => {
     <>
       <Link
         className={`flex items-center w-full h-12 px-3 mt-2 rounded ${
-          path === pathname && "bg-purple-400 text-white"
-        } hover:bg-purple-400 hover:text-white transition-all`}
+          path === pathname && "bg-purple-400 font-bold text-white"
+        } hover:bg-purple-400 hover:text-white text-white transition-all`}
         to={path}
       >
         <Icon className="w-6 h-6 stroke-current" />
-        <span class="ml-2 text-sm font-medium">{label}</span>
+        <span class="ml-2 text-sm ">{label}</span>
       </Link>
     </>
   );
@@ -67,7 +67,7 @@ const SideNavbar = () => {
         <Link to={"/"}>
           <div className="flex items-center gap-2">
             <Logo />
-            <span className="text-lg font-bold">
+            <span className="text-lg text-white font-bold">
               {process.env.REACT_APP_NAME}{" "}
             </span>
           </div>
@@ -81,26 +81,7 @@ const SideNavbar = () => {
           ))}
         </div>
       </div>
-      <a
-        className="flex items-center justify-center w-full h-16 mt-auto bg-gray-800 hover:bg-purple-400 hover:text-white"
-        href="#"
-      >
-        <svg
-          className="w-6 h-6 stroke-current"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-        <span className="ml-2 text-sm font-medium">Account</span>
-      </a>
+   
     </div>
   );
 };

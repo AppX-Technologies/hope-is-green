@@ -1,119 +1,94 @@
-import React, { useState } from "react";
-import { BsCart4 } from "react-icons/bs";
-import FloatingButton from "../common/FloatingButton";
-import { FaPlus } from "react-icons/fa";
-import AppModal from "../AppModal";
-import InputField from "../common/form-controls/InputField";
-
-const OrderCard = ({ item, quantity, itemNumber, status, weight }) => {
-    return (
-      <div className="bg-white text-dark py-6 px-8 flex items-center gap-4 w-full max-w-2xl rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out">
-        <h6 className="text-base font-semibold">{itemNumber}.</h6>
-        <div className="flex-1">
-          <h5 className="font-semibold text-lg">{item}</h5>
-          <p className="text-secondary text-sm mt-1">{weight} gram</p>
-        </div>
-        <span
-          className={`px-4 py-2 text-sm rounded-full text-white ${
-            status === "Pending" ? "bg-red-600" : "bg-green-600"
-          }`}
-        >
-          {status}
-        </span>
-        <h6 className="font-bold text-lg text-right">${quantity}</h6>
-      </div>
-    );
-  };
-  
+import React, { useMemo } from "react";
+import { RiShoppingCartLine } from "react-icons/ri";
+import { getOrderColumns } from "../../helpers/dataTableColumns";
+import Label from "../common/Label";
+import DataTable from "../common/data-table/DataTable";
 
 const Orders = () => {
-  const [addEditOrderMeta, setAddEditOrderMeta] = useState(null);
-  const orders = [
+  const tableColumns = useMemo(() => getOrderColumns(), []);
+  const dummyMembers = [
     {
       item: "Purple Haze",
-      quantity: Math.floor(Math.random() * (70 - 5 + 1)) + 5,
+      totalPrice: `$${Math.floor(Math.random() * (70 - 5 + 1)) + 5}`,
+      totalWeight: `${Math.floor(Math.random() * (70 - 5 + 1)) + 5} gram`,
       status: "Pending",
-      lastUpdated: "16/08/2024",
-      weight: Math.floor(Math.random() * (70 - 5 + 1)) + 5,
+      orderDate: "2024/12/12",
+      lastUpdated: "2024/11/24",
     },
     {
       item: "OG Kush",
-      quantity: Math.floor(Math.random() * (70 - 5 + 1)) + 5,
+      totalPrice: `$${Math.floor(Math.random() * (70 - 5 + 1)) + 5}`,
+      totalWeight: `${Math.floor(Math.random() * (70 - 5 + 1)) + 5} gram`,
       status: "In Process",
-      lastUpdated: "17/08/2024",
-      weight: Math.floor(Math.random() * (70 - 5 + 1)) + 5,
+      orderDate: "2024/08/22",
+      lastUpdated: "2024/12/04",
     },
     {
       item: "Blue Dream",
-      quantity: Math.floor(Math.random() * (70 - 5 + 1)) + 5,
-      status: "In Process",
-      lastUpdated: "17/08/2024",
-      weight: Math.floor(Math.random() * (70 - 5 + 1)) + 5,
+      totalPrice: `$${Math.floor(Math.random() * (70 - 5 + 1)) + 5}`,
+      totalWeight: `${Math.floor(Math.random() * (70 - 5 + 1)) + 5} gram`,
+      status: "Pending",
+      orderDate: "2024/02/11",
+      lastUpdated: "2024/11/05",
     },
     {
       item: "White Widow",
-      quantity: Math.floor(Math.random() * (70 - 5 + 1)) + 5,
-      status: "In Process",
-      lastUpdated: "17/08/2024",
-      weight: Math.floor(Math.random() * (70 - 5 + 1)) + 5,
+      totalPrice: `$${Math.floor(Math.random() * (70 - 5 + 1)) + 5}`,
+      totalWeight: `${Math.floor(Math.random() * (70 - 5 + 1)) + 5} gram`,
+      status: "Success",
+      orderDate: "2024/05/12",
+      lastUpdated: "2024/06/24",
     },
     {
       item: "Sour Diesel",
-      quantity: Math.floor(Math.random() * (70 - 5 + 1)) + 5,
+      totalPrice: `$${Math.floor(Math.random() * (70 - 5 + 1)) + 5}`,
+      totalWeight: `${Math.floor(Math.random() * (70 - 5 + 1)) + 5} gram`,
       status: "In Process",
-      lastUpdated: "17/08/2024",
-      weight: Math.floor(Math.random() * (70 - 5 + 1)) + 5,
+      orderDate: "2024/07/22",
+      lastUpdated: "2024/03/27",
     },
     {
       item: "Girl Scout Cookies",
-      quantity: Math.floor(Math.random() * (70 - 5 + 1)) + 5,
+      totalPrice: `$${Math.floor(Math.random() * (70 - 5 + 1)) + 5}`,
+      totalWeight: `${Math.floor(Math.random() * (70 - 5 + 1)) + 5} gram`,
       status: "In Process",
-      lastUpdated: "17/08/2024",
-      weight: Math.floor(Math.random() * (70 - 5 + 1)) + 5,
+      orderDate: "2024/11/17",
+      lastUpdated: "2024/09/30",
     },
     {
       item: "Granddaddy Purple",
-      quantity: Math.floor(Math.random() * (70 - 5 + 1)) + 5,
-      status: "In Process",
-      lastUpdated: "17/08/2024",
-      weight: Math.floor(Math.random() * (70 - 5 + 1)) + 5,
+      totalPrice: `$${Math.floor(Math.random() * (70 - 5 + 1)) + 5}`,
+      totalWeight: `${Math.floor(Math.random() * (70 - 5 + 1)) + 5} gram`,
+      status: "Success",
+      orderDate: "2024/01/10",
+      lastUpdated: "2024/04/12",
     },
     {
       item: "AK-47",
-      quantity: Math.floor(Math.random() * (70 - 5 + 1)) + 5,
+      totalPrice: `$${Math.floor(Math.random() * (70 - 5 + 1)) + 5}`,
+      totalWeight: `${Math.floor(Math.random() * (70 - 5 + 1)) + 5} gram`,
       status: "In Process",
-      lastUpdated: "17/08/2024",
-      weight: Math.floor(Math.random() * (70 - 5 + 1)) + 5,
+      orderDate: "2024/03/04",
+      lastUpdated: "2024/08/25",
     },
   ];
-
   return (
-    <div className="py-2">
-      <div className="border p-5  text-dark rounded-lg">
-        <div className="flex items-center gap-2">
-          <BsCart4 size={24} />
-          <h6 className="text-xl font-medium">Your Orders</h6>
-        </div>
-        <div className="p-4 flex flex-col gap-4 mt-3">
-          {orders.map((order, index) => (
-            <OrderCard key={order.item} {...order} itemNumber={index + 1} />
-          ))}
-        </div>
-      </div>
-      <FloatingButton
-        className="mt-5 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full shadow-lg hover:shadow-xl transition-shadow duration-200 ease-in-out"
-        text={"New Order"}
-        icon={<FaPlus size={16} />}
-        onClick={() => setAddEditOrderMeta(true)}
+    <div className="w-[calc(100vw-320px)] p-2">
+      <Label
+        label={"Orders"}
+        size={"2xl"}
+        className={"mb-2"}
+        icon={RiShoppingCartLine}
       />
-      <AppModal
-        show={Boolean(addEditOrderMeta)}
-        onHide={() => setAddEditOrderMeta(null)}
-      >
-        <div className="flex gap-2">
-          <InputField placeholder={"Enter Order name"} label={"Order Name"} />
-        </div>
-      </AppModal>
+      <DataTable
+        rowKey={"_id"}
+        columns={tableColumns}
+        data={dummyMembers}
+        bottomOffset={300}
+        onRowClick={() => {}}
+        allowFilter={false}
+        allowSort={false}
+      />
     </div>
   );
 };

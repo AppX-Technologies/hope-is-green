@@ -16,7 +16,7 @@ const SortSwitch = ({ sortOrder, onSortChange }) => {
   return (
     <div
       onClick={handleSortChange}
-      className="mx-1 inline-flex flex-column items-center"
+      className=""
     >
       <TbCaretUpFilled
         size={sortOrder === "asc" ? 10 : 8}

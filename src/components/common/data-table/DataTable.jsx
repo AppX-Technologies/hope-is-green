@@ -161,14 +161,14 @@ const DataTable = ({
         }`}
         style={{ maxHeight: "93vh" }} // Ensure this container has a max-height or fixed height
       >
-        <table className="w-full mid">
-          <thead className="sticky-header">
+        <table className="w-full text-sm">
+          <thead className="sticky-header ">
             <tr>
               {columns.map(
                 ({ key, label, labelRenderer, width, disableSort }) => (
                   <th
                     key={key}
-                    className={`text-white bg-dark ${!disableSort && "hover"}`}
+                    className={`text-white bg-green-900 py-2 ${!disableSort && "hover"}`}
                     style={{
                       minWidth: width,
                       textAlign: headerHorizontalAlign,
@@ -176,7 +176,7 @@ const DataTable = ({
                     }}
                     onClick={() => allowSort && !disableSort && handleSort(key)}
                   >
-                    <div className="flex items-center justify-center">
+                    <div className="flex gap-2 items-center justify-center">
                       {labelRenderer ? labelRenderer(key) : label}
                       {allowSort && !disableSort && (
                         <SortSwitch
@@ -212,7 +212,7 @@ const DataTable = ({
               <>
                 <tr
                   id="data-table-new-row"
-                  className="bg-primary-light border-primary-dark"
+                  className="bg-green-300 border-primary-dark"
                   style={{ borderWidth: 2 }}
                 >
                   <td colSpan={columns.length} className="text-dark">
@@ -310,9 +310,9 @@ const DataTable = ({
                   <>
                     <tr
                       id={`data-row-${row[rowKey]}`}
-                      className={`hover ${
+                      className={`cursor-pointer py-2 ${
                         expandedRowKeys.includes(row[rowKey])
-                          ? "border-primary-dark"
+                          ? "border-green-300"
                           : ""
                       }`}
                       key={row[rowKey]}
