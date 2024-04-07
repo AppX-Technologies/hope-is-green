@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import useLocalization from "../../hooks/useLocalization";
 
-function ClubListItems({ setSelectedClub, selectedClub }) {
+function ClubListItems({ setSelectedClub, selectedClub, setCurrentStep }) {
+  const { translate } = useLocalization();
+
   const [searchTerm, setSearchTerm] = useState("");
 
   const filteredData = data.filter((item) =>
@@ -17,7 +20,7 @@ function ClubListItems({ setSelectedClub, selectedClub }) {
         className="mb-4 px-3 py-1.5 border rounded-md focus:outline-none focus:ring-none focus:border-blue-300 w-full"
       />
 
-      <div className="flex flex-col gap-4 w-full mx-auto h-fit overflow-y-auto">
+      <div className="flex flex-col gap-4 w-full mx-auto h-fit overflow-y-auto max-h-[calc(100vh-460px)]">
         {filteredData.length === 0 ? (
           <p>No results found.</p>
         ) : (
@@ -44,6 +47,14 @@ function ClubListItems({ setSelectedClub, selectedClub }) {
           ))
         )}
       </div>
+      <button
+        className="mt-auto w-full bg-primary hover:bg-green-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        type="button"
+        onClick={() => setCurrentStep(2)}
+        disabled={!selectedClub}
+      >
+        {translate("next")}
+      </button>
     </>
   );
 }
