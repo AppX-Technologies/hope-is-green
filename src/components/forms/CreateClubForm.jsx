@@ -54,7 +54,9 @@ const CreateClubForm = ({
             },
           ].map((field) => (
             <div key={field.name} className="mb-2">
-              <label className="mid mb-1">{translate(field.label)}</label>
+              <label className="mid mb-1 required">
+                {translate(field.label)}
+              </label>
 
               <Field
                 name={field.name}
