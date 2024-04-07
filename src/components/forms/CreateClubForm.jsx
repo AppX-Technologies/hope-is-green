@@ -39,7 +39,7 @@ const CreateClubForm = ({
         }
       }}
     >
-      {({ isSubmitting }) => (
+      {({ isSubmitting, setFieldValue }) => (
         <Form noValidate className="p-2">
           {[
             {
@@ -96,7 +96,7 @@ const CreateClubForm = ({
                   key={index}
                   heading={item.heading}
                   options={options}
-                  onChange={(value) => setFieldValue(item.name, value)}
+                  onChange={(e) => setFieldValue(item.name, e.target.value)}
                 />
               ))}
             </div>
