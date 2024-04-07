@@ -5,15 +5,19 @@ import UnderlineButton from "../common/UnderlineButton";
 import SignUpForm from "../forms/SignupForm";
 import { useNavigate } from "react-router-dom";
 import ClubListItems from "./ClubListItems";
+import { useLocation } from "react-router";
 
 const SignUp = () => {
   const { translate } = useLocalization();
   const navigate = useNavigate();
+  const location = useLocation();
 
   //Update for register
   const { isLoggingIn, loginError } = useAuth();
 
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(
+    location?.state?.currentStep || 1
+  );
   const [selectedClub, setSelectedClub] = useState(null);
 
   const onSubmit = async (values) => {

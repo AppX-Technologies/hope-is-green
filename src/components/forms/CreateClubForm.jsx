@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import useLocalization from "../../hooks/useLocalization";
 import HorizontalProgress from "../common/HorizontalProgress";
 import Select from "../CustomSelect";
+import { useNavigate } from "react-router-dom";
 
 // Yup validation schema
 const validationSchema = Yup.object().shape({
@@ -13,13 +14,9 @@ const validationSchema = Yup.object().shape({
 
 const options = ["Yes", "No"];
 
-const CreateClubForm = ({
-  isCreatingClub,
-  creatingClubError,
-  onSubmit,
-  setCurrentStep,
-}) => {
+const CreateClubForm = ({ isCreatingClub, creatingClubError, onSubmit }) => {
   const { translate } = useLocalization();
+  const navigate = useNavigate();
 
   return (
     <Formik
@@ -33,7 +30,6 @@ const CreateClubForm = ({
       onSubmit={async (values, { setSubmitting }) => {
         try {
           await onSubmit(values);
-          setCurrentStep(2);
         } finally {
           setSubmitting(false);
         }
@@ -120,6 +116,9 @@ const CreateClubForm = ({
           </p>
           <button
             type="submit"
+            onClick={() =>
+              navigate("/auth/register", { state: { currentStep: 2 } })
+            }
             disabled={isSubmitting}
             className={`w-full bg-primary hover:bg-green-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${
               isSubmitting ? "opacity-50 cursor-not-allowed" : ""

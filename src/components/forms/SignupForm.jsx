@@ -18,6 +18,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const SignUpForm = ({ isRegistering, signUpError, onSubmit }) => {
+
   const { translate } = useLocalization();
 
   return (

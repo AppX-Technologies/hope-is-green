@@ -10,7 +10,6 @@ function CreateClub() {
   const { translate } = useLocalization();
   const { loginError } = useAuth();
   const navigate = useNavigate();
-  const [currentStep, setCurrentStep] = useState(1);
 
   const isLoading = false;
 
@@ -26,31 +25,14 @@ function CreateClub() {
           <span className="text-primary font-bold">Green</span>{" "}
         </h6>
         <h6 className="text-gray-500 mb-2 text-base">
-          <b className="">
-            {translate(
-              currentStep === 1
-                ? "fill_the_details_to_continue"
-                : "register_to_continue"
-            )}
-          </b>
+          <b className="">{translate("fill_the_details_to_continue")}</b>
         </h6>
         <hr className="my-4" />
-        {currentStep === 1 ? (
-          <CreateClubForm
-            isCreatingClub={isLoading}
-            creatingClubError={loginError}
-            onSubmit={onSubmit}
-            setCurrentStep={setCurrentStep}
-          />
-        ) : (
-          <>
-            <SignUpForm
-              isRegistering={isLoading}
-              signUpError={loginError}
-              onSubmit={onSubmit}
-            />
-          </>
-        )}
+        <CreateClubForm
+          isCreatingClub={isLoading}
+          creatingClubError={loginError}
+          onSubmit={onSubmit}
+        />
         <div className="flex gap-3 mt-auto flex-col pt-2">
           <div className="flex flex-col gap-2">
             <UnderlineButton
