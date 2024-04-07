@@ -26,7 +26,7 @@ const ClubSettings = () => {
           <InputField label={"Address"} />
           <h6 className="text-sm font-bold text-gray-700 mt-1">Settings</h6>
           <hr className="my-0" />
-          <div>
+          <div className="flex gap-2 justify-between  items-center">
             <h6 className="text-sm text-gray-700 mb-1">
               Do new members need to be approved before joining?
             </h6>
@@ -35,7 +35,7 @@ const ClubSettings = () => {
               onOptionClick={() => {}}
             />
           </div>
-          <div>
+          <div className="flex gap-2 justify-between items-center">
             <h6 className="text-sm text-gray-700 mb-1">
               Can people search your club when joining?
             </h6>
@@ -44,7 +44,7 @@ const ClubSettings = () => {
               onOptionClick={() => {}}
             />
           </div>
-          <div>
+          <div className="flex gap-2 justify-between items-center">
             <h6 className="text-sm text-gray-700 mb-1">
               Does new threads need to be approved by admins before publishing?
             </h6>

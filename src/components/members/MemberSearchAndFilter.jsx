@@ -4,12 +4,12 @@ import TextDropdownToggle from "../common/TextDropdownToggle";
 
 const MemberSearchAndFilter = () => {
   return (
-    <div className="flex py-2">
-      <div className="flex gap-2 items-center">
+    <div className="flex gap-2 items-center py-2">
+      <div className="grow">
         <InputField placeholder={"Quick search..."} />
-        <TextDropdownToggle hint="Select Role" options={["abd", "asd"]} />
-        <TextDropdownToggle hint="Select Status" options={["abd", "asd"]} />
       </div>
+      <TextDropdownToggle hint="Select Role" options={["abd", "asd"]} />
+      <TextDropdownToggle hint="Select Status" options={["abd", "asd"]} />
     </div>
   );
 };

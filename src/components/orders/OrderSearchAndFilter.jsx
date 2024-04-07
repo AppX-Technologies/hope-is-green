@@ -4,11 +4,11 @@ import TextDropdownToggle from "../common/TextDropdownToggle";
 
 const OrderSearchAndFilter = () => {
   return (
-    <div className="flex py-2">
-      <div className="flex gap-2 items-center">
+    <div className="flex gap-2 py-2 items-center">
+      <div className="grow">
         <InputField placeholder={"Quick search..."} />
-        <TextDropdownToggle hint="Select Status" options={["abd", "asd"]} />
       </div>
+      <TextDropdownToggle hint="Select Status" options={["abd", "asd"]} />
     </div>
   );
 };

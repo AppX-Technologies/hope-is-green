@@ -14,7 +14,7 @@ const NavItem = (props) => {
       <Link
         className={`flex items-center w-full h-12 px-3 mt-2 rounded ${
           path === pathname && "bg-purple-400 font-bold text-white"
-        } hover:bg-purple-400 hover:text-white text-white transition-all`}
+        } hover:bg-purple-400 hover:text-white text-white ease-in-out duration-300`}
         to={path}
       >
         <Icon className="w-6 h-6 stroke-current" />
@@ -62,7 +62,7 @@ const SideNavbar = () => {
   const [toggleSideNavbar, setToggleSideNavbar] = useState(false);
 
   return (
-    <div className="flex flex-col items-center w-72 min-h-screen overflow-hidden text-gray-400 bg-gray-900">
+    <div className="flex flex-col items-center w-72 min-h-screen overflow-hidden text-gray-400 bg-dark">
       <div className="flex w-full px-3 mt-3">
         <Link to={"/"}>
           <div className="flex items-center gap-2">

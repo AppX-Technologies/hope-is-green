@@ -13,11 +13,12 @@ const InviteMemberModal = ({ show, onHide }) => {
       onHide={onHide}
       TitleIcon={FaPlus}
       title={"Invite Member"}
+      size="sm"
     >
       <div className="">
         <InputField label={"Email"} />
       </div>
-      <div className="flex justify-end gap-2">
+      <div className="flex justify-end gap-2 mt-4">
         <Button
           size="sm"
           variant="danger"

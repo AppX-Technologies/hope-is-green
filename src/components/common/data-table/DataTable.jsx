@@ -58,7 +58,6 @@ const DataTable = ({
   addingNewRow,
 }) => {
   const tableContainerRef = useRef(null); // Create a ref for the table
-
   useEffect(() => {
     const debouncedHandleScroll = debounce(() => {
       if (loadingMoreData) return;
@@ -168,7 +167,7 @@ const DataTable = ({
                 ({ key, label, labelRenderer, width, disableSort }) => (
                   <th
                     key={key}
-                    className={`text-white bg-green-900 py-2 ${
+                    className={`text-white bg-dark py-2 ${
                       !disableSort && "hover"
                     }`}
                     style={{
@@ -352,7 +351,7 @@ const DataTable = ({
                           className="bg-light-gray bg-opacity-50"
                           style={{ zIndex: 0 }}
                         >
-                          <div style={{ width: "92vw" }} className="pb-2">
+                          <div className="pb-2">
                             {renderExpandedRow && renderExpandedRow(row)}
                           </div>
                         </td>
