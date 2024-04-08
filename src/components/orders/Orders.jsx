@@ -284,27 +284,23 @@ const Orders = () => {
   };
 
   return (
-    <div className="w-[calc(100vw-320px)] p-2">
-      <Label
-        label={"Orders"}
-        size={"2xl"}
-        className={"mb-2"}
-        icon={RiShoppingCartLine}
-      />
+    <div className="w-full">
+      <Label label={"Orders"} size={"xl"} className={"font-bold"} />
 
-      <OrderSearchAndFilter />
-
-      <DataTable
-        rowKey={"_id"}
-        columns={tableColumns}
-        data={orders}
-        bottomOffset={300}
-        onRowClick={onOrderClick}
-        expandedRowKeys={[activeOrder?._id].filter(Boolean)}
-        renderExpandedRow={() => <OrderDetails order={activeOrder} />}
-        allowFilter={false}
-        allowSort={false}
-      />
+      <div className="bg-white p-4 rounded shadow-md mt-4 w-full">
+        <OrderSearchAndFilter />
+        <DataTable
+          rowKey={"_id"}
+          columns={tableColumns}
+          data={orders}
+          bottomOffset={300}
+          onRowClick={onOrderClick}
+          expandedRowKeys={[activeOrder?._id].filter(Boolean)}
+          renderExpandedRow={() => <OrderDetails order={activeOrder} />}
+          allowFilter={false}
+          allowSort={false}
+        />
+      </div>
     </div>
   );
 };

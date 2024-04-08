@@ -6,7 +6,7 @@ const Label = ({ icon: Icon, label, size = "md", iconSize, className }) => {
       className={`flex items-center gap-2 ${className} text-${size}`}
     >
       {Icon && <Icon className={`text-${iconSize || size}`} />}{" "}
-      <span>{label}</span>
+      <span className="mb-0">{label}</span>
     </div>
   );
 };

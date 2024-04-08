@@ -1,6 +1,7 @@
 import { AiOutlineClose } from "react-icons/ai";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { GoCheck } from "react-icons/go";
+import Progressbar from "../components/common/Progressbar";
 
 export const getMemberColumns = (onDeleteMemberClick, handleStatusChange) => {
   const allLabels = [
@@ -8,20 +9,20 @@ export const getMemberColumns = (onDeleteMemberClick, handleStatusChange) => {
       key: "name",
       label: "Name",
       type: "text",
-      align:'left',
+      align: "left",
       width: 100,
     },
     {
       key: "role",
       label: "Role",
-      align:'left',
+      align: "left",
       width: 60,
     },
     {
       key: "createdAt",
       label: "Joined At",
       type: "date",
-      align:'left',
+      align: "left",
       width: 80,
     },
     {
@@ -66,7 +67,20 @@ export const getMemberColumns = (onDeleteMemberClick, handleStatusChange) => {
     {
       key: "quantity",
       label: "Quantity Ordered",
-      type: "text",
+      cellRenderer: (member) => {
+        const { quantity } = member;
+        return (
+          <div className="flex justify-center items-center">
+            <div className="w-3/4">
+              <Progressbar
+                variant="purple-300"
+                value={quantity}
+                text={`${quantity}/70 gm`}
+              />
+            </div>
+          </div>
+        );
+      },
       width: 80,
     },
 

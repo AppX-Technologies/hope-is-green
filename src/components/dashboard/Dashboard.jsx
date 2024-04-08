@@ -6,7 +6,7 @@ import { FaMoneyBillTrendUp } from "react-icons/fa6";
 import { MdOutlineProductionQuantityLimits } from "react-icons/md";
 const StatCard = ({ title, value, icon,extraInfo }) => {
   return (
-    <div className="shadow p-3 flex flex-col gap-1 min-h-36 w-full bg-gray-100">
+    <div className="shadow-md rounded p-3 flex flex-col gap-1 min-h-36 w-full bg-white">
       <Label
         label={title}
         size="xl"
@@ -47,8 +47,8 @@ const Dashboard = () => {
     },
   ];
   return (
-    <div className="p-2 ">
-      <Label icon={IoBarChartOutline} label={"Dashboard"} size={"2xl"} />
+    <div className="">
+      <Label  label={"Dashboard"} size={"xl"} className={"font-bold"} />
       <div className="grid grid-cols-2 gap-2 mt-4">
         {stats.map((stat) => (
           <StatCard key={stat.title} {...stat} />

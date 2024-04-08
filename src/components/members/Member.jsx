@@ -19,7 +19,7 @@ const dummyMembers = [
     role: "Site Moderator",
     createdAt: "2024/09/15",
     status: "Approved",
-    quantity: "23 gram",
+    quantity: 23,
   },
   {
     _id: 2243123,
@@ -27,7 +27,7 @@ const dummyMembers = [
     role: "Club Owner",
     createdAt: "2024/11/03",
     status: "Pending",
-    quantity: "23 gram",
+    quantity: 53,
   },
   {
     _id: 231323,
@@ -35,7 +35,7 @@ const dummyMembers = [
     role: "Club Moderator",
     createdAt: "2024/08/21",
     status: "Approved",
-    quantity: "23 gram",
+    quantity: 67,
   },
   {
     _id: 235123,
@@ -43,7 +43,7 @@ const dummyMembers = [
     role: "Admin",
     createdAt: "2024/07/17",
     status: "Pending",
-    quantity: "213 gram",
+    quantity: 34,
   },
   {
     _id: 231263,
@@ -51,7 +51,7 @@ const dummyMembers = [
     role: "Club Member",
     createdAt: "2024/12/05",
     status: "Approved",
-    quantity: "423 gram",
+    quantity: 64,
   },
   {
     _id: 236123,
@@ -59,7 +59,7 @@ const dummyMembers = [
     role: "Club Moderator",
     createdAt: "2024/06/12",
     status: "Denied",
-    quantity: "232 gram",
+    quantity: 41,
   },
   {
     _id: 2312663,
@@ -67,7 +67,7 @@ const dummyMembers = [
     role: "Club Member",
     createdAt: "2024/05/28",
     status: "Denied",
-    quantity: "842 gram",
+    quantity: 23,
   },
   {
     _id: 2314423,
@@ -75,7 +75,7 @@ const dummyMembers = [
     role: "Club Owner",
     createdAt: "2024/04/02",
     status: "Pending",
-    quantity: "982 gram",
+    quantity: 44,
   },
   {
     _id: 2312423,
@@ -83,7 +83,7 @@ const dummyMembers = [
     role: "Club Moderator",
     createdAt: "2024/03/19",
     status: "Approved",
-    quantity: "623 gram",
+    quantity: 62,
   },
 ];
 const Member = () => {
@@ -110,15 +110,9 @@ const Member = () => {
   );
 
   return (
-    <div className="w-full p-4">
+    <div className="w-full">
       <div className="flex gap-2 items-center">
-        <Label
-          label={"Members"}
-          size={"2xl"}
-          className={"mb-2"}
-          icon={BsPersonGear}
-          iconSize={"3xl"}
-        />
+        <Label label={"Members"} size={"xl"} className={"font-bold"} />
         <Button
           rightIcon={RiMailSendLine}
           title={"Invite"}
@@ -127,6 +121,7 @@ const Member = () => {
           onClick={() => setAddEditMemberMeta(true)}
         />
       </div>
+
       <div className="bg-white p-4 rounded shadow-md mt-4 w-full">
         <MemberSearchAndFilter />
         <DataTable
