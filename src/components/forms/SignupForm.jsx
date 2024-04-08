@@ -10,19 +10,14 @@ const validationSchema = Yup.object().shape({
   email: Yup.string()
     .email("Invalid email")
     .required("Please provide your email address"),
-  phone: Yup.string().required("Please provide your phone"),
+  phone: Yup.string(),
   password: Yup.string().required("Please provide your password"),
   confirmPassword: Yup.string()
     .required("Please confirm your password")
     .oneOf([Yup.ref("password"), null], "Passwords must match"),
 });
 
-const SignUpForm = ({
-  isRegistering,
-  signUpError,
-  onSubmit,
-  submitFormRef,
-}) => {
+const SignUpForm = ({ isRegistering, signUpError, onSubmit }) => {
   const { translate } = useLocalization();
 
   return (
@@ -38,7 +33,6 @@ const SignUpForm = ({
       validateOnBlur={false}
       validateOnChange={false}
       onSubmit={onSubmit}
-      innerRef={submitFormRef}
     >
       {() => (
         <Form noValidate className="p-2">
@@ -104,6 +98,15 @@ const SignUpForm = ({
               </div>
             </div>
           )}
+          <button
+            type="submit"
+            disabled={isRegistering}
+            className={`mt-4 w-full bg-primary hover:bg-green-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${
+              isRegistering ? "opacity-50 cursor-not-allowed" : ""
+            }`}
+          >
+            {translate("submit")}
+          </button>
         </Form>
       )}
     </Formik>

@@ -907,6 +907,9 @@ export const languageContent = {
     user_email_address: "User's email address",
     next: "Next",
     enter_your_new_password: "Enter your new password",
+    club_name: "Club Name",
+    club_settings: "Club Settings",
+    fill_the_details_to_continue: "Fill the details to continue",
   },
 };
 

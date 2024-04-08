@@ -16,6 +16,7 @@ import SignUp from "../components/auth/SignUp";
 import ResetPassword from "../components/auth/ResetPassword";
 import Member from "../components/members/Member";
 import ClubSettings from "../components/club-settings/ClubSettings";
+import CreateClub from "../components/auth/CreateClub";
 
 const AppRoutes = () => {
   const { pathname } = useLocation();
@@ -35,6 +36,7 @@ const AppRoutes = () => {
               <Route path="register" element={<SignUp />} />
               <Route path="reset-password" element={<ResetPassword />} />
             </Route>
+            <Route path="create-club" element={<CreateClub />} />
           </Route>
         </Route>
         {/* Protected Routes */}
