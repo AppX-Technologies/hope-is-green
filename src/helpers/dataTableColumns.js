@@ -8,17 +8,20 @@ export const getMemberColumns = (onDeleteMemberClick, handleStatusChange) => {
       key: "name",
       label: "Name",
       type: "text",
+      align:'left',
       width: 100,
     },
     {
       key: "role",
       label: "Role",
+      align:'left',
       width: 60,
     },
     {
       key: "createdAt",
       label: "Joined At",
       type: "date",
+      align:'left',
       width: 80,
     },
     {
@@ -30,7 +33,7 @@ export const getMemberColumns = (onDeleteMemberClick, handleStatusChange) => {
           status === "Approved"
             ? "green"
             : status === "Pending"
-            ? "amber"
+            ? "red"
             : "red";
         return (
           <div
@@ -115,7 +118,7 @@ export const getOrderColumns = (handleStatusChange) => {
       cellRenderer: (member) => {
         const { status } = member;
         const color =
-          status === "Finished" ? "green" : status === "New" ? "amber" : "red";
+          status === "Finished" ? "green" : status === "New" ? "red" : "red";
         return (
           <div
             className={`inline-flex h-6 rounded-md  text-xs font-medium text-${color}-800 bg-${color}-100`}

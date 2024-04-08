@@ -9,7 +9,7 @@ import { breadcrumbLabel } from "../../../helpers/constants";
 import useAuth from "../../../hooks/useAuth";
 
 const Breadcrumb = ({ baseUrl }) => {
-  const { user } = useAuth();
+  const { user,logout } = useAuth();
   const location = useLocation();
 
   const navigate = useNavigate();
@@ -35,7 +35,7 @@ const Breadcrumb = ({ baseUrl }) => {
   };
 
   return (
-    <div className="flex flex-col bg-gray-100 shadow-sm rounded-sm sm:flex-row justify-between items-center gap-2 p-2">
+    <div className="flex flex-col bg-white shadow-sm rounded-sm sm:flex-row justify-between items-center gap-2 p-2">
       <nav className="font-medium">
         <ol className="flex gap-2">
           {baseUrl === "/" ? (
@@ -75,7 +75,7 @@ const Breadcrumb = ({ baseUrl }) => {
       </nav>
       <Menu as="div" className="relative inline-block text-left">
         <div>
-          <Menu.Button className="inline-flex w-full justify-center rounded-md   px-2 py-1 text-sm font-medium bg-purple-400 hover:bg-purple-500 text-white hover:text-violet-10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75">
+          <Menu.Button className="inline-flex w-full justify-center rounded-md   px-2 py-1 text-sm font-medium bg-primary  hover:bg-green-600 text-white hover:text-violet-10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75">
             <span className="font-medium  ">{user?.name}</span>
             <BsPersonCircle
               className="-mr-1 ml-2 h-5 w-5 "

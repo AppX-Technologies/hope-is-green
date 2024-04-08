@@ -110,13 +110,14 @@ const Member = () => {
   );
 
   return (
-    <div className="w-[calc(100vw-320px)] p-2">
+    <div className="w-full p-4">
       <div className="flex gap-2 items-center">
         <Label
           label={"Members"}
           size={"2xl"}
           className={"mb-2"}
           icon={BsPersonGear}
+          iconSize={"3xl"}
         />
         <Button
           rightIcon={RiMailSendLine}
@@ -126,16 +127,18 @@ const Member = () => {
           onClick={() => setAddEditMemberMeta(true)}
         />
       </div>
-      <MemberSearchAndFilter />
-      <DataTable
-        rowKey={"_id"}
-        columns={tableColumns}
-        data={members}
-        bottomOffset={300}
-        onRowClick={() => {}}
-        allowFilter={false}
-        allowSort={false}
-      />
+      <div className="bg-white p-4 rounded shadow-md mt-4 w-full">
+        <MemberSearchAndFilter />
+        <DataTable
+          rowKey={"_id"}
+          columns={tableColumns}
+          data={members}
+          bottomOffset={300}
+          onRowClick={() => {}}
+          allowFilter={false}
+          allowSort={false}
+        />
+      </div>
       <InviteMemberModal
         show={addEditMemberMeta}
         onHide={() => setAddEditMemberMeta(false)}
