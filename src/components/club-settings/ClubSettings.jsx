@@ -8,7 +8,7 @@ import Button from "../common/Button";
 const ClubSettings = () => {
   return (
     <div className="p-2">
-      <Label label={"Club Settings"} icon={FaUsersGear} size={"2xl"} />
+      <Label label={"Club Settings"} className={'font-bold'} size={"xl"} />
       <div className="flex flex-col gap-3 justify-center items-center h-fit">
         <img
           src="https://dfstudio-d420.kxcdn.com/wordpress/wp-content/uploads/2019/06/digital_camera_photo-1080x675.jpg"

@@ -167,7 +167,7 @@ const DataTable = ({
                 ({ key, label, labelRenderer, width, disableSort }) => (
                   <th
                     key={key}
-                    className={`text-white bg-dark py-2 ${
+                    className={`text-white bg-dark py-3 ${
                       !disableSort && "hover"
                     }`}
                     style={{
@@ -311,7 +311,7 @@ const DataTable = ({
                   <>
                     <tr
                       id={`data-row-${row[rowKey]}`}
-                      className={`cursor-pointer py-2 ${
+                      className={`cursor-pointer py-1 ${
                         expandedRowKeys.includes(row[rowKey])
                           ? "border-green-300"
                           : ""
