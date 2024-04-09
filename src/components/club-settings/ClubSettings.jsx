@@ -7,7 +7,7 @@ import Button from "../common/Button";
 
 const ClubSettings = () => {
   return (
-    <div className="p-2">
+    <div className="">
       <Label label={"Club Settings"} className={'font-bold'} size={"xl"} />
       <div className="flex flex-col gap-3 justify-center items-center h-fit">
         <img
