@@ -22,7 +22,7 @@ const SignUp = () => {
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <div className="bg-white shadow-md rounded flex flex-col w-[300px] sm:w-[350px] md:w-[400px] xl:w-[450px] p-6 h-[calc(100vh-200px)]">
+      <div className="bg-white shadow-md rounded flex flex-col w-[300px] sm:w-[350px] md:w-[400px] xl:w-[450px] p-6">
         <h6 className="text-dark text-xl mb-2">
           Welcome to Hope is{" "}
           <span className="text-primary font-bold">Green</span>{" "}

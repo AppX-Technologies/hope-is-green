@@ -4,11 +4,13 @@ import useLocalization from "../../hooks/useLocalization";
 import UnderlineButton from "../common/UnderlineButton";
 import LoginForm from "../forms/LoginForm";
 import CustomDialog from "../CustomDialog";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const { translate } = useLocalization();
   const { login, isLoggingIn, loginError } = useAuth();
   let [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   const onSubmit = async ({ email, password }) => {
     login(email, password);
@@ -16,10 +18,10 @@ const Login = () => {
   };
 
   return (
-    <div className="h-[calc(100vh-200px)] flex flex-col justify-center items-center">
-      <div className="bg-white shadow-md rounded w-[300px] sm:w-[350px] md:w-[400px] xl:w-[450px] p-6">
+    <div className="h-[100%] flex flex-col justify-center items-center">
+      <div className="h-[100%] bg-white shadow-md rounded w-[300px] sm:w-[350px] md:w-[400px] xl:w-[450px] p-6">
         <h6 className="text-dark text-xl mb-2">
-          Welcome to Hope is
+          Welcome to Hope is{" "}
           <span className="text-primary font-bold">Green</span>{" "}
         </h6>
         <h6 className="text-gray-500 mb-2 text-base">
@@ -31,12 +33,19 @@ const Login = () => {
           loginError={loginError}
           onSubmit={onSubmit}
         />
-        <div className="flex items-center">
-          <UnderlineButton
-            text={translate("click_here_if_you_have_forgotten_your_password")}
-            className="text-sm hover:text-blue-600 cursor-pointer"
-            onClick={() => setIsOpen(true)}
-          />
+        <div className="flex gap-3 mt-auto flex-col pt-2">
+          <div className="flex flex-col gap-2">
+            <UnderlineButton
+              text={translate("click_here_if_you_have_forgotten_your_password")}
+              className="text-sm hover:text-blue-600 cursor-pointer"
+              onClick={() => setIsOpen(true)}
+            />
+            <UnderlineButton
+              text={translate("dont_have_an_account")}
+              className="text-sm hover:text-blue-600 cursor-pointer"
+              onClick={() => navigate("/auth/register")}
+            />
+          </div>
         </div>
 
         <CustomDialog

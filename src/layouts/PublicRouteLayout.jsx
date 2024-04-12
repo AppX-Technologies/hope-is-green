@@ -6,7 +6,7 @@ const PublicRouteLayout = () => {
   return (
     <div className="min-h-screen flex flex-col p-4 bg-slate-100">
       <div className="flex justify-between">
-        <Logo height={"80px"} width={"80px"} className="ms-3 cursor-pointer" />
+        <Logo height={"60px"} width={"60px"} className="ms-3 cursor-pointer" />
         {/* <LanguagePicker /> */}
       </div>
       <div className="flex-grow">
