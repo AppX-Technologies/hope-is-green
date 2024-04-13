@@ -1,7 +1,7 @@
 import React from "react";
 import InputField from "../common/form-controls/InputField";
 import TextDropdownToggle from "../common/TextDropdownToggle";
-import { ALL_ROLES } from "../../helpers/constants";
+import { ALL_MEMBER_STATUS, ALL_ROLES } from "../../helpers/constants";
 
 const MemberSearchAndFilter = () => {
   return (
@@ -16,7 +16,7 @@ const MemberSearchAndFilter = () => {
       />
       <TextDropdownToggle
         hint="Select Status"
-        options={["Active", "Deactive"]}
+        options={ALL_MEMBER_STATUS}
         onOptionClick={() => {}}
       />
     </div>

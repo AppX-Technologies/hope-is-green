@@ -143,7 +143,7 @@ const Clubs = () => {
         />
       </div>
 
-      <div className="bg-white p-4 rounded shadow-md mt-4 w-full">
+      <div className="bg-white p-4 rounded shadow-md mt-4 w-full h-100">
         <ClubSearchAndFilter />
         <DataTable
           rowKey={"_id"}

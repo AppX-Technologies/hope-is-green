@@ -1,11 +1,9 @@
 import React, { useMemo, useState } from "react";
-import { RiShoppingCartLine } from "react-icons/ri";
 import { getOrderColumns } from "../../helpers/dataTableColumns";
 import Label from "../common/Label";
 import DataTable from "../common/data-table/DataTable";
-import OrderSearchAndFilter from "./OrderSearchAndFilter";
 import OrderDetails from "./OrderDetails";
-import { toast } from "react-toastify";
+import OrderSearchAndFilter from "./OrderSearchAndFilter";
 const scrollToOrderRow = (contactId) => {
   setTimeout(() => {
     const trElement = document.getElementById(`data-row-${contactId}`);
@@ -27,7 +25,6 @@ const Orders = () => {
       {
         _id: 231153223,
         orderedBy: "Andy Brown",
-        itemCount: 3,
         items: [
           {
             product: "Ak 47",
@@ -57,19 +54,12 @@ const Orders = () => {
       {
         _id: 2155323123,
         orderedBy: "Emma Davis",
-        itemCount: 23,
         items: [
           {
             product: "Ak 47",
             grams: 55,
             price: 102,
             quantity: 52,
-          },
-          {
-            product: "Purple Haze",
-            grams: 15,
-            price: 10,
-            quantity: 2,
           },
           {
             product: "Brown Leaf",
@@ -87,25 +77,12 @@ const Orders = () => {
       {
         _id: 231523123,
         orderedBy: "Michael Smith",
-        itemCount: 5,
         items: [
           {
             product: "Ak 47",
             grams: 55,
             price: 102,
             quantity: 52,
-          },
-          {
-            product: "Purple Haze",
-            grams: 15,
-            price: 10,
-            quantity: 2,
-          },
-          {
-            product: "Brown Leaf",
-            grams: 15,
-            price: 108,
-            quantity: 28,
           },
         ],
         totalPrice: `$${Math.floor(Math.random() * (70 - 5 + 1)) + 5}`,
@@ -117,7 +94,6 @@ const Orders = () => {
       {
         _id: 2312352323,
         orderedBy: "Sophia Williams",
-        itemCount: 6,
         items: [
           {
             product: "Ak 47",
@@ -147,7 +123,6 @@ const Orders = () => {
       {
         _id: 231211123,
         orderedBy: "William by",
-        itemCount: 3,
         items: [
           {
             product: "Ak 47",
@@ -155,12 +130,7 @@ const Orders = () => {
             price: 102,
             quantity: 52,
           },
-          {
-            product: "Purple Haze",
-            grams: 15,
-            price: 10,
-            quantity: 2,
-          },
+
           {
             product: "Brown Leaf",
             grams: 15,
@@ -177,7 +147,6 @@ const Orders = () => {
       {
         _id: 2312433,
         orderedBy: "Olivia Johnson",
-        itemCount: 1,
         items: [
           {
             product: "Ak 47",
@@ -207,25 +176,12 @@ const Orders = () => {
       {
         _id: 2312133,
         orderedBy: "James by",
-        itemCount: 65,
         items: [
           {
             product: "Ak 47",
             grams: 55,
             price: 102,
             quantity: 52,
-          },
-          {
-            product: "Purple Haze",
-            grams: 15,
-            price: 10,
-            quantity: 2,
-          },
-          {
-            product: "Brown Leaf",
-            grams: 15,
-            price: 108,
-            quantity: 28,
           },
         ],
         totalPrice: `$${Math.floor(Math.random() * (70 - 5 + 1)) + 5}`,
@@ -237,7 +193,6 @@ const Orders = () => {
       {
         _id: 231235551,
         orderedBy: "Brown Williams",
-        itemCount: 32,
         items: [
           {
             product: "Ak 47",

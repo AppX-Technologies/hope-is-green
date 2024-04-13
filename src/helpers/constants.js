@@ -42,6 +42,18 @@ export const ALL_ROLES = [
   CLUB_MEMBER,
 ];
 
+export const STATUS_MEMBER_ACTIVE= 'Active';
+export const STATUS_MEMBER_SUSPENDED= 'Suspended';
+export const STATUS_MEMBER_TERMINATED= 'Terminated';
+
+export const ALL_MEMBER_STATUS = [STATUS_MEMBER_ACTIVE, STATUS_MEMBER_SUSPENDED, STATUS_MEMBER_TERMINATED]
+
+export const STATUS_ORDER_NEW ='New';
+export const STATUS_ORDER_PENDING ='Pending';
+export const STATUS_ORDER_FINISHED ='Finished';
+
+export const ALL_ORDER_STATUS = [STATUS_ORDER_NEW,STATUS_ORDER_PENDING,STATUS_ORDER_FINISHED]
+
 export const LOGIN_MODE = "login";
 export const REGISTER_MODE = "register";
 

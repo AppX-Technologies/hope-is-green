@@ -2,8 +2,14 @@ import { AiOutlineClose } from "react-icons/ai";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { GoCheck } from "react-icons/go";
 import Progressbar from "../components/common/Progressbar";
+import TextDropdownToggle from "../components/common/TextDropdownToggle";
+import { ALL_MEMBER_STATUS, ALL_ORDER_STATUS } from "./constants";
 
-
+const MemberStatusColor = {
+  Active: "green",
+  Suspended: "yellow",
+  Terminated: "red",
+};
 
 export const getClubColumns = (onDeleteClubClick) => {
   const allLabels = [
@@ -12,7 +18,11 @@ export const getClubColumns = (onDeleteClubClick) => {
       label: "Logo",
       cellRenderer: (club) => (
         <div className="flex justify-center gap-2">
-         <img src={club?.logo} alt="club-logo" className="rounded-md h-9 w-12 cursor-pointer" />
+          <img
+            src={club?.logo}
+            alt="club-logo"
+            className="rounded-md h-9 w-12 cursor-pointer"
+          />
         </div>
       ),
     },
@@ -63,6 +73,19 @@ export const getClubColumns = (onDeleteClubClick) => {
 export const getMemberColumns = (onDeleteMemberClick, handleStatusChange) => {
   const allLabels = [
     {
+      key: "image",
+      label: "Image",
+      cellRenderer: (club) => (
+        <div className="flex justify-center gap-2">
+          <img
+            src={club?.image}
+            alt="member-profile"
+            className="rounded-md h-9 w-12 cursor-pointer"
+          />
+        </div>
+      ),
+    },
+    {
       key: "name",
       label: "Name",
       type: "text",
@@ -87,36 +110,14 @@ export const getMemberColumns = (onDeleteMemberClick, handleStatusChange) => {
       label: "Status",
       cellRenderer: (member) => {
         const { status } = member;
-        const color =
-          status === "Approved"
-            ? "green"
-            : status === "Pending"
-            ? "red"
-            : "red";
+        const color = MemberStatusColor[status];
+
         return (
-          <div
-            className={`inline-flex h-6 rounded-md  text-xs font-medium text-${color}-800 bg-${color}-100`}
-          >
-            <div className="flex items-center mx-2">{member.status}</div>
-            {status === "Pending" && (
-              <div
-                title="Decline"
-                onClick={() => handleStatusChange(member, "Declined")}
-                className="bg-red-100 grow flex items-center hover:bg-red-300 text-red-800  px-1 "
-              >
-                <AiOutlineClose />
-              </div>
-            )}
-            {status === "Pending" && (
-              <div
-                title="Approve"
-                onClick={() => handleStatusChange(member, "Approved")}
-                className="bg-green-100 flex items-center text-green-800 hover:bg-green-300 px-1 rounded-r-md"
-              >
-                <GoCheck />
-              </div>
-            )}
-          </div>
+          <TextDropdownToggle
+            options={ALL_MEMBER_STATUS}
+            value={status}
+            onOptionClick={(status) => handleStatusChange(member, status)}
+          />
         );
       },
       width: 80,
@@ -169,8 +170,12 @@ export const getOrderColumns = (handleStatusChange) => {
     {
       key: "orderCount",
       label: "Item Count",
-      type: "text",
-      width: 100,
+      cellRenderer: (order) => {
+        return (
+         <h6>{order?.items?.length}</h6>
+        );
+      },
+      width: 50,
     },
     {
       key: "totalPrice",
@@ -186,40 +191,15 @@ export const getOrderColumns = (handleStatusChange) => {
     {
       key: "status",
       label: "Status",
-      cellRenderer: (member) => {
-        const { status } = member;
-        const color =
-          status === "Finished" ? "green" : status === "New" ? "red" : "red";
+      cellRenderer: (order) => {
+        const { status } = order;
+
         return (
-          <div
-            className={`inline-flex h-6 rounded-md  text-xs font-medium text-${color}-800 bg-${color}-100`}
-          >
-            <div className="flex items-center mx-2">{member.status}</div>
-            {status === "New" && (
-              <div
-                title="Decline"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleStatusChange(member, "Cancelled");
-                }}
-                className="bg-red-100 grow flex items-center hover:bg-red-300 text-red-800  px-1 "
-              >
-                <AiOutlineClose />
-              </div>
-            )}
-            {status === "New" && (
-              <div
-                title="Approve"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleStatusChange(member, "Finished");
-                }}
-                className="bg-green-100 flex items-center text-green-800 hover:bg-green-300 px-1 rounded-r-md"
-              >
-                <GoCheck />
-              </div>
-            )}
-          </div>
+          <TextDropdownToggle
+            options={ALL_ORDER_STATUS}
+            value={status}
+            onOptionClick={(status) => handleStatusChange(order, status)}
+          />
         );
       },
       width: 80,

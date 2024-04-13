@@ -14,7 +14,8 @@ const dummyMembers = [
     name: "Alice Smith",
     role: "Site Moderator",
     createdAt: "2024/09/15",
-    status: "Approved",
+    status: "Active",
+    image: `https://source.unsplash.com/random?1`,
     quantity: 23,
   },
   {
@@ -22,7 +23,8 @@ const dummyMembers = [
     name: "John Doe",
     role: "Club Owner",
     createdAt: "2024/11/03",
-    status: "Pending",
+    status: "Suspended",
+    image: `https://source.unsplash.com/random?2`,
     quantity: 53,
   },
   {
@@ -30,7 +32,8 @@ const dummyMembers = [
     name: "Emily Johnson",
     role: "Club Moderator",
     createdAt: "2024/08/21",
-    status: "Approved",
+    status: "Active",
+    image: `https://source.unsplash.com/random?3`,
     quantity: 67,
   },
   {
@@ -38,7 +41,8 @@ const dummyMembers = [
     name: "Michael Brown",
     role: "Admin",
     createdAt: "2024/07/17",
-    status: "Pending",
+    status: "Suspended",
+    image: `https://source.unsplash.com/random?4`,
     quantity: 34,
   },
   {
@@ -46,7 +50,8 @@ const dummyMembers = [
     name: "Sophia Martinez",
     role: "Club Member",
     createdAt: "2024/12/05",
-    status: "Approved",
+    status: "Active",
+    image: `https://source.unsplash.com/random?5`,
     quantity: 64,
   },
   {
@@ -54,7 +59,8 @@ const dummyMembers = [
     name: "Liam Wilson",
     role: "Club Moderator",
     createdAt: "2024/06/12",
-    status: "Denied",
+    status: "Terminated",
+    image: `https://source.unsplash.com/random?6`,
     quantity: 41,
   },
   {
@@ -62,7 +68,8 @@ const dummyMembers = [
     name: "Emma Taylor",
     role: "Club Member",
     createdAt: "2024/05/28",
-    status: "Denied",
+    status: "Terminated",
+    image: `https://source.unsplash.com/random?7`,
     quantity: 23,
   },
   {
@@ -70,7 +77,8 @@ const dummyMembers = [
     name: "Noah Anderson",
     role: "Club Owner",
     createdAt: "2024/04/02",
-    status: "Pending",
+    status: "Suspended",
+    image: `https://source.unsplash.com/random?8`,
     quantity: 44,
   },
   {
@@ -78,7 +86,8 @@ const dummyMembers = [
     name: "Olivia Garcia",
     role: "Club Moderator",
     createdAt: "2024/03/19",
-    status: "Approved",
+    status: "Active",
+    image: `https://source.unsplash.com/random?9`,
     quantity: 62,
   },
 ];
@@ -97,7 +106,7 @@ const Member = () => {
     setMembers(
       members.map((m) => (m._id === member._id ? { ...m, status } : m))
     );
-    toast.success(`${member?.name}'s request has been ${status}`);
+    toast.success(`${member?.name}'s status has been changed to ${status}`);
   };
 
   const tableColumns = useMemo(

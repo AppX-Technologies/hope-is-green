@@ -324,6 +324,7 @@ const DataTable = ({
                           : 1,
                       }}
                       onClick={(e) => {
+                        e.stopPropagation()
                         let selection = window.getSelection().toString();
                         if (selection.length <= 0 && onRowClick) {
                           onRowClick && onRowClick(row);
