@@ -12,7 +12,7 @@ import DataTable from "../common/data-table/DataTable";
 import ClubSearchAndFilter from "./ClubSearchAndFilter";
 const dummyClubs = [
   {
-    id: 1,
+    _id: 1,
     name: "Golden Lions United",
     logo: `https://source.unsplash.com/random?1`,
     location: "Brandenburg Gate, Berlin",
@@ -21,7 +21,7 @@ const dummyClubs = [
     description: "Lorem ipsum dolor sit amet.",
   },
   {
-    id: 2,
+    _id: 2,
     name: "Royal Falcons SC",
     logo: `https://source.unsplash.com/random?2`,
     location: "Brandenburg Gate, Berlin",
@@ -30,7 +30,7 @@ const dummyClubs = [
     description: "Consectetur adipiscing elit.",
   },
   {
-    id: 3,
+    _id: 3,
     name: "Dynamic Dragons FC",
     logo: `https://source.unsplash.com/random?3`,
     location: "Neuschwanstein Castle, Schwangau",
@@ -40,7 +40,7 @@ const dummyClubs = [
       "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   },
   {
-    id: 4,
+    _id: 4,
     name: "Eagle Talons FC",
     logo: `https://source.unsplash.com/random?4`,
     location: "Cologne Cathedral, Cologne",
@@ -50,7 +50,7 @@ const dummyClubs = [
       "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   },
   {
-    id: 5,
+    _id: 5,
     name: "Phoenix Rising SC",
     logo: `https://source.unsplash.com/random?5`,
     location: "Zugspitze, Bavaria",
@@ -60,7 +60,7 @@ const dummyClubs = [
       "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
   },
   {
-    id: 6,
+    _id: 6,
     name: "Titan Titans FC",
     logo: `https://source.unsplash.com/random?6`,
     location: "Neuschwanstein Castle, Schwangau",
@@ -70,7 +70,7 @@ const dummyClubs = [
       "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   },
   {
-    id: 7,
+    _id: 7,
     name: "Mystic Mavericks SC",
     logo: `https://source.unsplash.com/random?7`,
     location: "Heidelberg Castle, Heidelberg",
@@ -80,7 +80,7 @@ const dummyClubs = [
       "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.",
   },
   {
-    id: 8,
+    _id: 8,
     name: "Galactic Guardians FC",
     logo: `https://source.unsplash.com/random?8`,
     location: "Heidelberg Castle, Heidelberg",
@@ -90,7 +90,7 @@ const dummyClubs = [
       "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.",
   },
   {
-    id: 9,
+    _id: 9,
     name: "Diamond Dolphins SC",
     logo: `https://source.unsplash.com/random?9`,
     location: "Neuschwanstein Castle, Schwangau",
@@ -100,7 +100,7 @@ const dummyClubs = [
       "Sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
   },
   {
-    id: 10,
+    _id: 10,
     name: "Supernova Spartans FC",
     logo: `https://source.unsplash.com/random?10`,
     location: "Zugspitze, Bavaria",
@@ -111,13 +111,13 @@ const dummyClubs = [
   },
 ];
 const Clubs = () => {
-  const [members, setMembers] = useState(dummyClubs);
-  const [addEditMemberMeta, setAddEditMemberMeta] = useState(false);
+  const [clubs, setClubs] = useState(dummyClubs);
+  const [addEditClubMeta, setAddEditClubMeta] = useState(false);
   const [deleteClubMeta, setDeleteClubMeta] = useState(null);
 
-  const onDeleteMemberClick = () => {
-    setMembers(members.filter((m) => m._id !== deleteClubMeta._id));
-    toast.success(`${deleteClubMeta?.name} has been deleted`);
+  const handleDeleteClub = () => {
+    setClubs(clubs.filter((m) => m._id !== deleteClubMeta._id));
+    toast.success(`${deleteClubMeta?.name} has been deleted successfully`);
     setDeleteClubMeta(null);
   };
 
@@ -139,7 +139,7 @@ const Clubs = () => {
           title={"New Club"}
           variant="primary"
           size="sm"
-          onClick={() => setAddEditMemberMeta(true)}
+          onClick={() => setAddEditClubMeta(true)}
         />
       </div>
 
@@ -148,7 +148,7 @@ const Clubs = () => {
         <DataTable
           rowKey={"_id"}
           columns={tableColumns}
-          data={members}
+          data={clubs}
           bottomOffset={300}
           onRowClick={() => {}}
           allowFilter={false}
@@ -157,7 +157,7 @@ const Clubs = () => {
       </div>
 
       <AlertModal
-        onContinue={onDeleteMemberClick}
+        onContinue={handleDeleteClub}
         show={Boolean(deleteClubMeta)}
         text={
           <span>
