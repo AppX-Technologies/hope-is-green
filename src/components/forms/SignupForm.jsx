@@ -3,7 +3,8 @@ import React from "react";
 import * as Yup from "yup";
 import useLocalization from "../../hooks/useLocalization";
 import HorizontalProgress from "../common/HorizontalProgress";
-
+import CircularImageUpload from "../common/circular-image-upload/CircularImageUpload";
+import PersonAvatar from "../../assets/person-avatar.png"
 // Yup validation schema
 const validationSchema = Yup.object().shape({
   name: Yup.string().required("Please provide your name"),
@@ -36,6 +37,18 @@ const SignUpForm = ({ isRegistering, signUpError, onSubmit }) => {
     >
       {() => (
         <Form noValidate className="p-2">
+          <div>
+            <label className={`text-sm mb-1`}>Profile Picture</label>
+            <div className="flex justify-center items-center">
+              <CircularImageUpload
+                height={100}
+                width={100}
+                onChange={(e) => console.log(e)}
+                fallBackImage={PersonAvatar}
+              />
+            </div>
+          </div>
+
           {[
             {
               name: "name",
@@ -66,7 +79,9 @@ const SignUpForm = ({ isRegistering, signUpError, onSubmit }) => {
           ].map((field) => (
             <div key={field.name} className="mb-2">
               <label
-                className={`mid mb-1 ${field?.notCompulsory ? "" : "required"}`}
+                className={`text-sm mb-1 ${
+                  field?.notCompulsory ? "" : "required"
+                }`}
               >
                 {translate(field.label)}
               </label>

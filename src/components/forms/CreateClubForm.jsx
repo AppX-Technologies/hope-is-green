@@ -4,7 +4,8 @@ import * as Yup from "yup";
 import useLocalization from "../../hooks/useLocalization";
 import HorizontalProgress from "../common/HorizontalProgress";
 import Select from "../CustomSelect";
-
+import ClubAvatar from '../../assets/cannabis_club_avatar.jpg'
+import CircularImageUpload from "../common/circular-image-upload/CircularImageUpload";
 // Yup validation schema
 const validationSchema = Yup.object().shape({
   clubName: Yup.string().required("Please provide club name"),
@@ -41,6 +42,17 @@ const CreateClubForm = ({
     >
       {({ isSubmitting, setFieldValue }) => (
         <Form noValidate className="p-2">
+           <div>
+            <label className={`text-sm mb-1`}>Club Profile Picture</label>
+            <div className="flex justify-center items-center">
+              <CircularImageUpload
+                height={100}
+                width={100}
+                onChange={(e) => console.log(e)}
+                fallBackImage={ClubAvatar}
+              />
+            </div>
+          </div>
           {[
             {
               name: "clubName",
@@ -54,7 +66,7 @@ const CreateClubForm = ({
             },
           ].map((field) => (
             <div key={field.name} className="mb-2">
-              <label className="mid mb-1 required">
+              <label className="text-sm mb-1 required">
                 {translate(field.label)}
               </label>
 
