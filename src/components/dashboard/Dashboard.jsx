@@ -1,10 +1,13 @@
-import React from "react";
-import { IoBarChartOutline } from "react-icons/io5";
-import Label from "../common/Label";
-import { IoPersonAddOutline } from "react-icons/io5";
+import React, { useMemo } from "react";
 import { FaMoneyBillTrendUp } from "react-icons/fa6";
+import { IoPersonAddOutline } from "react-icons/io5";
 import { MdOutlineProductionQuantityLimits } from "react-icons/md";
-const StatCard = ({ title, value, icon,extraInfo }) => {
+import useAuth from "../../hooks/useAuth";
+import Label from "../common/Label";
+import { MdOutlineFestival } from "react-icons/md";
+import { ADMIN_ROLE, ALL_ROLES } from "../../helpers/constants";
+
+const StatCard = ({ title, value, icon, extraInfo }) => {
   return (
     <div className="shadow-md rounded p-3 flex flex-col gap-1 min-h-36 w-full bg-white">
       <Label
@@ -14,41 +17,60 @@ const StatCard = ({ title, value, icon,extraInfo }) => {
         icon={icon}
       />
       <h6 className="text-4xl font-bold text-gray-600">{value}</h6>
-      {extraInfo && <h6 className="text-xl font-bold text-primary">{extraInfo}</h6>}
+      {extraInfo && (
+        <h6 className="text-xl font-bold text-primary">{extraInfo}</h6>
+      )}
     </div>
   );
 };
 const Dashboard = () => {
-  const stats = [
-    {
-      title: "Members",
-      value: 2543,
-      icon: IoPersonAddOutline,
-      extraInfo: "+430",
-    },
-    {
-      title: "Total Sales",
-      value: 1423,
-      icon: FaMoneyBillTrendUp,
-      extraInfo: "+544",
-    },
-    {
-      title: "Total Quantity This Month",
-      value: 723,
-      icon: MdOutlineProductionQuantityLimits,
-      extraInfo: "+53",
-    },
-    {
-      title: "Total Quantity Last Month",
-      value: 670,
-      icon: MdOutlineProductionQuantityLimits,
-      extraInfo: "+38",
+  const { user } = useAuth();
+  const role = useMemo(() => user?.role, [user]);
 
-    },
-  ];
+  const stats = useMemo(
+    () =>
+      [
+        {
+          title: "Members",
+          value: 2543,
+          icon: IoPersonAddOutline,
+          extraInfo: "+430",
+          roles: ALL_ROLES,
+        },
+        {
+          title: "Total Sales",
+          value: 1423,
+          icon: FaMoneyBillTrendUp,
+          extraInfo: "+544",
+          roles: ALL_ROLES,
+        },
+        {
+          title: "Total Quantity This Month",
+          value: 723,
+          icon: MdOutlineProductionQuantityLimits,
+          extraInfo: "+53",
+          roles: ALL_ROLES,
+        },
+        {
+          title: "Total Quantity Last Month",
+          value: 670,
+          icon: MdOutlineProductionQuantityLimits,
+          extraInfo: "+38",
+          roles: ALL_ROLES,
+        },
+        {
+          title: "Total Clubs",
+          value: 42,
+          icon: MdOutlineFestival,
+          extraInfo: "+8",
+          roles: [ADMIN_ROLE],
+        },
+      ].filter((stat) => stat.roles.includes(role)),
+    [role]
+  );
   return (
     <div className="">
-      <Label  label={"Dashboard"} size={"xl"} className={"font-bold"} />
+      <Label label={"Dashboard"} size={"xl"} className={"font-bold"} />
       <div className="grid grid-cols-2 gap-2 mt-4">
         {stats.map((stat) => (
           <StatCard key={stat.title} {...stat} />

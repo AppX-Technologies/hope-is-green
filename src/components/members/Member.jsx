@@ -1,17 +1,13 @@
 import React, { useMemo, useState } from "react";
-import { BsPersonGear } from "react-icons/bs";
-import { FaPlus } from "react-icons/fa";
-import { RiMailSendLine, RiSendPlaneFill } from "react-icons/ri";
+import { RiMailSendLine } from "react-icons/ri";
+import { toast } from "react-toastify";
 import { getMemberColumns } from "../../helpers/dataTableColumns";
-import AppModal from "../AppModal";
+import AlertModal from "../common/AlertModal";
 import Button from "../common/Button";
 import Label from "../common/Label";
 import DataTable from "../common/data-table/DataTable";
-import InputField from "../common/form-controls/InputField";
-import MemberSearchAndFilter from "./MemberSearchAndFilter";
-import { toast } from "react-toastify";
 import InviteMemberModal from "./InviteMemberModal";
-import AlertModal from "../common/AlertModal";
+import MemberSearchAndFilter from "./MemberSearchAndFilter";
 const dummyMembers = [
   {
     _id: 231243,

@@ -1,11 +1,18 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import Logo from "../Logo";
 import { Link, useLocation } from "react-router-dom";
-import { IoStatsChartOutline } from "react-icons/io5";
-import { BsPersonGear } from "react-icons/bs";
-import { RiShoppingCartLine } from "react-icons/ri";
+import {
+  IoBarChartSharp,
+  IoChatbubbles,
+  IoStatsChartOutline,
+} from "react-icons/io5";
+import { BsGearFill, BsPersonFillGear, BsPersonGear } from "react-icons/bs";
+import { RiShoppingCart2Fill, RiShoppingCartLine } from "react-icons/ri";
 import { GoDiscussionClosed } from "react-icons/go";
 import { FaUsersGear } from "react-icons/fa6";
+import { ADMIN_ROLE, ALL_ROLES, CLUB_OWNER } from "../../../helpers/constants";
+import { HiUserGroup } from "react-icons/hi";
+import useAuth from "../../../hooks/useAuth";
 
 const NavItem = (props) => {
   const { label, path, role, icon: Icon, pathname } = props;
@@ -25,38 +32,55 @@ const NavItem = (props) => {
 };
 
 const SideNavbar = () => {
-  const routes = [
-    {
-      label: "Dashboard",
-      path: "/dashboard",
-      role: ["Owner", "Admin", "Moderator"],
-      icon: IoStatsChartOutline,
-    },
-    {
-      label: "Members",
-      path: "/members",
-      role: ["Owner", "Admin", "Moderator"],
-      icon: BsPersonGear,
-    },
-    {
-      label: "Orders",
-      path: "/orders",
-      role: ["Owner", "Admin", "Moderator"],
-      icon: RiShoppingCartLine,
-    },
-    {
-      label: "Discussions",
-      path: "/discussions",
-      role: ["Owner", "Admin", "Moderator"],
-      icon: GoDiscussionClosed,
-    },
-    {
-      label: "Club Settings",
-      path: "/club-settings",
-      role: ["Owner", "Admin", "Moderator"],
-      icon: FaUsersGear,
-    },
-  ];
+  const { user } = useAuth();
+  const role = useMemo(() => user?.role, [user]);
+
+  const routes = useMemo(() => {
+    return [
+      {
+        label: "Dashboard",
+        path: "/dashboard",
+        roles: ALL_ROLES,
+        icon: IoBarChartSharp,
+      },
+      {
+        label: "Clubs",
+        path: "/clubs",
+        roles: [ADMIN_ROLE],
+        icon: HiUserGroup,
+      },
+      {
+        label: "Members",
+        path: "/members",
+        roles: ALL_ROLES,
+        icon: BsPersonFillGear,
+      },
+      {
+        label: "Orders",
+        path: "/orders",
+        roles: ALL_ROLES,
+        icon: RiShoppingCart2Fill,
+      },
+      {
+        label: "Discussions",
+        path: "/discussions",
+        roles: ALL_ROLES,
+        icon: IoChatbubbles,
+      },
+      {
+        label: "Club Settings",
+        path: "/club-settings",
+        roles: [CLUB_OWNER],
+        icon: FaUsersGear,
+      },
+      {
+        label: "App Settings",
+        path: "/app-settings",
+        roles: [ADMIN_ROLE],
+        icon: BsGearFill,
+      },
+    ].filter((route) => route?.roles?.includes(role));
+  }, [role]);
 
   const { pathname } = useLocation();
   const [toggleSideNavbar, setToggleSideNavbar] = useState(false);

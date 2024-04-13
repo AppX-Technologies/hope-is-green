@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import Login from "../components/auth/Login";
 import NotFound from "../components/common/NotFound";
-import { ADMIN_ROLE } from "../helpers/constants";
+import { ADMIN_ROLE, CLUB_OWNER } from "../helpers/constants";
 import useAuth from "../hooks/useAuth";
 import ProtectedRouteLayout from "../layouts/ProtectedRouteLayout";
 import PublicRouteLayout from "../layouts/PublicRouteLayout";
@@ -17,11 +17,14 @@ import ResetPassword from "../components/auth/ResetPassword";
 import Member from "../components/members/Member";
 import ClubSettings from "../components/club-settings/ClubSettings";
 import CreateClub from "../components/auth/CreateClub";
+import { isAdmin } from "../helpers/session";
+import Clubs from "../components/clubs/Clubs";
 
 const AppRoutes = () => {
   const { pathname } = useLocation();
   const { user } = useAuth();
   const role = useMemo(() => user?.role, [user]);
+
   if (pathname === "/") {
     return <Navigate to="/auth/login" />;
   }
@@ -42,28 +45,38 @@ const AppRoutes = () => {
         {/* Protected Routes */}
         <Route element={<ProtectedRoute />}>
           <Route element={<ProtectedRouteLayout />}>
-            {role === ADMIN_ROLE && (
+            <Route path="dashboard">
+              <Route path="" element={<Dashboard />} />
+            </Route>
+            <Route path="orders">
+              <Route path="" element={<Orders />} />
+            </Route>
+            <Route path="discussions">
+              <Route path="" element={<Discussion />} />
+            </Route>
+            <Route path="profile">
+              <Route path="" element={<Profile />} />
+            </Route>
+            <Route path="members">
+              <Route path="" element={<Member />} />
+            </Route>
+            {isAdmin(role) && (
               <>
-                <Route path="dashboard">
-                  <Route path="" element={<Dashboard />} />
-                </Route>
-                <Route path="orders">
-                  <Route path="" element={<Orders />} />
-                </Route>
-                <Route path="discussions">
-                  <Route path="" element={<Discussion />} />
-                </Route>
-                <Route path="profile">
-                  <Route path="" element={<Profile />} />
-                </Route>
-                <Route path="members">
-                  <Route path="" element={<Member />} />
-                </Route>
-                <Route path="club-settings">
-                  <Route path="" element={<ClubSettings />} />
-                </Route>
+                <Route path="clubs">
+                  <Route path="" element={<Clubs />} />
+                </Route>{" "}
+                <Route path="app-settings">
+                  <Route path="" element={<h6>App settings</h6>} />
+                </Route>{" "}
               </>
             )}
+
+            {role === CLUB_OWNER && (
+              <Route path="club-settings">
+                <Route path="" element={<ClubSettings />} />
+              </Route>
+            )}
+
             <Route path="*" element={<NotFound />} />
           </Route>
         </Route>

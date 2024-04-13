@@ -17,7 +17,7 @@ const TextDropdownToggle = ({
   return (
     <div>
       <select
-        className={`border cursor-pointer bg-white border-gray-300 rounded px-2 py-2 text-base focus:outline-none truncate `}
+        className={`border cursor-pointer bg-white border-gray-300 rounded px-2 py-1 text-base focus:outline-none truncate `}
         disabled={disabled}
         style={{ fontSize: 12 }}
         onChange={(e) => onOptionClick(e.target.value)}

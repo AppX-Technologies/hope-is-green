@@ -3,6 +3,63 @@ import { FaRegTrashAlt } from "react-icons/fa";
 import { GoCheck } from "react-icons/go";
 import Progressbar from "../components/common/Progressbar";
 
+
+
+export const getClubColumns = (onDeleteClubClick) => {
+  const allLabels = [
+    {
+      key: "logo",
+      label: "Logo",
+      cellRenderer: (club) => (
+        <div className="flex justify-center gap-2">
+         <img src={club?.logo} alt="club-logo" className="rounded-md h-9 w-12 cursor-pointer" />
+        </div>
+      ),
+    },
+    {
+      key: "name",
+      label: "Name",
+      type: "text",
+      align: "left",
+      width: 100,
+    },
+    {
+      key: "location",
+      label: "Location",
+      align: "left",
+      width: 60,
+    },
+    {
+      key: "createdAt",
+      label: "Joined At",
+      type: "date",
+      align: "left",
+      width: 80,
+    },
+    {
+      key: "members",
+      label: "Members",
+      type: "text",
+      align: "left",
+      width: 60,
+    },
+    {
+      key: "view",
+      label: "Actions",
+      cellRenderer: (club) => (
+        <div className="flex justify-center gap-2">
+          <FaRegTrashAlt
+            className="text-danger cursor-pointer"
+            onClick={() => onDeleteClubClick(club)}
+          />
+        </div>
+      ),
+    },
+  ];
+
+  return allLabels;
+};
+
 export const getMemberColumns = (onDeleteMemberClick, handleStatusChange) => {
   const allLabels = [
     {
