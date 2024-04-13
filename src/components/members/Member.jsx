@@ -115,19 +115,19 @@ const Member = () => {
   );
 
   return (
-    <div className="w-full">
+    <div className="w-full h-full flex flex-col">
       <div className="flex gap-2 items-center">
         <Label label={"Members"} size={"xl"} className={"font-bold"} />
         <Button
           rightIcon={RiMailSendLine}
-          title={"Invite"}
+          text={"Invite"}
           variant="primary"
           size="sm"
           onClick={() => setAddEditMemberMeta(true)}
         />
       </div>
 
-      <div className="bg-white p-4 rounded shadow-md mt-4 w-full">
+      <div className="bg-white grow p-4 rounded shadow-md mt-4 w-full">
         <MemberSearchAndFilter />
         <DataTable
           rowKey={"_id"}

@@ -131,7 +131,7 @@ const Clubs = () => {
   );
 
   return (
-    <div className="w-full">
+    <div className="w-full h-full flex flex-col">
       <div className="flex gap-2 items-center">
         <Label label={"Clubs"} size={"xl"} className={"font-bold"} />
         <Button
@@ -143,7 +143,7 @@ const Clubs = () => {
         />
       </div>
 
-      <div className="bg-white p-4 rounded shadow-md mt-4 w-full h-100">
+      <div className="bg-white grow p-4 rounded shadow-md mt-4 w-full h-100">
         <ClubSearchAndFilter />
         <DataTable
           rowKey={"_id"}

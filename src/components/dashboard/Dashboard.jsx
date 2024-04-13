@@ -71,7 +71,7 @@ const Dashboard = () => {
   return (
     <div className="">
       <Label label={"Dashboard"} size={"xl"} className={"font-bold"} />
-      <div className="grid grid-cols-2 gap-2 mt-4">
+      <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-2 gap-2 mt-4">
         {stats.map((stat) => (
           <StatCard key={stat.title} {...stat} />
         ))}

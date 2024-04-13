@@ -134,10 +134,8 @@ export const UserProvider = ({ children }) => {
   return !isUserLoggedIn || (user && !fetchingUser && !fetchingViewingUser) ? (
     <UserContext.Provider value={contextObj}>{children}</UserContext.Provider>
   ) : (
-    <div className="m-3">
-      <div className="bg-white shadow-md rounded p-5 text-center">
-        <CircularProgressBar size={100} />
-      </div>
+    <div className="bg-white h-screen flex justify-center items-center text-center">
+      <CircularProgressBar size={100} />
     </div>
   );
 };

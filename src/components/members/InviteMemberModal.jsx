@@ -22,7 +22,7 @@ const InviteMemberModal = ({ show, onHide }) => {
         <Button
           size="sm"
           variant="danger"
-          title={"Cancel"}
+          text={"Cancel"}
           className=""
           onClick={onHide}
         />

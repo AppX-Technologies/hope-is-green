@@ -17,7 +17,7 @@ const AlertModal = ({ show, onHide, text, onContinue }) => {
         <Button
           size="sm"
           variant="primary"
-          title={"Continue"}
+          text={"Continue"}
           onClick={onContinue}
         />
       </div>

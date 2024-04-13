@@ -3,10 +3,13 @@ import React from "react";
 import * as Yup from "yup";
 import useLocalization from "../../hooks/useLocalization";
 import HorizontalProgress from "../common/HorizontalProgress";
+import Button from "../common/Button";
 
 // Yup validation schema
 const validationSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid email").required("Please provide your email address"),
+  email: Yup.string()
+    .email("Invalid email")
+    .required("Please provide your email address"),
   password: Yup.string().required("Please provide your password"),
 });
 
@@ -53,11 +56,9 @@ const LoginForm = ({ isLoggingIn, loginError, onSubmit }) => {
             </div>
           ))}
 
-          {isLoggingIn && (
-            <HorizontalProgress text={`${translate("logging_in")}...`} />
-          )}
+        
           {loginError && (
-            <div className="mt-3">
+            <div className="my-3">
               <div
                 className="bg-red-100 border border-red-400 text-red-700 p-3 rounded relative"
                 role="alert"
@@ -67,16 +68,16 @@ const LoginForm = ({ isLoggingIn, loginError, onSubmit }) => {
             </div>
           )}
 
-          <button
-            className={`mt-2  w-full bg-primary hover:bg-green-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${
-              isLoggingIn ? "opacity-50 cursor-not-allowed" : ""
-            }`}
-            type="button"
+          <Button
+            variant="primary"
+            size="md"
+            loading={isLoggingIn}
             onClick={submitForm}
+            loadingText="Logging in..."
             disabled={isLoggingIn}
-          >
-            {translate("login")}
-          </button>
+            text={"Login"}
+            className="w-full"
+          />
         </Form>
       )}
     </Formik>

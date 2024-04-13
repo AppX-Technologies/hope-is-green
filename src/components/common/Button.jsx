@@ -1,8 +1,9 @@
 import React from "react";
+import CircularProgressBar from "./circular-progress";
 
 // Define the Button component with its props
 const Button = ({
-  title,
+  text,
   leftIcon: LeftIcon,
   rightIcon: RightIcon,
   onClick,
@@ -10,11 +11,14 @@ const Button = ({
   variant = "primary",
   className = "",
   size = "sm",
+  disabled,
+  loading,
+  loadingText = "Please wait...",
   ...props
 }) => {
   // Define base styling
   let baseStyle =
-    "text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline";
+    "text-white flex justify-center items-center font-medium py-2 px-4 rounded focus:outline-none focus:shadow-outline";
 
   // Size variants
   const sizeClasses = {
@@ -25,10 +29,10 @@ const Button = ({
 
   // Color variants
   const variantClasses = {
-    primary: "bg-green-500 hover:bg-green-700",
-    secondary: "bg-purple-500 hover:bg-purple-700",
-    success: "bg-green-500 hover:bg-green-700",
-    danger: "bg-red-500 hover:bg-red-700",
+    primary: `${disabled ? 'bg-green-400' :'bg-primary'} hover:bg-green-700`,
+    secondary: `${disabled ? 'bg-purple-400' :'bg-secondary'} hover:bg-purple-700`,
+    success: `${disabled ? 'bg-green-400' :'bg-primary'} hover:bg-green-700`,
+    danger: `${disabled ? 'bg-red-400' :'bg-red-500'} hover:bg-red-700`,
   };
 
   // Combine classes
@@ -37,9 +41,16 @@ const Button = ({
   // If href is provided, render as 'a' tag
   if (href) {
     return (
-      <a href={href} className={classes} onClick={onClick} {...props}>
+      <a
+        href={href}
+        className={classes}
+        onClick={() => {
+          onClick && onClick();
+        }}
+        {...props}
+      >
         {LeftIcon && <span className="">{<LeftIcon />}</span>}
-        {title}
+        {text}
         {RightIcon && <span className="">{<RightIcon />}</span>}
       </a>
     );
@@ -47,10 +58,25 @@ const Button = ({
 
   // Default render as 'button' tag
   return (
-    <button className={classes} onClick={onClick} {...props}>
-      {LeftIcon && <span className="">{<LeftIcon />}</span>}
-      {title}
-      {RightIcon && <span className="">{<RightIcon />}</span>}
+    <button
+      className={classes}
+      onClick={() => {
+        onClick && onClick();
+      }}
+      {...props}
+      disabled={disabled}
+    >
+      {loading ? (
+        <>
+          <CircularProgressBar size={15} /> {loadingText}
+        </>
+      ) : (
+        <>
+          {LeftIcon && <span className="">{<LeftIcon />}</span>}
+          {text}
+          {RightIcon && <span className="">{<RightIcon />}</span>}
+        </>
+      )}
     </button>
   );
 };

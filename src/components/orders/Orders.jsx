@@ -239,10 +239,9 @@ const Orders = () => {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full h-full flex flex-col">
       <Label label={"Orders"} size={"xl"} className={"font-bold"} />
-
-      <div className="bg-white p-4 rounded shadow-md mt-4 w-full">
+      <div className="bg-white grow p-4 rounded shadow-md mt-4 w-full">
         <OrderSearchAndFilter />
         <DataTable
           rowKey={"_id"}
