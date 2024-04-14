@@ -4,6 +4,7 @@ import { GoCheck } from "react-icons/go";
 import Progressbar from "../components/common/Progressbar";
 import TextDropdownToggle from "../components/common/TextDropdownToggle";
 import { ALL_MEMBER_STATUS, ALL_ORDER_STATUS } from "./constants";
+import { isAdmin } from "./session";
 
 const MemberStatusColor = {
   Active: "green",
@@ -70,7 +71,12 @@ export const getClubColumns = (onDeleteClubClick) => {
   return allLabels;
 };
 
-export const getMemberColumns = (onDeleteMemberClick, handleStatusChange) => {
+export const getMemberColumns = (
+  onDeleteMemberClick,
+  handleStatusChange,
+  user
+) => {
+  let { role } = user;
   const allLabels = [
     {
       key: "image",
@@ -90,6 +96,14 @@ export const getMemberColumns = (onDeleteMemberClick, handleStatusChange) => {
       label: "Name",
       type: "text",
       align: "left",
+      width: 100,
+    },
+    isAdmin(role) && {
+      key: "club",
+      label: "Club",
+      cellRenderer: (member) => {
+        return <h6>{member?.club?.name}</h6>;
+      },
       width: 100,
     },
     {
@@ -171,9 +185,7 @@ export const getOrderColumns = (handleStatusChange) => {
       key: "orderCount",
       label: "Item Count",
       cellRenderer: (order) => {
-        return (
-         <h6>{order?.items?.length}</h6>
-        );
+        return <h6>{order?.items?.length}</h6>;
       },
       width: 50,
     },

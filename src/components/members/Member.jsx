@@ -8,11 +8,16 @@ import Label from "../common/Label";
 import DataTable from "../common/data-table/DataTable";
 import InviteMemberModal from "./InviteMemberModal";
 import MemberSearchAndFilter from "./MemberSearchAndFilter";
+import useAuth from "../../hooks/useAuth";
 const dummyMembers = [
   {
     _id: 231243,
     name: "Alice Smith",
     role: "Site Moderator",
+    club: {
+      _id: "1231423",
+      name: "Alice Club",
+    },
     createdAt: "2024/09/15",
     status: "Active",
     image: `https://source.unsplash.com/random?1`,
@@ -22,6 +27,10 @@ const dummyMembers = [
     _id: 2243123,
     name: "John Doe",
     role: "Club Owner",
+    club: {
+      _id: "1241243123",
+      name: "Alice Club",
+    },
     createdAt: "2024/11/03",
     status: "Suspended",
     image: `https://source.unsplash.com/random?2`,
@@ -31,6 +40,10 @@ const dummyMembers = [
     _id: 231323,
     name: "Emily Johnson",
     role: "Club Moderator",
+    club: {
+      _id: "1231223",
+      name: "Alice Club",
+    },
     createdAt: "2024/08/21",
     status: "Active",
     image: `https://source.unsplash.com/random?3`,
@@ -40,6 +53,10 @@ const dummyMembers = [
     _id: 235123,
     name: "Michael Brown",
     role: "Admin",
+    club: {
+      _id: "12113123",
+      name: "Alice Club",
+    },
     createdAt: "2024/07/17",
     status: "Suspended",
     image: `https://source.unsplash.com/random?4`,
@@ -49,6 +66,10 @@ const dummyMembers = [
     _id: 231263,
     name: "Sophia Martinez",
     role: "Club Member",
+    club: {
+      _id: "1231263",
+      name: "Alice Club",
+    },
     createdAt: "2024/12/05",
     status: "Active",
     image: `https://source.unsplash.com/random?5`,
@@ -58,6 +79,10 @@ const dummyMembers = [
     _id: 236123,
     name: "Liam Wilson",
     role: "Club Moderator",
+    club: {
+      _id: "123521123",
+      name: "Alice Club",
+    },
     createdAt: "2024/06/12",
     status: "Terminated",
     image: `https://source.unsplash.com/random?6`,
@@ -67,6 +92,10 @@ const dummyMembers = [
     _id: 2312663,
     name: "Emma Taylor",
     role: "Club Member",
+    club: {
+      _id: "121233123",
+      name: "Alice Club",
+    },
     createdAt: "2024/05/28",
     status: "Terminated",
     image: `https://source.unsplash.com/random?7`,
@@ -76,6 +105,10 @@ const dummyMembers = [
     _id: 2314423,
     name: "Noah Anderson",
     role: "Club Owner",
+    club: {
+      _id: "1231323",
+      name: "Alice Club",
+    },
     createdAt: "2024/04/02",
     status: "Suspended",
     image: `https://source.unsplash.com/random?8`,
@@ -85,6 +118,10 @@ const dummyMembers = [
     _id: 2312423,
     name: "Olivia Garcia",
     role: "Club Moderator",
+    club: {
+      _id: "123123",
+      name: "Alice Club",
+    },
     createdAt: "2024/03/19",
     status: "Active",
     image: `https://source.unsplash.com/random?9`,
@@ -95,6 +132,8 @@ const Member = () => {
   const [members, setMembers] = useState(dummyMembers);
   const [addEditMemberMeta, setAddEditMemberMeta] = useState(false);
   const [deleteMemberMeta, setDeleteMemberMeta] = useState(null);
+
+  const { user } = useAuth();
 
   const onDeleteMemberClick = () => {
     setMembers(members.filter((m) => m._id !== deleteMemberMeta._id));
@@ -110,8 +149,8 @@ const Member = () => {
   };
 
   const tableColumns = useMemo(
-    () => getMemberColumns(setDeleteMemberMeta, handleStatusChange),
-    [setDeleteMemberMeta, handleStatusChange]
+    () => getMemberColumns(setDeleteMemberMeta, handleStatusChange,user),
+    [setDeleteMemberMeta, handleStatusChange,user]
   );
 
   return (

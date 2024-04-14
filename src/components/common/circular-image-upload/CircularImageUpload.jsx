@@ -37,7 +37,10 @@ function CircularImageUpload({
 
   return (
     <div className="relative inline-block">
-      <div className="absolute right-0 bottom-2 cursor-pointer rounded-full bg-white p-1 border">
+      <div
+        className="absolute right-0 bottom-2 cursor-pointer rounded-full bg-white p-1 border"
+        onClick={() => document.getElementById("circular-image-upload").click()}
+      >
         <IoCamera />
       </div>
 
@@ -50,12 +53,12 @@ function CircularImageUpload({
           height,
           width,
         }}
-        onClick={() => document.getElementById("myfile").click()}
+        onClick={() => document.getElementById("circular-image-upload").click()}
       />
       {/* Hidden file input */}
       <input
         type="file"
-        id="myfile"
+        id="circular-image-upload"
         style={{ display: "none" }}
         onChange={handleImageChange}
         accept="image/*"
