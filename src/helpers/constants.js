@@ -31,7 +31,7 @@ export const PAGE_SIZE = 50;
 
 export const ADMIN_ROLE = "Admin";
 export const SITE_MODERATOR = "Site Moderator";
-export const CLUB_OWNER = "Salesperson";
+export const CLUB_OWNER = "Club Owner";
 export const CLUB_MODERATOR = "Club Moderator";
 export const CLUB_MEMBER = "Club Member";
 export const ALL_ROLES = [
