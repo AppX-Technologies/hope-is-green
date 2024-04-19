@@ -1,9 +1,9 @@
 import React, { createContext, useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import CircularProgressBar from "../components/common/circular-progress";
 import { makeApiRequests } from "../helpers/api";
-import { ENDPOINTS } from "../helpers/constants";
+import { ADMIN_ROLE, BLOCK, ENDPOINTS } from "../helpers/constants";
 import {
   getIsUserLoggedInFromLocal,
   setIsUserLoggedInToLocal,
@@ -15,12 +15,16 @@ import { userService } from "../services/userService";
 //we only store the user access token
 //from this access token, we fetch user info on every refresh
 
+const getCurrentRole = (user) => user?.roles?.[0];
+
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const { search } = useLocation();
   const searchParams = new URLSearchParams(search);
   const as = searchParams.get("as");
+  const redirect = searchParams.get("redirect");
+  const navigate = useNavigate();
   const [fetchingUser, setFetchingUser] = useState(false);
   const [user, setUser] = useState(null);
   const [viewAsUserMode, setViewAsUserMode] = useState(false);
@@ -29,39 +33,54 @@ export const UserProvider = ({ children }) => {
   );
   const [isLoggingIn, setIsLoggingIn] = useState(false);
   const [loginError, setLoginError] = useState(false);
-  const [parentUser, setParentsUser] = useState(null);
+  const [parentUser, setParentUser] = useState(null);
   const [fetchingViewingUser, setFetchingViewingUser] = useState(true);
 
   useEffect(() => {
+    if (!parentUser) return;
+
+    if (!as) {
+      setFetchingViewingUser(false);
+      setViewAsUserMode(false);
+      setUser(parentUser);
+      sessionStorage.removeItem("updating-user");
+      return;
+    }
+
     const fetchUser = async () => {
-      if (!as) {
-        setFetchingViewingUser(false);
+      setFetchingViewingUser(true);
+      const { response, error } = await userService.getUsers(
+        {
+          filter: {
+            _id: as,
+          },
+        },
+        undefined,
+        true
+      );
+
+      const user = response?.results?.[0];
+      if (user) {
+        user.role = getCurrentRole(user);
+        sessionStorage.setItem("updating-user", JSON.stringify(user));
+        setViewAsUserMode(true);
+        setUser(user);
+      } else {
         setViewAsUserMode(false);
+        setUser(parentUser);
         sessionStorage.removeItem("updating-user");
-        return;
       }
-      try {
-        setFetchingViewingUser(true);
-        const { response } = await userService.getUsers({}, undefined, true);
-        const user = response?.results.find((user) => user._id === as);
-        if (user) {
-          sessionStorage.setItem("updating-user", JSON.stringify(user));
-          setViewAsUserMode(true);
-          setUser(user);
-        }
-        setFetchingViewingUser(false);
-      } catch (error) {
-        console.error(error);
-      }
+      setFetchingViewingUser(false);
     };
     fetchUser();
-  }, [as]);
+  }, [parentUser]);
 
   useEffect(() => {
     if (isUserLoggedIn) {
       getMe();
     } else {
       setUser(null);
+      setParentUser(null);
     }
   }, [isUserLoggedIn]);
 
@@ -76,8 +95,8 @@ export const UserProvider = ({ children }) => {
       toast.error(error);
       return;
     }
-    setUser(response);
-    setParentsUser(response);
+    response.role = getCurrentRole(response);
+    setParentUser(response);
   };
 
   const login = async (email, password) => {
@@ -95,7 +114,9 @@ export const UserProvider = ({ children }) => {
         setLoginError(error);
         return;
       }
-
+      if (redirect) {
+        navigate(redirect);
+      }
       setUserLoggedIn(true);
       setIsUserLoggedInToLocal(true);
     } catch (e) {

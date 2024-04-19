@@ -5,7 +5,6 @@ export const BRAND_NAME = "Ethica CRM";
 export const RUJUM_APP_URL = process.env.REACT_APP_MAIN_APP_URL;
 export const CRM_APP_URL = process.env.PUBLIC_URL;
 
-
 export const ENDPOINTS = {
   //Users
   LOGIN: "/users/login",
@@ -21,13 +20,11 @@ export const ENDPOINTS = {
   CREATE_USER: "/users",
   DELETE_USER: "/users",
   USERS_LIST: "/users/search",
-
 };
 
 export const USER_STATUS = ["Enable", "Disable"];
 
 export const PAGE_SIZE = 50;
-
 
 export const ADMIN_ROLE = "Admin";
 export const SITE_MODERATOR = "Site Moderator";
@@ -42,17 +39,25 @@ export const ALL_ROLES = [
   CLUB_MEMBER,
 ];
 
-export const STATUS_MEMBER_ACTIVE= 'Active';
-export const STATUS_MEMBER_SUSPENDED= 'Suspended';
-export const STATUS_MEMBER_TERMINATED= 'Terminated';
+export const STATUS_MEMBER_ACTIVE = "Active";
+export const STATUS_MEMBER_SUSPENDED = "Suspended";
+export const STATUS_MEMBER_TERMINATED = "Terminated";
 
-export const ALL_MEMBER_STATUS = [STATUS_MEMBER_ACTIVE, STATUS_MEMBER_SUSPENDED, STATUS_MEMBER_TERMINATED]
+export const ALL_MEMBER_STATUS = [
+  STATUS_MEMBER_ACTIVE,
+  STATUS_MEMBER_SUSPENDED,
+  STATUS_MEMBER_TERMINATED,
+];
 
-export const STATUS_ORDER_NEW ='New';
-export const STATUS_ORDER_PENDING ='Pending';
-export const STATUS_ORDER_FINISHED ='Finished';
+export const STATUS_ORDER_NEW = "New";
+export const STATUS_ORDER_PENDING = "Pending";
+export const STATUS_ORDER_FINISHED = "Finished";
 
-export const ALL_ORDER_STATUS = [STATUS_ORDER_NEW,STATUS_ORDER_PENDING,STATUS_ORDER_FINISHED]
+export const ALL_ORDER_STATUS = [
+  STATUS_ORDER_NEW,
+  STATUS_ORDER_PENDING,
+  STATUS_ORDER_FINISHED,
+];
 
 export const LOGIN_MODE = "login";
 export const REGISTER_MODE = "register";
@@ -65,7 +70,6 @@ export const ACTION_OPTION = ["view", "edit"];
 export const RULE_OPTION = ["restrict", "permit"];
 
 export const SEARCH_BOX_VISIBLE_PATH = ["/contacts"];
-
 
 export const breadcrumbLabel = {
   goBack: "Go Back",
