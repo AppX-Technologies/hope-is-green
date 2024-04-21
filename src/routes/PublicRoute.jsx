@@ -5,6 +5,7 @@ import useAuth from "../hooks/useAuth";
 const PublicRoute = () => {
   const { isUserLoggedIn } = useAuth();
 
+  //navigate
   if (isUserLoggedIn) {
     return <Navigate to="/dashboard" />;
   }
