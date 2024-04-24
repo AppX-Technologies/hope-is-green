@@ -22,8 +22,7 @@ function CreateClub() {
     <div className="flex flex-col justify-center items-center">
       <div className="bg-white shadow-md rounded flex flex-col w-[300px] sm:w-[350px] md:w-[400px] xl:w-[450px] p-6 h-fit">
         <h6 className="text-dark text-xl mb-2">
-          Welcome to Hope is{" "}
-          <span className="text-primary font-bold">Green</span>{" "}
+          Welcome to <b>{process.env.REACT_APP_NAME}</b>
         </h6>
         <h6 className="text-gray-500 mb-2 text-base">
           <b className="">

@@ -91,9 +91,6 @@ const SideNavbar = () => {
         <Link to={"/"}>
           <div className="flex items-center gap-2">
             <Logo />
-            <span className="text-lg text-dark font-bold">
-              {process.env.REACT_APP_NAME}{" "}
-            </span>
           </div>
         </Link>
       </div>
