@@ -1,13 +1,12 @@
 import React from "react";
-import logo from "../../assets/logo-new.png";
-const Logo = ({ height = "50px", width = "50px", className = "" }) => {
+
+const Logo = ({ height = "40px", className = "" }) => {
   return (
     <img
-      src={logo}
+      src={`${process.env.PUBLIC_URL}/logo.png`}
       className={`${className}`}
       style={{
         height,
-        width,
       }}
       alt="Logo"
     />

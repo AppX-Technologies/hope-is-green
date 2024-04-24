@@ -87,7 +87,7 @@ const SideNavbar = () => {
 
   return (
     <div className="flex flex-col items-center w-60 min-h-screen overflow-hidden text-gray-400 bg-white">
-      <div className="flex w-full px-3 mt-3">
+      <div className="flex w-full mt-3">
         <Link to={"/"}>
           <div className="flex items-center gap-2">
             <Logo />
