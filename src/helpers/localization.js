@@ -895,21 +895,21 @@ export const languageContent = {
     confirm_password: "Confirm Password",
     sign_up: "SignUp",
     signing_up: "Signing Up",
-    already_have_an_account: "Already have an account? Click here to login.",
     register_to_continue: "Register to continue",
-    click_here_if_you_have_forgotten_your_password:
-      "Click here if you have forgotten your password.",
+    forgot_password: "Forgot Password?",
     select_a_club: "Please select a club",
     please_wait: "Please wait",
     new_password: "New Password",
-    want_to_create_your_own_club_click_here:
-      "Want to create your own club? Click here.",
+    join_as_club_member: "Join As Club Member",
+    create_your_own_club: "Create Your Own Club",
     user_email_address: "User's email address",
     next: "Next",
     enter_your_new_password: "Enter your new password",
     club_name: "Club Name",
     club_settings: "Club Settings",
     fill_the_details_to_continue: "Fill the details to continue",
+    create_club: "Create Club",
+    i_am_at_least_18_years_old: "I am at least 18 years old",
   },
 };
 

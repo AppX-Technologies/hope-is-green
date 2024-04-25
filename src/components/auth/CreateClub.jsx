@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import CreateClubForm from "../forms/CreateClubForm";
 import SignUpForm from "../forms/SignupForm";
 import useAuth from "../../hooks/useAuth";
+import OrDivider from "../OrDivider";
 
 function CreateClub() {
   const { translate } = useLocalization();
@@ -50,14 +51,19 @@ function CreateClub() {
             />
           </>
         )}
-        <div className="flex gap-3 mt-auto flex-col pt-2">
-          <div className="flex flex-col gap-2">
-            <UnderlineButton
-              text={translate("already_have_an_account")}
-              className="text-sm hover:text-blue-600 cursor-pointer"
-              onClick={() => navigate("/auth/login")}
-            />
-          </div>
+
+        <OrDivider />
+        <div className="flex mt-auto">
+          <UnderlineButton
+            text="Login"
+            className="text-sm hover:text-blue-600 cursor-pointer"
+            onClick={() => navigate("/auth/login")}
+          />
+          <UnderlineButton
+            text={translate("join_as_club_member")}
+            className="text-sm hover:text-blue-600 cursor-pointer ms-auto"
+            onClick={() => navigate("/auth/register")}
+          />
         </div>
       </div>
     </div>

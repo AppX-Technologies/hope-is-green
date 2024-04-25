@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import useLocalization from "../../hooks/useLocalization";
 import HorizontalProgress from "../common/HorizontalProgress";
 import Button from "../common/Button";
+import UnderlineButton from "../common/UnderlineButton";
 
 // Yup validation schema
 const validationSchema = Yup.object().shape({
@@ -56,7 +57,6 @@ const LoginForm = ({ isLoggingIn, loginError, onSubmit }) => {
             </div>
           ))}
 
-        
           {loginError && (
             <div className="my-3">
               <div
@@ -68,6 +68,13 @@ const LoginForm = ({ isLoggingIn, loginError, onSubmit }) => {
             </div>
           )}
 
+          <div className="flex w-full my-2">
+            <UnderlineButton
+              text={translate("forgot_password")}
+              className="text-sm hover:text-blue-600 cursor-pointer ms-auto"
+              onClick={() => setIsOpen(true)}
+            />
+          </div>
           <Button
             variant="primary"
             size="md"

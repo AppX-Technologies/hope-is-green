@@ -99,6 +99,21 @@ const SignUpForm = ({ isRegistering, signUpError, onSubmit }) => {
               />
             </div>
           ))}
+          <div className="flex items-center">
+            <input
+              id="checkbox"
+              type="checkbox"
+              value=""
+              checked
+              className="w-4 h-4"
+            />
+            <label
+              for="checkbox"
+              className="ms-2 text-sm"
+            >
+              {translate("i_am_at_least_18_years_old")}
+            </label>
+          </div>
 
           {isRegistering && (
             <HorizontalProgress text={`${translate("signing_up")}...`} />
@@ -120,7 +135,7 @@ const SignUpForm = ({ isRegistering, signUpError, onSubmit }) => {
               isRegistering ? "opacity-50 cursor-not-allowed" : ""
             }`}
           >
-            {translate("submit")}
+            {translate("register")}
           </button>
         </Form>
       )}

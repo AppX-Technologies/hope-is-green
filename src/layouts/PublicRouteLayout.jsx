@@ -4,8 +4,8 @@ import Logo from "../components/common/Logo";
 
 const PublicRouteLayout = () => {
   return (
-    <div className="min-h-screen flex flex-col p-4 bg-slate-100">
-      <div className="flex justify-between">
+    <div className="min-h-screen flex flex-col p-2 bg-slate-100">
+      <div className="flex justify-between sticky top-0">
         <Logo height={"60px"} width={"60px"} className="ms-3 cursor-pointer" />
         {/* <LanguagePicker /> */}
       </div>

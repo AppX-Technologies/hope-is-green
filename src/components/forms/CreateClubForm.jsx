@@ -139,7 +139,7 @@ const CreateClubForm = ({
               isSubmitting ? "opacity-50 cursor-not-allowed" : ""
             }`}
           >
-            {translate("next")}
+            {translate("create_club")}
           </button>
         </Form>
       )}

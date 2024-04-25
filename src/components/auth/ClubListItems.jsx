@@ -20,7 +20,7 @@ function ClubListItems({ clubs,setSelectedClub, selectedClub, setCurrentStep }) 
         className="mb-4 px-3 py-1.5 border rounded-md focus:outline-none focus:ring-none focus:border-blue-300 w-full"
       />
 
-      <div className="flex flex-col gap-4 w-full mx-auto h-fit overflow-y-auto max-h-[calc(100vh-460px)]">
+      <div className="flex flex-col gap-4 w-full mx-auto h-fit overflow-y-auto max-h-[calc(100vh-360px)]">
         {filteredData.length === 0 ? (
           <div className="flex justify-center items-center h-10">
             <p>No results found.</p>
