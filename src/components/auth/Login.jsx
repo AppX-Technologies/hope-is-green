@@ -3,9 +3,10 @@ import useAuth from "../../hooks/useAuth";
 import useLocalization from "../../hooks/useLocalization";
 import UnderlineButton from "../common/UnderlineButton";
 import LoginForm from "../forms/LoginForm";
-import CustomDialog from "../CustomDialog";
+import CustomDialog from "../common/CustomDialog";
 import { useNavigate } from "react-router-dom";
-import OrDivider from "../OrDivider";
+import Button from "../common/Button";
+import OrDivider from "../common/OrDivider";
 
 const Login = () => {
   const { translate } = useLocalization();
@@ -36,14 +37,17 @@ const Login = () => {
         <OrDivider />
 
         <div className="flex mt-auto">
-          <UnderlineButton
+          <Button
             text={translate("join_as_club_member")}
-            className="text-sm hover:text-blue-600 cursor-pointer"
+            variant="outline"
+            className="border-purple-400 !text-black"
             onClick={() => navigate("/auth/register")}
           />
-          <UnderlineButton
+
+          <Button
             text={translate("create_your_own_club")}
-            className="text-sm hover:text-blue-600 cursor-pointer ms-auto"
+            variant="outline"
+            className="border-purple-400 !text-black ms-auto"
             onClick={() => navigate("/create-club")}
           />
         </div>

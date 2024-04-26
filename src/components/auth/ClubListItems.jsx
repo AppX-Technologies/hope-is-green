@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import useLocalization from "../../hooks/useLocalization";
+import Button from "./../common/Button";
 
-function ClubListItems({ clubs,setSelectedClub, selectedClub, setCurrentStep }) {
+function ClubListItems({
+  clubs,
+  setSelectedClub,
+  selectedClub,
+  setCurrentStep,
+}) {
   const { translate } = useLocalization();
 
   const [searchTerm, setSearchTerm] = useState("");
@@ -20,7 +26,7 @@ function ClubListItems({ clubs,setSelectedClub, selectedClub, setCurrentStep }) 
         className="mb-4 px-3 py-1.5 border rounded-md focus:outline-none focus:ring-none focus:border-blue-300 w-full"
       />
 
-      <div className="flex flex-col gap-4 w-full mx-auto h-fit overflow-y-auto max-h-[calc(100vh-360px)]">
+      <div className="flex flex-col gap-2 w-full mx-auto h-fit overflow-y-auto max-h-[calc(100vh-360px)]">
         {filteredData.length === 0 ? (
           <div className="flex justify-center items-center h-10">
             <p>No results found.</p>
@@ -37,26 +43,27 @@ function ClubListItems({ clubs,setSelectedClub, selectedClub, setCurrentStep }) 
               }`}
             >
               <img
-                className="h-14 aspect-square rounded"
+                className="h-10 aspect-square rounded"
                 src={`https://source.unsplash.com/random?${item.name}`}
                 alt=""
               />
               <div className="ml-4 w-full">
-                <p className="font-medium text-gray-900">{item.name}</p>
-                <p className="text-sm text-gray-500">{item.description}</p>
+                <p className="font-medium text-sm text-gray-900">{item.name}</p>
+                <p className="text-sm text-gray-500 line-clamp-2">
+                  {item.description}
+                </p>
               </div>
             </button>
           ))
         )}
       </div>
-      <button
-        className="mt-auto w-full bg-primary hover:bg-green-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+      <Button
+        size="md"
+        text={translate("next")}
         type="button"
         onClick={() => setCurrentStep(2)}
         disabled={!selectedClub}
-      >
-        {translate("next")}
-      </button>
+      />
     </>
   );
 }

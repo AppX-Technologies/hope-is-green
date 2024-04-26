@@ -29,11 +29,14 @@ const Button = ({
 
   // Color variants
   const variantClasses = {
-    primary: `${disabled ? 'bg-green-400' :'bg-primary'} hover:bg-green-700`,
-    secondary: `${disabled ? 'bg-purple-400' :'bg-secondary'} hover:bg-purple-700`,
-    success: `${disabled ? 'bg-green-400' :'bg-primary'} hover:bg-green-700`,
-    danger: `${disabled ? 'bg-red-400' :'bg-red-500'} hover:bg-red-700`,
-    muted: `${disabled ? 'bg-gray-400' :'bg-gray-500'} hover:bg-gray-700`,
+    primary: `${disabled ? "bg-green-400" : "bg-primary"} hover:bg-green-700`,
+    secondary: `${
+      disabled ? "bg-purple-400" : "bg-secondary"
+    } hover:bg-purple-700`,
+    success: `${disabled ? "bg-green-400" : "bg-primary"} hover:bg-green-700`,
+    danger: `${disabled ? "bg-red-400" : "bg-red-500"} hover:bg-red-700`,
+    muted: `${disabled ? "bg-gray-400" : "bg-gray-500"} hover:bg-gray-700`,
+    outline: `${disabled ? "" : ""} border`,
   };
 
   // Combine classes

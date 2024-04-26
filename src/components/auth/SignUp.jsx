@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import useLocalization from "../../hooks/useLocalization";
-import UnderlineButton from "../common/UnderlineButton";
-import SignUpForm from "../forms/SignupForm";
 import { useNavigate } from "react-router-dom";
 import ClubListItems from "./ClubListItems";
-import OrDivider from "../OrDivider";
-import { Stepper } from "../Stepper";
+import Button from "../common/Button";
+import { Stepper } from "../common/Stepper";
+import OrDivider from "../common/OrDivider";
+import SignUpForm from "../forms/SignupForm";
 
 const clubs = [
   {
@@ -90,14 +90,13 @@ const SignUp = () => {
           {/* LOGO */}
           Welcome to <b>{process.env.REACT_APP_NAME}</b>
         </h6>
-        <Stepper
-          steps={[1, 2]}
-          currentStep={currentStep}
-        />
+        <Stepper steps={[1, 2]} currentStep={currentStep} />
         <h6 className="text-gray-500 mb-2 text-base">
           <b className="">
             {translate(
-              currentStep === 1 ? "select_a_club" : "provide_your_personal_details"
+              currentStep === 1
+                ? "select_a_club"
+                : "provide_your_personal_details"
             )}
           </b>
         </h6>
@@ -122,14 +121,16 @@ const SignUp = () => {
 
         <OrDivider />
         <div className="flex mt-auto pt-2">
-          <UnderlineButton
-            text="Login"
-            className="text-sm hover:text-blue-600 cursor-pointer"
+          <Button
+            variant="outline"
+            text={"Login"}
+            className="border-purple-400 !text-black"
             onClick={() => navigate("/auth/login")}
           />
-          <UnderlineButton
+          <Button
+            variant="outline"
             text={translate("create_your_own_club")}
-            className="text-sm hover:text-blue-600 cursor-pointer ms-auto"
+            className="border-purple-400 !text-black ms-auto"
             onClick={() => navigate("/create-club")}
           />
         </div>

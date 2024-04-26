@@ -3,9 +3,10 @@ import React from "react";
 import * as Yup from "yup";
 import useLocalization from "../../hooks/useLocalization";
 import HorizontalProgress from "../common/HorizontalProgress";
-import Select from "../CustomSelect";
 import ClubAvatar from '../../assets/cannabis_club_avatar.jpg'
 import CircularImageUpload from "../common/circular-image-upload/CircularImageUpload";
+import Button from "../common/Button";
+import Select from "../common/CustomSelect";
 // Yup validation schema
 const validationSchema = Yup.object().shape({
   clubName: Yup.string().required("Please provide club name"),
@@ -42,7 +43,7 @@ const CreateClubForm = ({
     >
       {({ isSubmitting, setFieldValue }) => (
         <Form noValidate className="p-2">
-           <div>
+          <div>
             <label className={`text-sm mb-1`}>Club Profile Picture</label>
             <div className="flex justify-center items-center">
               <CircularImageUpload
@@ -132,15 +133,15 @@ const CreateClubForm = ({
           <p className="p-0 m-0 my-1 text-sm">
             You can always update these settings later
           </p>
-          <button
+          <Button
+            size="md"
+            text={translate("create_club")}
             type="submit"
             disabled={isSubmitting}
             className={`w-full bg-primary hover:bg-green-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${
               isSubmitting ? "opacity-50 cursor-not-allowed" : ""
             }`}
-          >
-            {translate("create_club")}
-          </button>
+          />
         </Form>
       )}
     </Formik>

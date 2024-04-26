@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import UnderlineButton from "../common/UnderlineButton";
 import useLocalization from "../../hooks/useLocalization";
 import { useNavigate } from "react-router-dom";
 import CreateClubForm from "../forms/CreateClubForm";
 import SignUpForm from "../forms/SignupForm";
 import useAuth from "../../hooks/useAuth";
-import OrDivider from "../OrDivider";
-import { Stepper } from "../Stepper";
+import Button from "../common/Button";
+import OrDivider from "../common/OrDivider";
+import { Stepper } from "../common/Stepper";
 
 function CreateClub() {
   const { translate } = useLocalization();
@@ -56,14 +56,17 @@ function CreateClub() {
 
         <OrDivider />
         <div className="flex mt-auto">
-          <UnderlineButton
+          <Button
+            variant="outline"
             text="Login"
-            className="text-sm hover:text-blue-600 cursor-pointer"
+            className="border-purple-400 !text-black"
             onClick={() => navigate("/auth/login")}
           />
-          <UnderlineButton
+
+          <Button
+            variant="outline"
             text={translate("join_as_club_member")}
-            className="text-sm hover:text-blue-600 cursor-pointer ms-auto"
+            className="border-purple-400 !text-black ms-auto"
             onClick={() => navigate("/auth/register")}
           />
         </div>

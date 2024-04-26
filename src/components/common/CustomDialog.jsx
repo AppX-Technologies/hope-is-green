@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { Transition, Dialog } from "@headlessui/react";
-import useLocalization from "./../hooks/useLocalization";
+import useLocalization from "../../hooks/useLocalization";
 
 export default function CustomDialog({
   isOpen,
