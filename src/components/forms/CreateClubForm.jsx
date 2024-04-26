@@ -135,7 +135,7 @@ const CreateClubForm = ({
           </p>
           <Button
             size="md"
-            text={translate("create_club")}
+            text={translate("next")}
             type="submit"
             disabled={isSubmitting}
             className={`w-full bg-primary hover:bg-green-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${

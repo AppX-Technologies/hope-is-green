@@ -5,6 +5,7 @@ import useLocalization from "../../hooks/useLocalization";
 import HorizontalProgress from "../common/HorizontalProgress";
 import CircularImageUpload from "../common/circular-image-upload/CircularImageUpload";
 import PersonAvatar from "../../assets/person-avatar.png";
+import Button from "../common/Button";
 // Yup validation schema
 const validationSchema = Yup.object().shape({
   name: Yup.string().required("Please provide your name"),
@@ -130,15 +131,16 @@ const SignUpForm = ({
               </div>
             </div>
           )}
-          <button
+          <Button
+            variant="primary"
             type="submit"
+            size="md"
+            text={translate(submitButtonLabel)}
             disabled={isRegistering}
             className={`mt-4 w-full bg-primary hover:bg-green-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${
               isRegistering ? "opacity-50 cursor-not-allowed" : ""
             }`}
-          >
-            {translate(submitButtonLabel)}
-          </button>
+          />
         </Form>
       )}
     </Formik>
