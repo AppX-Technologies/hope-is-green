@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import useLocalization from "../../hooks/useLocalization";
 import HorizontalProgress from "../common/HorizontalProgress";
 import CircularImageUpload from "../common/circular-image-upload/CircularImageUpload";
-import PersonAvatar from "../../assets/person-avatar.png"
+import PersonAvatar from "../../assets/person-avatar.png";
 // Yup validation schema
 const validationSchema = Yup.object().shape({
   name: Yup.string().required("Please provide your name"),
@@ -18,7 +18,12 @@ const validationSchema = Yup.object().shape({
     .oneOf([Yup.ref("password"), null], "Passwords must match"),
 });
 
-const SignUpForm = ({ isRegistering, signUpError, onSubmit }) => {
+const SignUpForm = ({
+  isRegistering,
+  signUpError,
+  onSubmit,
+  submitButtonLabel = "register",
+}) => {
   const { translate } = useLocalization();
 
   return (
@@ -107,10 +112,7 @@ const SignUpForm = ({ isRegistering, signUpError, onSubmit }) => {
               checked
               className="w-4 h-4"
             />
-            <label
-              for="checkbox"
-              className="ms-2 text-sm"
-            >
+            <label for="checkbox" className="ms-2 text-sm">
               {translate("i_am_at_least_18_years_old")}
             </label>
           </div>
@@ -135,7 +137,7 @@ const SignUpForm = ({ isRegistering, signUpError, onSubmit }) => {
               isRegistering ? "opacity-50 cursor-not-allowed" : ""
             }`}
           >
-            {translate("register")}
+            {translate(submitButtonLabel)}
           </button>
         </Form>
       )}

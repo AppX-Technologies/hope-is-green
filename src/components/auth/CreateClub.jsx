@@ -50,6 +50,7 @@ function CreateClub() {
               isRegistering={isLoading}
               signUpError={loginError}
               onSubmit={onSubmit}
+              submitButtonLabel="create_club"
             />
           </>
         )}
