@@ -3,7 +3,7 @@ import React from "react";
 import * as Yup from "yup";
 import useLocalization from "../../hooks/useLocalization";
 import HorizontalProgress from "../common/HorizontalProgress";
-import ClubAvatar from '../../assets/cannabis_club_avatar.jpg'
+import ClubAvatar from "../../assets/cannabis_club_avatar.jpg";
 import CircularImageUpload from "../common/circular-image-upload/CircularImageUpload";
 import Button from "../common/Button";
 import Select from "../common/CustomSelect";
