@@ -6,6 +6,7 @@ import CreateClubForm from "../forms/CreateClubForm";
 import SignUpForm from "../forms/SignupForm";
 import useAuth from "../../hooks/useAuth";
 import OrDivider from "../OrDivider";
+import { Stepper } from "../Stepper";
 
 function CreateClub() {
   const { translate } = useLocalization();
@@ -25,12 +26,13 @@ function CreateClub() {
         <h6 className="text-dark text-xl mb-2">
           Welcome to <b>{process.env.REACT_APP_NAME}</b>
         </h6>
+        <Stepper steps={[1, 2]} currentStep={currentStep} />
         <h6 className="text-gray-500 mb-2 text-base">
           <b className="">
             {translate(
               currentStep === 1
-                ? "fill_the_details_to_continue"
-                : "register_to_continue"
+                ? "provide_your_club_details"
+                : "provide_your_personal_details"
             )}
           </b>
         </h6>

@@ -5,6 +5,8 @@ import UnderlineButton from "../common/UnderlineButton";
 import SignUpForm from "../forms/SignupForm";
 import { useNavigate } from "react-router-dom";
 import ClubListItems from "./ClubListItems";
+import OrDivider from "../OrDivider";
+import { Stepper } from "../Stepper";
 
 const clubs = [
   {
@@ -88,10 +90,14 @@ const SignUp = () => {
           {/* LOGO */}
           Welcome to <b>{process.env.REACT_APP_NAME}</b>
         </h6>
+        <Stepper
+          steps={[1, 2]}
+          currentStep={currentStep}
+        />
         <h6 className="text-gray-500 mb-2 text-base">
           <b className="">
             {translate(
-              currentStep === 1 ? "select_a_club" : "register_to_continue"
+              currentStep === 1 ? "select_a_club" : "provide_your_personal_details"
             )}
           </b>
         </h6>
@@ -113,19 +119,19 @@ const SignUp = () => {
             />
           </>
         )}
-        <div className="flex gap-3 mt-auto flex-col pt-2">
-          <div className="flex flex-col gap-2">
-            <UnderlineButton
-              text={translate("already_have_an_account")}
-              className="text-sm hover:text-blue-600 cursor-pointer"
-              onClick={() => navigate("/auth/login")}
-            />
-            <UnderlineButton
-              text={translate("want_to_create_your_own_club_click_here")}
-              className="text-sm hover:text-blue-600 cursor-pointer"
-              onClick={() => navigate("/create-club")}
-            />
-          </div>
+
+        <OrDivider />
+        <div className="flex mt-auto pt-2">
+          <UnderlineButton
+            text="Login"
+            className="text-sm hover:text-blue-600 cursor-pointer"
+            onClick={() => navigate("/auth/login")}
+          />
+          <UnderlineButton
+            text={translate("create_your_own_club")}
+            className="text-sm hover:text-blue-600 cursor-pointer ms-auto"
+            onClick={() => navigate("/create-club")}
+          />
         </div>
       </div>
     </div>
