@@ -10,6 +10,7 @@ import Button from "../common/Button";
 import Label from "../common/Label";
 import DataTable from "../common/data-table/DataTable";
 import ClubSearchAndFilter from "./ClubSearchAndFilter";
+import { useNavigate } from "react-router-dom";
 const dummyClubs = [
   {
     _id: 1,
@@ -111,6 +112,7 @@ const dummyClubs = [
   },
 ];
 const Clubs = () => {
+  const navigate = useNavigate();
   const [clubs, setClubs] = useState(dummyClubs);
   const [addEditClubMeta, setAddEditClubMeta] = useState(false);
   const [deleteClubMeta, setDeleteClubMeta] = useState(null);
@@ -150,7 +152,7 @@ const Clubs = () => {
           columns={tableColumns}
           data={clubs}
           bottomOffset={300}
-          onRowClick={() => {}}
+          onRowClick={(row) => navigate(`${row._id}`, { state: row })}
           allowFilter={false}
           allowSort={false}
         />

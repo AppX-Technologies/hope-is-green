@@ -20,6 +20,7 @@ import CreateClub from "../components/auth/CreateClub";
 import { isAdmin } from "../helpers/session";
 import Clubs from "../components/clubs/Clubs";
 import AppSettings from "../components/app-settings/AppSettings";
+import ClubDetail from "../components/clubs/ClubDetail";
 
 const AppRoutes = () => {
   const { pathname } = useLocation();
@@ -65,9 +66,10 @@ const AppRoutes = () => {
               <>
                 <Route path="clubs">
                   <Route path="" element={<Clubs />} />
+                  <Route path="/clubs/:_id" element={<ClubDetail />} />
                 </Route>{" "}
                 <Route path="app-settings">
-                  <Route path="" element={<AppSettings /> } />
+                  <Route path="" element={<AppSettings />} />
                 </Route>{" "}
               </>
             )}

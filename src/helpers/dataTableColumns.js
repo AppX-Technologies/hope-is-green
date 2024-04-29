@@ -74,7 +74,8 @@ export const getClubColumns = (onDeleteClubClick) => {
 export const getMemberColumns = (
   onDeleteMemberClick,
   handleStatusChange,
-  user
+  user,
+  hiddenColumns
 ) => {
   let { role } = user;
   const allLabels = [
@@ -168,7 +169,7 @@ export const getMemberColumns = (
         </div>
       ),
     },
-  ];
+  ].filter((column) => !hiddenColumns?.includes(column.key));
 
   return allLabels;
 };
