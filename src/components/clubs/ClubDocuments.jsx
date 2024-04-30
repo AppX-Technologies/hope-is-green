@@ -68,44 +68,38 @@ const ClubDocuments = () => {
       type: "excel",
       uploadDate: "2022-04-27",
     },
-    // Add more dummy documents as needed
   ];
 
   const [hoveredId, setHoveredId] = useState(null);
 
   return (
-    <div className="flex gap-3 flex-wrap mt-4">
+    <div className="flex gap-3 flex-wrap mt-4 w-full items-center">
       {dummyDocuments.map((document) => {
         const documentType = getDocumentType(document.url);
         return (
           <div
             key={document.id}
-            className="bg-white rounded-md overflow-hidden aspect-square max-h-48 p-4 relative"
+            className="bg-white rounded-md aspect-square h-36 relative p-4 flex gap-2 flex-col justify-center items-center"
             onMouseEnter={() => setHoveredId(document.id)}
             onMouseLeave={() => setHoveredId(null)}
           >
-            <div className="flex text-left flex-col p-4">
-              <div className="mx-auto">{getDocumentIcon(documentType)}</div>
-              <div className="flex items-center">
-                <div>
-                  <p className="font-semibold whitespace-nowrap">
-                    {document.name}
-                  </p>
-                  <p className="text-gray-500 text-sm">{document.uploadDate}</p>
-                </div>
-                {hoveredId === document.id && (
-                  <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 gap-2">
-                    <Button
-                      text="Download"
-                      size="lg"
-                      className="!p-1 text-white text-sm"
-                      rightIcon={FaFileDownload}
-                      onClick={() => console.log("Download clicked")}
-                    />
-                  </div>
-                )}
-              </div>
+            {getDocumentIcon(documentType)}
+            <div>
+              <p className="font-semibold whitespace-nowrap">{document.name}</p>
+              <p className="text-gray-500 text-sm">{document.uploadDate}</p>
             </div>
+
+            {hoveredId === document.id && (
+              <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 gap-2 rounded">
+                <Button
+                  text="Download"
+                  size="lg"
+                  className="!p-1 text-white text-sm"
+                  rightIcon={FaFileDownload}
+                  onClick={() => console.log("Download clicked")}
+                />
+              </div>
+            )}
           </div>
         );
       })}
@@ -130,15 +124,15 @@ const getDocumentType = (documentUrl) => {
 const getDocumentIcon = (documentType) => {
   switch (documentType) {
     case "pdf":
-      return <FaFilePdf className="text-red-500 h-16 w-16" />;
+      return <FaFilePdf className="text-red-500 h-14 w-14" />;
     case "image":
-      return <FaImage className="text-blue-500 h-16 w-16" />;
+      return <FaImage className="text-blue-500 h-14 w-14" />;
     case "ppt":
-      return <FaFilePowerpoint className="text-orange-500 h-16 w-16" />;
+      return <FaFilePowerpoint className="text-orange-500 h-14 w-14" />;
     case "excel":
-      return <FaFileExcel className="text-green-500 h-16 w-16" />;
+      return <FaFileExcel className="text-green-500 h-14 w-14" />;
     default:
-      return <FaQuestionCircle className="text-gray-500 h-16 w-16" />;
+      return <FaQuestionCircle className="text-gray-500 h-14 w-14" />;
   }
 };
 

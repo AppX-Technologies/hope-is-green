@@ -7,11 +7,15 @@ import Breadcrumb from "../components/common/bread-crumb/BreadCrumb";
 const ProtectedRouteLayout = ({ headerVisible = true }) => {
   return (
     <AppChoicesProvider>
-      <div className="bg-white flex min-h-screen min-w-screen">
+      <div
+        className="bg-white flex min-h-screen min-w-screen"
+        style={{ height: "100vh" }}
+      >
         {headerVisible && <SideNavbar />}
         <div className="grow p-2 flex flex-col gap-2">
           <Breadcrumb baseUrl={"/"} />
-          <div className="grow bg-[#ebfaf3] rounded p-4">
+          {/* <div className="grow bg-[#ebfaf3] rounded p-4 overflow-y-auto"> */}
+          <div className="grow bg-[#f6fbf9] rounded p-4 overflow-y-auto">
             <Outlet />
           </div>
         </div>

@@ -21,6 +21,7 @@ import { isAdmin } from "../helpers/session";
 import Clubs from "../components/clubs/Clubs";
 import AppSettings from "../components/app-settings/AppSettings";
 import ClubDetail from "../components/clubs/ClubDetail";
+import ClubDocuments from "../components/clubs/ClubDocuments";
 
 const AppRoutes = () => {
   const { pathname } = useLocation();
@@ -62,6 +63,8 @@ const AppRoutes = () => {
             <Route path="members">
               <Route path="" element={<Member />} />
             </Route>
+            <Route path="c" element={<ClubDocuments />} />
+
             {isAdmin(role) && (
               <>
                 <Route path="clubs">

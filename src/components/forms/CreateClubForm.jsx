@@ -6,7 +6,7 @@ import HorizontalProgress from "../common/HorizontalProgress";
 import ClubAvatar from "../../assets/cannabis_club_avatar.jpg";
 import CircularImageUpload from "../common/circular-image-upload/CircularImageUpload";
 import Button from "../common/Button";
-import Select from "../common/CustomSelect";
+import Select from "../common/Select";
 // Yup validation schema
 const validationSchema = Yup.object().shape({
   clubName: Yup.string().required("Please provide club name"),

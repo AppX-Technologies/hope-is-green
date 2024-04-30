@@ -3,8 +3,8 @@ import { BiChevronDown } from "react-icons/bi";
 
 const Select = ({ options, heading, ...rest }) => {
   return (
-    <>
-      {heading && <p className="text-sm text-gray-600 p-0 m-0">{heading}</p>}
+    <div>
+      {heading && <p className="text-sm text-gray-600 p-0 m-0 mt-3 mb-1">{heading}</p>}
       <div className="relative text-sm">
         <select
           {...rest}
@@ -20,7 +20,7 @@ const Select = ({ options, heading, ...rest }) => {
           <BiChevronDown />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
