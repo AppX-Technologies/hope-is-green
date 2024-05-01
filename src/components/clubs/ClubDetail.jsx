@@ -20,41 +20,43 @@ const ClubDetail = () => {
 
   return (
     <div className="flex flex-col gap-4 font-medium max-w-[calc(100vw-300px)]">
-      <div className="flex gap-4">
-        <div className="flex flex-col gap-4">
-          <div className="bg-white p-2 flex flex-col gap-2 rounded">
-            <img className="rounded w-16 h-14" src={clubDetail?.logo} alt="" />
+      <div className="flex flex-col md:flex-row gap-4">
+        <div className="flex flex-col gap-4 md:w-1/3">
+          <div className="bg-white p-4 flex flex-col gap-2 rounded items-center shadow-md">
+            <img
+              className="rounded w-24 h-24 object-cover"
+              src={clubDetail?.logo}
+              alt="Club Logo"
+            />
             <div>
-              <p className="">{clubDetail?.name}</p>
-              <p className="text-gray-600 text-sm text-start">
-                Active member: 30
-              </p>
+              <p className="text-xl font-semibold">{clubDetail?.name}</p>
+              <p className="text-gray-600 text-sm">Active members: 30</p>
             </div>
           </div>
-          <div className="bg-white p-2 flex gap-3 rounded items-center w-full">
+          <div className="bg-white p-4 flex gap-3 rounded items-center shadow-md">
             <img
-              className="rounded aspect-square h-14"
+              className="rounded-full w-24 h-24 object-cover"
               src="https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg"
-              alt=""
+              alt="Owner"
             />
-            <div className="flex flex-col justify-center">
-              <p className="font-medium">Royal Falcon</p>
+            <div className="flex flex-col">
+              <p className="font-semibold">Royal Falcon</p>
               <p className="text-gray-500 text-sm">Owner</p>
             </div>
           </div>
         </div>
 
-        <div className="bg-white p-2 rounded" style={{ flex: "1" }}>
-          <div className="grid grid-cols-2 gap-1 items-center">
-            <div className="items-center flex gap-1">
+        <div className="bg-white p-4 rounded md:flex-1">
+          <div className="grid grid-cols-2 gap-4 items-center mb-4">
+            <div className="flex items-center gap-1">
               <MdLocationPin />
               <p>{clubDetail?.location}</p>
             </div>
-            <p className="bg-primary/20 w-fit px-2.5 text-sm rounded-full">
+            <p className="bg-primary/20 w-20 px-3 py-1 text-sm rounded-full text-primary text-center">
               Active
             </p>
           </div>
-          <div className="flex items-ceenter gap-3">
+          <div className="flex flex-col gap-4">
             {[
               {
                 heading: "Do new members need to be approved before joining?",
@@ -66,17 +68,20 @@ const ClubDetail = () => {
               },
               {
                 heading:
-                  "Does new threads need to be approved by admins before publishing?",
+                  "Do new threads need to be approved by admins before publishing?",
                 name: "threadApproval",
               },
-            ].map((item, index) => (
-              <Select
-                key={index}
-                heading={item.heading}
-                options={options}
-                onChange={(e) => console.log(item.name, e.target.value)}
-              />
-            ))}
+            ].map((item, index) => {
+              return (
+                <div key={index} className="w-full md:w-1/2">
+                  <Select
+                    heading={item.heading}
+                    options={options}
+                    onChange={(e) => console.log(item.name, e.target.value)}
+                  />
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
