@@ -80,13 +80,19 @@ export const breadcrumbLabel = {
 
 export const ClubLeagalFormFields = [
   {
-    groupName: "association",
-    groupLabel: "Purpose of club",
+    groupName: "PurposeAssociation",
+    groupLabel: "Purpose of Association",
     question: [
       {
         name: "association",
         type: "text",
         label: "What is the main objective of your association?",
+      },
+      {
+        name: "objective",
+        type: "textarea",
+        label:
+          "Describe in detail how your association intends to achieve this objective: ",
       },
     ],
   },
@@ -103,6 +109,231 @@ export const ClubLeagalFormFields = [
         name: "association",
         type: "yesNo",
         label: "Is it prohibited to financially benefit third parties? ",
+      },
+      {
+        name: "association",
+        type: "yesNo",
+        label:
+          "Can the funds of the association be used only for statutory purposes?",
+      },
+    ],
+  },
+  {
+    groupName: "Prohibition",
+    groupLabel: "Prohibition and Benefits",
+    question: [
+      {
+        name: "remunerations",
+        type: "yesNo",
+        label: "Are high remunerations to members prohibited? ",
+      },
+    ],
+  },
+  {
+    groupName: "Acquisition",
+    groupLabel: "Acquisition and Termination of Membership",
+    question: [
+      {
+        name: "conditionsMet",
+        type: "text",
+        label: "Who can become a member and what conditions must be met? ",
+      },
+      {
+        name: "conditionsMet",
+        type: "Written/Electronic",
+        label: "How can interested parties apply for membership? ",
+      },
+    ],
+  },
+
+  {
+    groupName: "RightsAndObligations",
+    groupLabel: "Rights and Obligations of Members",
+    question: [
+      {
+        name: "duties",
+        type: "text",
+        label: "What are the main duties of the members?",
+      },
+      {
+        name: "votings",
+        type: "yesNo",
+        label: "Do members have voting rights at meetings?",
+      },
+    ],
+  },
+
+  {
+    groupName: "Contributions",
+    groupLabel: "Contributions",
+    question: [
+      {
+        name: "membershipFee",
+        type: "text",
+        label: "How much are the membership fees?",
+      },
+      {
+        name: "paid",
+        type: "text",
+        label: "When must fees be paid?",
+      },
+    ],
+  },
+
+  {
+    groupName: "Organs",
+    groupLabel: "Organs of the Association",
+    question: [
+      {
+        name: "association",
+        type: "text",
+        label: "What are the organs of your association?",
+      },
+    ],
+  },
+
+  {
+    groupName: "GeneralMeeting",
+    groupLabel: "General Meeting",
+    question: [
+      {
+        name: "generalMeetings",
+        type: "text",
+        label: "How often does the general meeting take place?",
+      },
+      {
+        name: "convening",
+        type: "text",
+        label: "What rules apply for convening the meeting?",
+      },
+    ],
+  },
+
+  {
+    groupName: "VotingRights",
+    groupLabel: "Voting Rights and Eligibility",
+    question: [
+      {
+        name: "eligible",
+        type: "text",
+        label: "From what age are members eligible to vote and be elected?",
+      },
+      {
+        name: "conducted",
+        type: "election/voting",
+        label: "How are elections conducted?",
+      },
+    ],
+  },
+
+  {
+    groupName: "Board",
+    groupLabel: "Board",
+    question: [
+      {
+        name: "office",
+        type: "text",
+        label: "How is the board composed and what are the terms of office? ",
+      },
+    ],
+  },
+
+  {
+    groupName: "Dissolution",
+    groupLabel: "Dissolution",
+    question: [
+      {
+        name: "office",
+        type: "textarea",
+        label:
+          "How can the association be dissolved and what happens to the association's assets?",
+      },
+    ],
+  },
+];
+
+export const BoardMemberFormField = [
+  {
+    groupName: "Chairperson",
+    groupLabel: "Chairperson",
+    question: [
+      {
+        name: "Name",
+        type: "text",
+        label: "Name of the Chairperson",
+      },
+      {
+        name: "dateOfBirth",
+        type: "text",
+        label: "Date of Birth of the Chairperson",
+      },
+      {
+        name: "address",
+        type: "text",
+        label: "Address of the Chairperson",
+      },
+    ],
+  },
+  {
+    groupName: "ViceChairperson:",
+    groupLabel: "Vice Chairperson:",
+    question: [
+      {
+        name: "Name",
+        type: "text",
+        label: "Name of the Vice Chairperson",
+      },
+      {
+        name: "dateOfBirth",
+        type: "text",
+        label: "Date of Birth of the Vice Chairperson ",
+      },
+      {
+        name: "address",
+        type: "text",
+        label: "Address of the Vice Chairperson",
+      },
+    ],
+  },
+  {
+    groupName: "OtherBoardMembers:",
+    groupLabel: "Other Board Members:",
+    question: [
+      {
+        name: "SelectedPosition",
+        type: "selectedPosition",
+        label: " Selected Position",
+      },
+      {
+        name: "Name",
+        type: "text",
+        label: "Name",
+      },
+      {
+        name: "dateOfBirth",
+        type: "text",
+        label: "Date of Birth ",
+      },
+      {
+        name: "address",
+        type: "text",
+        label: "address",
+      },
+    ],
+  },
+  {
+    groupName: "AdditionalInformation",
+    groupLabel: "Additional Information",
+    question: [
+      {
+        name: "Name",
+        type: "text",
+        label: "Name of the Court of Registry",
+      },
+      {
+        name: "dateOfBirth",
+        type: "text",
+        label: "Address of the Court of Registry",
       },
     ],
   },
