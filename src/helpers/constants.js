@@ -77,3 +77,33 @@ export const breadcrumbLabel = {
   "study-abroad": "Study Abroad",
   news: "News",
 };
+
+export const ClubLeagalFormFields = [
+  {
+    groupName: "association",
+    groupLabel: "Purpose of club",
+    question: [
+      {
+        name: "association",
+        type: "text",
+        label: "What is the main objective of your association?",
+      },
+    ],
+  },
+  {
+    groupName: "nonProfitActivity",
+    groupLabel: "Non Profit Activity",
+    question: [
+      {
+        name: "association",
+        type: "yesNo",
+        label: "Does your association operate selflessly and not for profit?",
+      },
+      {
+        name: "association",
+        type: "yesNo",
+        label: "Is it prohibited to financially benefit third parties? ",
+      },
+    ],
+  },
+];

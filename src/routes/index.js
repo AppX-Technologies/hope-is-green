@@ -22,6 +22,7 @@ import Clubs from "../components/clubs/Clubs";
 import AppSettings from "../components/app-settings/AppSettings";
 import ClubDetail from "../components/clubs/ClubDetail";
 import ClubDocuments from "../components/clubs/ClubDocuments";
+import { ClubSettingsTabs } from "../components/club-settings/ClubSettingsTab";
 
 const AppRoutes = () => {
   const { pathname } = useLocation();
@@ -77,11 +78,11 @@ const AppRoutes = () => {
               </>
             )}
 
-            {role === CLUB_OWNER && (
+            {/* {role === CLUB_OWNER && ( */}
               <Route path="club-settings">
-                <Route path="" element={<ClubSettings />} />
+                <Route path="" element={<ClubSettingsTabs />} />
               </Route>
-            )}
+            {/* )} */}
 
             <Route path="*" element={<NotFound />} />
           </Route>
