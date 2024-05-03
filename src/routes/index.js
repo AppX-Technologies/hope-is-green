@@ -15,14 +15,13 @@ import Profile from "../components/profile/Profile";
 import SignUp from "../components/auth/SignUp";
 import ResetPassword from "../components/auth/ResetPassword";
 import Member from "../components/members/Member";
-import ClubSettings from "../components/club-settings/ClubSettings";
 import CreateClub from "../components/auth/CreateClub";
 import { isAdmin } from "../helpers/session";
 import Clubs from "../components/clubs/Clubs";
 import AppSettings from "../components/app-settings/AppSettings";
 import ClubDetail from "../components/clubs/ClubDetail";
 import ClubDocuments from "../components/clubs/ClubDocuments";
-import { ClubSettingsTabs } from "../components/club-settings/ClubSettingsTab";
+import { ClubSettings } from "../components/club-settings/ClubSettings";
 
 const AppRoutes = () => {
   const { pathname } = useLocation();
@@ -80,7 +79,7 @@ const AppRoutes = () => {
 
             {/* {role === CLUB_OWNER && ( */}
               <Route path="club-settings">
-                <Route path="" element={<ClubSettingsTabs />} />
+                <Route path="" element={<ClubSettings />} />
               </Route>
             {/* )} */}
 

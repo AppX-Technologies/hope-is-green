@@ -4,7 +4,7 @@ import ClubAvatar from "../../assets/cannabis_club_avatar.jpg";
 import useLocalization from "../../hooks/useLocalization";
 import Select from "../common/Select";
 
-export function ClubForm({
+export function ClubGeneralInfoForm({
   Field,
   ErrorMessage,
   creatingClubError,

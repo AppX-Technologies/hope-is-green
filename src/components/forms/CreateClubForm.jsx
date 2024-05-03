@@ -6,14 +6,12 @@ import HorizontalProgress from "../common/HorizontalProgress";
 import CircularImageUpload from "../common/circular-image-upload/CircularImageUpload";
 import Button from "../common/Button";
 import Select from "../common/Select";
-import { ClubForm } from "./ClubForm";
+import { ClubGeneralInfoForm } from "./ClubGeneralInfoForm";
 // Yup validation schema
 const validationSchema = Yup.object().shape({
   clubName: Yup.string().required("Please provide club name"),
   address: Yup.string().required("Please provide club address"),
 });
-
-
 
 const CreateClubForm = ({
   isCreatingClub,
@@ -43,11 +41,11 @@ const CreateClubForm = ({
     >
       {({ isSubmitting, setFieldValue }) => (
         <Form noValidate className="p-2">
-          <ClubForm 
-            Field = {Field}
-            ErrorMessage = {ErrorMessage}
-            creatingClubError = {creatingClubError}
-            isCreatingClub = {true}
+          <ClubGeneralInfoForm
+            Field={Field}
+            ErrorMessage={ErrorMessage}
+            creatingClubError={creatingClubError}
+            isCreatingClub={true}
             setFieldValue={setFieldValue}
           />
           <p className="p-0 m-0 my-1 text-sm">
