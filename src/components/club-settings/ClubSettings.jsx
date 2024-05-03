@@ -20,8 +20,8 @@ export function ClubSettings() {
   return (
     <div className="">
       <Label label={"Club Settings"} size={"xl"} className={"font-bold"} />
-      <div className="mt-4 h-full bg-white shadow p-3">
-        <Tabs tabs={tabs} />
+      <div className="mt-4 h-full">
+        <Tabs tabs={tabs} showSaveButton />
       </div>
     </div>
   );

@@ -16,37 +16,43 @@ const validationSchema = Yup.object().shape({
 
 const GeneralInfo = () => {
   return (
-      <div className="">
-        <Formik
-          initialValues={{
-            clubName: "",
-            address: "",
-          }}
-          validationSchema={validationSchema}
-          validateOnBlur={false}
-          validateOnChange={false}
-          onSubmit={async (values, { setSubmitting }) => {
-            try {
-              await onSubmit(values);
-              setCurrentStep(2);
-            } finally {
-              setSubmitting(false);
-            }
-          }}
-        >
-          {({ isSubmitting, setFieldValue }) => (
-            <Form noValidate className="p-2">
-              <ClubGeneralInfoForm
-                Field={Field}
-                ErrorMessage={ErrorMessage}
-                // creatingClubError={creatingClubError}
-                isCreatingClub={false}
-                setFieldValue={setFieldValue}
-              />
-            </Form>
-          )}
-        </Formik>
+    <div className="border bg-white rounded-md mt-2">
+      <div className="bg-purple-100 px-2 py-2">
+        <h6>General Information</h6>
       </div>
+      <div className="p-2  lg:w-[500px] sm:w-full md:w-full">
+       <Formik
+        initialValues={{
+          clubName: "",
+          address: "",
+        }}
+        validationSchema={validationSchema}
+        validateOnBlur={false}
+        validateOnChange={false}
+        onSubmit={async (values, { setSubmitting }) => {
+          try {
+            await onSubmit(values);
+            setCurrentStep(2);
+          } finally {
+            setSubmitting(false);
+          }
+        }}
+      >
+        {({ isSubmitting, setFieldValue }) => (
+          <Form noValidate className="p-2">
+            <ClubGeneralInfoForm
+              Field={Field}
+              ErrorMessage={ErrorMessage}
+              // creatingClubError={creatingClubError}
+              isCreatingClub={false}
+              setFieldValue={setFieldValue}
+            />
+          </Form>
+        )}
+      </Formik>  
+      </div>
+     
+    </div>
   );
 };
 

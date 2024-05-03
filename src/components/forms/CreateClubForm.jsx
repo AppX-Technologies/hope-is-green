@@ -2,10 +2,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import React from "react";
 import * as Yup from "yup";
 import useLocalization from "../../hooks/useLocalization";
-import HorizontalProgress from "../common/HorizontalProgress";
-import CircularImageUpload from "../common/circular-image-upload/CircularImageUpload";
 import Button from "../common/Button";
-import Select from "../common/Select";
 import { ClubGeneralInfoForm } from "./ClubGeneralInfoForm";
 // Yup validation schema
 const validationSchema = Yup.object().shape({
@@ -45,7 +42,7 @@ const CreateClubForm = ({
             Field={Field}
             ErrorMessage={ErrorMessage}
             creatingClubError={creatingClubError}
-            isCreatingClub={true}
+            isCreatingClub={false}
             setFieldValue={setFieldValue}
           />
           <p className="p-0 m-0 my-1 text-sm">

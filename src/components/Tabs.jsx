@@ -1,30 +1,34 @@
 import React, { useState } from "react";
 import { Tab, Transition } from "@headlessui/react";
+import Button from "./common/Button";
 
-const Tabs = ({ tabs }) => {
+const Tabs = ({ tabs, showSaveButton,onSaveClick }) => {
   const [tabIndex, setTabIndex] = useState(0);
 
   return (
     <Tab.Group selectedIndex={tabIndex} onChange={setTabIndex}>
-      <Tab.List className="flex space-x-1 rounded p-1 border-b bg-purple-400 w-fit px-5">
-        {tabs.map((tab, index) => (
-          <Tab
-            key={index}
-            className={`px-2 mx-2 py-1 text-sm focus:outline-none text-white border-b-2 ${
-              index === tabIndex
-                ? "border-gray-600"
-                : "border-b-2 border-transparent"
-            }`}
-          >
-            <div className="flex items-center gap-1 font-medium">
-              {tab.icon}
-              {tab.title}
-            </div>
-            {/* {index === tabIndex && (
+      <Tab.List className="flex justify-between items-center">
+        <div className="flex space-x-1 rounded p-1 border-b bg-purple-400 w-fit px-5">
+          {tabs.map((tab, index) => (
+            <Tab
+              key={index}
+              className={`px-2 mx-2 py-1 text-sm focus:outline-none text-white border-b-2 ${
+                index === tabIndex
+                  ? "border-gray-600"
+                  : "border-b-2 border-transparent"
+              }`}
+            >
+              <div className="flex items-center gap-1 font-medium">
+                {tab.icon}
+                {tab.title}
+              </div>
+              {/* {index === tabIndex && (
                 <div className="absolute inset-x-0 bottom-0 h-px bg-white"></div>
               )} */}
-          </Tab>
-        ))}
+            </Tab>
+          ))}
+        </div>
+        {showSaveButton && <Button text={"Save"} onClick={()=>onSaveClick && onSaveClick()} />}
       </Tab.List>
       <Tab.Panels>
         {tabs.map((tab, index) => (

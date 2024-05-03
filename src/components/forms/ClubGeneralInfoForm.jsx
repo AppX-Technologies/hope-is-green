@@ -30,29 +30,27 @@ export function ClubGeneralInfoForm({
         {
           name: "clubName",
           type: "name",
-          label: "club_name",
+          label: "Club Name",
         },
         {
           name: "address",
           type: "address",
-          label: "address",
+          label: "Address",
         },
         {
           name: "Date of Association",
           type: "date",
-          label: "date",
+          label: "Date of Foundation",
         },
       ].map((field) => (
         <div key={field.name} className="mb-2">
-          <label className="text-sm mb-1 required">
-            {translate(field.label)}
-          </label>
+          <label className="text-sm mb-1 required">{field.label}</label>
 
           <Field
             name={field.name}
             type={field.type}
             className="w-full px-2 py-1 border rounded shadow-sm text-sm focus:outline-none focus:border-primary"
-            placeholder={translate(field.label)}
+            placeholder={field.label}
           />
           <ErrorMessage
             name={field.name}
