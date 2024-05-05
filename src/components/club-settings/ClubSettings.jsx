@@ -10,9 +10,9 @@ import Label from "../common/Label.jsx";
 export function ClubSettings() {
   const tabs = [
     { title: "General Info", icon: <CiSettings />, content: GeneralInfo },
-    { title: "Leagal", icon: <GiCheckMark />, content: ClubLeagalSettings },
+    { title: "Legal", icon: <GiCheckMark />, content: ClubLeagalSettings },
     {
-      title: "Board member",
+      title: "Board Members",
       icon: <FaFileAlt />,
       content: BoardMemeberSettings,
     },

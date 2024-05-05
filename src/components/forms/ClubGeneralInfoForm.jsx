@@ -66,11 +66,11 @@ export function ClubGeneralInfoForm({
 
         <div className="flex flex-col gap-2 mt-2 mx-2">
           {[
-            {
+            /*      {
               heading:
                 "Should your association be registered and carry the suffix 'e.V.'?",
               name: "eV",
-            },
+            }, */
             {
               heading: "Do new members need to be approved before joining?",
               name: "newMembersApproval",
