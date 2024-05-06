@@ -1,5 +1,5 @@
 import { Menu, Transition } from "@headlessui/react";
-import { Fragment } from "react";
+import { Fragment, useMemo } from "react";
 import { BsPersonCircle } from "react-icons/bs";
 import { IoIosLogOut } from "react-icons/io";
 import { IoPersonCircleOutline } from "react-icons/io5";
@@ -7,12 +7,33 @@ import { LuHome } from "react-icons/lu";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { breadcrumbLabel } from "../../../helpers/constants";
 import useAuth from "../../../hooks/useAuth";
+import Button from "../Button";
 
 const Breadcrumb = ({ baseUrl }) => {
-  const { user,logout } = useAuth();
+  const { user, logout } = useAuth();
   const location = useLocation();
-
   const navigate = useNavigate();
+
+  const clubStatusApprovalMessage = useMemo(() => {
+    let message = null;
+    if (user?.clubApprovalStatus === "Declined") {
+      message = {
+        message: "Your club verification is pending",
+        className: "bg-yellow-100 border border-yellow-300",
+        buttonText: "View Details",
+        route: "/club-verification",
+      };
+    }
+    if (user?.clubApprovalStatus === "Pending") {
+      message = {
+        message: "Your club is not verified, please verify your club",
+        className: "bg-red-100 border border-red-300",
+        buttonText: "Verify",
+        route: "/club-verification",
+      };
+    }
+    return message;
+  }, [user]);
 
   const logoutLocal = () => {
     logout();
@@ -73,6 +94,20 @@ const Breadcrumb = ({ baseUrl }) => {
           )}
         </ol>
       </nav>
+      {Boolean(clubStatusApprovalMessage) && (
+        <div
+          className={`flex gap-4 rounded-md items-center px-2 py-1 ${clubStatusApprovalMessage?.className} `}
+        >
+          <h6 className="text-sm">{clubStatusApprovalMessage?.message}</h6>
+          <Button
+            onClick={() => {
+              navigate(clubStatusApprovalMessage?.route);
+            }}
+            text={clubStatusApprovalMessage?.buttonText}
+          />
+        </div>
+      )}
+
       <Menu as="div" className="relative inline-block text-left">
         <div>
           <Menu.Button className="inline-flex w-full justify-center rounded-md   px-2 py-1 text-sm font-medium bg-primary  hover:bg-green-600 text-white hover:text-violet-10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75">
@@ -85,7 +120,7 @@ const Breadcrumb = ({ baseUrl }) => {
         </div>
         <Transition
           as={Fragment}
-          className='z-10'
+          className="z-10"
           enter="transition ease-out duration-100"
           enterFrom="transform opacity-0 scale-95"
           enterTo="transform opacity-100 scale-100"

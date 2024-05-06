@@ -44,7 +44,7 @@ export function ClubGeneralInfoForm({
         },
       ].map((field) => (
         <div key={field.name} className="mb-2">
-          <label className="text-sm mb-1 required">{field.label}</label>
+          <label className="text-sm mb-1">{field.label}</label>
 
           <Field
             name={field.name}

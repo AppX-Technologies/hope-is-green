@@ -13,6 +13,7 @@ import { FaUsersGear } from "react-icons/fa6";
 import { ADMIN_ROLE, ALL_ROLES, CLUB_OWNER } from "../../../helpers/constants";
 import { HiUserGroup } from "react-icons/hi";
 import useAuth from "../../../hooks/useAuth";
+import { TiInputChecked } from "react-icons/ti";
 
 const NavItem = (props) => {
   const { label, path, role, icon: Icon, pathname } = props;
@@ -72,6 +73,12 @@ const SideNavbar = () => {
         path: "/club-settings",
         roles: [CLUB_OWNER],
         icon: FaUsersGear,
+      },
+      {
+        label: "Club Verification",
+        path: "/club-verification",
+        roles: [CLUB_OWNER],
+        icon: TiInputChecked,
       },
       {
         label: "App Settings",
