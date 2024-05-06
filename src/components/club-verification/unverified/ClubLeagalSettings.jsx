@@ -1,9 +1,9 @@
-import Label from "../common/Label";
+import Label from "../../common/Label";
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import useLocalization from "../../hooks/useLocalization";
-import Select from "../common/Select";
-import { ClubLeagalFormFields } from "../../helpers/constants";
+import useLocalization from "../../../hooks/useLocalization";
+import Select from "../../common/Select";
+import { ClubLeagalFormFields } from "../../../helpers/constants";
 
 const validationSchema = Yup.object().shape({
   clubName: Yup.string().required("Club name is required"),

@@ -96,7 +96,7 @@ export const UserProvider = ({ children }) => {
       return;
     }
     response.role = getCurrentRole(response);
-    setParentUser(response);
+    setParentUser({ ...response, isClubVerified: true });
   };
 
   const login = async (email, password) => {

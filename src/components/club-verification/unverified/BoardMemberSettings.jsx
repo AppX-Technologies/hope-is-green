@@ -1,7 +1,7 @@
 import * as Yup from "yup";
-import Select from "../common/Select";
+import Select from "../../common/Select";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { BoardMemberFormField } from "../../helpers/constants";
+import { BoardMemberFormField } from "../../../helpers/constants";
 
 const validationSchema = Yup.object().shape({
   clubName: Yup.string().required("Club name is required"),

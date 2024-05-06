@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import useAuth from "../../hooks/useAuth";
-import useLocalization from "../../hooks/useLocalization";
+import useAuth from "../../../hooks/useAuth";
+import useLocalization from "../../../hooks/useLocalization";
 import { useNavigate } from "react-router-dom";
 import ClubListItems from "./ClubListItems";
-import Button from "../common/Button";
-import { Stepper } from "../common/Stepper";
-import OrDivider from "../common/OrDivider";
-import SignUpForm from "../forms/SignupForm";
+import Button from "../../common/Button";
+import { Stepper } from "../../common/Stepper";
+import OrDivider from "../../common/OrDivider";
+import SignUpForm from "../../forms/SignupForm";
 
 const clubs = [
   {
@@ -112,8 +112,8 @@ const SignUp = () => {
           <>
             {/* Update for register */}
             <SignUpForm
-              isRegistering={isLoggingIn}
-              signUpError={loginError}
+              showProgress={isLoggingIn}
+              errorMessage={loginError}
               onSubmit={onSubmit}
             />
           </>

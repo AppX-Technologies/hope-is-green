@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import useLocalization from "../../hooks/useLocalization";
-import Button from "./../common/Button";
+import useLocalization from "../../../hooks/useLocalization";
+import Button from "../../common/Button";
 
 function ClubListItems({
   clubs,

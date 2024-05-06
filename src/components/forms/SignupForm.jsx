@@ -19,9 +19,18 @@ const validationSchema = Yup.object().shape({
     .oneOf([Yup.ref("password"), null], "Passwords must match"),
 });
 
+const defaultValues = {
+  name: "",
+  email: "",
+  phone: "",
+  password: "",
+  confirmPassword: "",
+};
+
 const SignUpForm = ({
-  isRegistering,
-  signUpError,
+  initialValues,
+  showProgress,
+  errorMessage,
   onSubmit,
   submitButtonLabel = "register",
 }) => {
@@ -29,13 +38,7 @@ const SignUpForm = ({
 
   return (
     <Formik
-      initialValues={{
-        name: "",
-        email: "",
-        phone: "",
-        password: "",
-        confirmPassword: "",
-      }}
+      initialValues={initialValues || defaultValues}
       validationSchema={validationSchema}
       validateOnBlur={false}
       validateOnChange={false}
@@ -118,16 +121,16 @@ const SignUpForm = ({
             </label>
           </div>
 
-          {isRegistering && (
+          {showProgress && (
             <HorizontalProgress text={`${translate("signing_up")}...`} />
           )}
-          {signUpError && (
+          {errorMessage && (
             <div className="mt-3">
               <div
                 className="bg-red-100 border border-red-400 text-red-700 p-3 rounded relative"
                 role="alert"
               >
-                <span className="block sm:inline text-base">{signUpError}</span>
+                <span className="block sm:inline text-base">{errorMessage}</span>
               </div>
             </div>
           )}
@@ -136,9 +139,9 @@ const SignUpForm = ({
             type="submit"
             size="md"
             text={translate(submitButtonLabel)}
-            disabled={isRegistering}
+            disabled={showProgress}
             className={`mt-4 w-full bg-primary hover:bg-green-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${
-              isRegistering ? "opacity-50 cursor-not-allowed" : ""
+              showProgress ? "opacity-50 cursor-not-allowed" : ""
             }`}
           />
         </Form>
