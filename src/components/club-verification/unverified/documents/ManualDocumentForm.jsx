@@ -32,17 +32,15 @@ export default function ManualDocumentForm({ initialValues, onSubmit }) {
                 {ClubLeagalFormFields.map((group) => (
                   <div
                     key={group.groupName}
-                    className="flex flex-col flex-wrap border shadow-sm rounded-md p-3 mb-4"
+                    className="flex flex-col flex-wrap border shadow-sm bg-gray-50 rounded-md p-3 mb-4"
                   >
-                    <label className="text-lg font-medium mb-2 w-full">
+                    <label className="text-lg font-medium mb-2">
                       {group.groupLabel}
                     </label>
                     <div className="grid sm:grid-cols-1 md:grid-cols-2 xs:grid-cols-1 lg:grid-cols-2 gap-2">
                       {group?.question?.map(({ label, name, type }) => {
                         return (
                           <div key={name}>
-                            {" "}
-                            {/* Set width to 1/3 for three items in a row */}
                             <label className="text-base font-light text-black mb-1">
                               {label}
                             </label>

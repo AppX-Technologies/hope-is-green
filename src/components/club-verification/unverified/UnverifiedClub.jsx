@@ -47,7 +47,8 @@ const UnverifiedClub = ({ clubVerificationStatus }) => {
       <div className="grow h-2 rounded-sm bg-gray-50 border-t relative overflow-auto">
         {currentStep === 1 && (
           <DocumentsType
-            documentType={data?.documentType}
+
+            documentType={data?.documentType || 'no'}
             onSubmit={handleVerificationTypeSubmit}
           />
         )}

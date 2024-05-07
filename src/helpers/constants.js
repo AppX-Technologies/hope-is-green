@@ -113,8 +113,7 @@ export const ClubLeagalFormFields = [
       {
         name: "question2",
         type: "yesNo",
-        label:
-          "Can the funds of the club be used only for statutory purposes?",
+        label: "Can the funds of the club be used only for statutory purposes?",
       },
     ],
   },
@@ -256,75 +255,56 @@ export const BoardMemberFormField = [
   {
     groupName: "Chairperson",
     groupLabel: "Chairperson",
-    question: [
+    details: [
       {
-        name: "Name",
-        type: "text",
-        label: "Name of the Chairperson",
-      },
-      {
-        name: "dateOfBirth",
-        type: "text",
-        label: "Date of Birth of the Chairperson",
-      },
-      {
-        name: "address",
-        type: "text",
-        label: "Address of the Chairperson",
-      },
-    ],
-  },
-  {
-    groupName: "ViceChairperson:",
-    groupLabel: "Vice Chairperson:",
-    question: [
-      {
-        name: "Name",
-        type: "text",
-        label: "Name of the Vice Chairperson",
-      },
-      {
-        name: "dateOfBirth",
-        type: "text",
-        label: "Date of Birth of the Vice Chairperson ",
-      },
-      {
-        name: "address",
-        type: "text",
-        label: "Address of the Vice Chairperson",
-      },
-    ],
-  },
-  {
-    groupName: "OtherBoardMembers:",
-    groupLabel: "Other Board Members:",
-    question: [
-      {
-        name: "SelectedPosition",
-        type: "selectedPosition",
-        label: " Selected Position",
-      },
-      {
-        name: "Name",
+        name: "charimanName",
+        placeholder:'Enter chairperson name',
         type: "text",
         label: "Name",
       },
       {
-        name: "dateOfBirth",
-        type: "text",
-        label: "Date of Birth ",
+        name: "chairmanDateOfBirth",
+        type: "date",
+        label: "Date of Birth",
       },
       {
-        name: "address",
+        name: "chairmanAddress",
         type: "text",
-        label: "address",
+        placeholder:'Enter chairperson address',
+        label: "Address",
       },
     ],
   },
   {
+    groupName: "ViceChairperson",
+    groupLabel: "Vice Chairperson",
+    details: [
+      {
+        name: "viceChairpersonName",
+        type: "text",
+        placeholder:'Enter vice chairperson name',
+        label: "Name",
+      },
+      {
+        name: "viceChairpersonDateOfBirth",
+        type: "date",
+        label: "Date of Birth ",
+      },
+      {
+        name: "viceChairpersonAddress",
+        placeholder:'Enter vice chairperson address',
+        type: "text",
+        label: "Address",
+      },
+    ],
+  },
+];
+
+export const courtRegisteryFields = [
+  {
     groupName: "AdditionalInformation",
     groupLabel: "Additional Information",
-    question: [
+    details: [
       {
         name: "Name",
         type: "text",

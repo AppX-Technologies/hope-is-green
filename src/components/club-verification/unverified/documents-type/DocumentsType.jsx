@@ -8,7 +8,7 @@ const DocumentsType = ({ documentType, onSubmit }) => {
   }, [documentType]);
   return (
     <>
-      <div className="p-2 h-full">
+      <div className="py-2 h-full">
         <h6 className="text-xl font-light">
           Could you please provide us with the club verification you possess?
         </h6>
@@ -22,7 +22,7 @@ const DocumentsType = ({ documentType, onSubmit }) => {
               onChange={() => setValue("yes")}
               checked={value === "yes"}
             />
-            <span className="ml-2">Yes, I have all the documents</span>
+            <span className="ml-2 text-base font-light text-black">Yes, I have all the documents</span>
           </label>
           <label className="flex items-center">
             <input
@@ -33,7 +33,7 @@ const DocumentsType = ({ documentType, onSubmit }) => {
               onChange={() => setValue("no")}
               checked={value === "no"}
             />
-            <span className="ml-2">No, I don't have documents</span>
+            <span className="ml-2 text-base font-light text-black ">No, I don't have documents</span>
           </label>
         </div>
       </div>

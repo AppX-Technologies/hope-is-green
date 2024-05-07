@@ -35,9 +35,7 @@ export const Stepper = ({ currentStep, height, setCurrentStep, steps }) => {
                 !isLastStep && "w-full"
               }`}
             >
-              <div
-                className={`flex items-center w-full`}
-              >
+              <div className={`flex items-center w-full`}>
                 <div className="relative ">
                   <div
                     className={`w-8 h-8 cursor-pointer flex items-center justify-center rounded-full ${
@@ -62,7 +60,13 @@ export const Stepper = ({ currentStep, height, setCurrentStep, steps }) => {
                       </h6>
                     )}
                     {stepLabel && (
-                      <h6 className="text-sm font-medium text-slate-600">
+                      <h6
+                        className={`text-sm font-medium  ${
+                          currentStep >= index + 1
+                            ? "text-green-600"
+                            : "text-slate-600"
+                        }`}
+                      >
                         {stepLabel}
                       </h6>
                     )}
