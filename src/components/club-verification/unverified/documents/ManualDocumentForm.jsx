@@ -1,54 +1,51 @@
-import Label from "../../common/Label";
+import Label from "../../../common/Label";
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import useLocalization from "../../../hooks/useLocalization";
-import Select from "../../common/Select";
-import { ClubLeagalFormFields } from "../../../helpers/constants";
+import useLocalization from "../../../../hooks/useLocalization";
+import Select from "../../../common/Select";
+import { ClubLeagalFormFields } from "../../../../helpers/constants";
+import Button from "../../../common/Button";
 
-const validationSchema = Yup.object().shape({
-  clubName: Yup.string().required("Club name is required"),
-  address: Yup.string().required("Address is required"),
-});
+const validationSchema = Yup.object().shape({});
 
-export function ClubLeagalSettings() {
+const defaultValues = {};
+
+export default function ManualDocumentForm({ initialValues, onSubmit }) {
   return (
-    <div className="border bg-white rounded-md mt-2 lg:w-full sm:w-full md:w-full">
-      <div className="bg-purple-100 px-2 py-2">
-        <h6>Legal Information</h6>
-      </div>
-      <div className="p-2">
-        <Formik
-          initialValues={{
-            clubName: "",
-            address: "",
-          }}
-          validationSchema={validationSchema}
-          validateOnBlur={false}
-          validateOnChange={false}
-          onSubmit={async (values, { setSubmitting }) => {
-            try {
-              await onSubmit(values);
-              setCurrentStep(2);
-            } finally {
-              setSubmitting(false);
-            }
-          }}
-        >
-          {({ isSubmitting, setFieldValue }) => (
+    <div className="pe-2 py-2">
+      <h6 className="font-light text-xl mb-2">Please fill all the details</h6>
+      <Formik
+        initialValues={initialValues || defaultValues}
+        validationSchema={validationSchema}
+        validateOnBlur={false}
+        validateOnChange={false}
+        onSubmit={(values) => {
+          if (onSubmit) {
+            onSubmit(values);
+          }
+        }}
+      >
+        {({ values, setFieldValue }) => {
+          return (
             <Form noValidate>
               <div className="">
                 {ClubLeagalFormFields.map((group) => (
-                  <div key={group.groupName} className="flex flex-wrap mb-4">
-                    <label className="text-lg font-semibold mb-2 w-full">
+                  <div
+                    key={group.groupName}
+                    className="flex flex-col flex-wrap border shadow-sm rounded-md p-3 mb-4"
+                  >
+                    <label className="text-lg font-medium mb-2 w-full">
                       {group.groupLabel}
                     </label>
-                    <div className="grid grid-cols-3 gap-2">
+                    <div className="grid sm:grid-cols-1 md:grid-cols-2 xs:grid-cols-1 lg:grid-cols-2 gap-2">
                       {group?.question?.map(({ label, name, type }) => {
                         return (
-                          <div key={name} className="">
+                          <div key={name}>
                             {" "}
                             {/* Set width to 1/3 for three items in a row */}
-                            <label className="text-sm mb-1">{label}</label>
+                            <label className="text-base font-light text-black mb-1">
+                              {label}
+                            </label>
                             <div className="relative">
                               {type === "text" && (
                                 <Field
@@ -104,10 +101,13 @@ export function ClubLeagalSettings() {
                   </div>
                 ))}
               </div>
+              <div className="w-full flex justify-end p-2 bg-gray-100 ">
+                <Button type="submit" text={"Next"} />
+              </div>
             </Form>
-          )}
-        </Formik>
-      </div>
+          );
+        }}
+      </Formik>
     </div>
   );
 }

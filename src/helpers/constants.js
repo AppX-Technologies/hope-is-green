@@ -81,18 +81,18 @@ export const breadcrumbLabel = {
 export const ClubLeagalFormFields = [
   {
     groupName: "PurposeAssociation",
-    groupLabel: "Purpose of Association",
+    groupLabel: "Purpose of Club",
     question: [
       {
-        name: "association",
+        name: "mainObjective",
         type: "text",
-        label: "What is the main objective of your association?",
+        label: "What is the main objective of your club?",
       },
       {
-        name: "objective",
+        name: "objectiveDescription",
         type: "textarea",
         label:
-          "Describe in detail how your association intends to achieve this objective: ",
+          "Describe in detail how your club intends to achieve this objective: ",
       },
     ],
   },
@@ -101,20 +101,20 @@ export const ClubLeagalFormFields = [
     groupLabel: "Non Profit Activity",
     question: [
       {
-        name: "association",
+        name: "hasProfit",
         type: "yesNo",
-        label: "Does your association operate selflessly and not for profit?",
+        label: "Does your club operate selflessly and not for profit?",
       },
       {
-        name: "association",
+        name: "thirdPartyBenifit",
         type: "yesNo",
         label: "Is it prohibited to financially benefit third parties? ",
       },
       {
-        name: "association",
+        name: "question2",
         type: "yesNo",
         label:
-          "Can the funds of the association be used only for statutory purposes?",
+          "Can the funds of the club be used only for statutory purposes?",
       },
     ],
   },
@@ -123,7 +123,7 @@ export const ClubLeagalFormFields = [
     groupLabel: "Prohibition and Benefits",
     question: [
       {
-        name: "remunerations",
+        name: "question3",
         type: "yesNo",
         label: "Are high remunerations to members prohibited? ",
       },
@@ -134,12 +134,12 @@ export const ClubLeagalFormFields = [
     groupLabel: "Acquisition and Termination of Membership",
     question: [
       {
-        name: "conditionsMet",
+        name: "question4",
         type: "text",
         label: "Who can become a member and what conditions must be met? ",
       },
       {
-        name: "conditionsMet",
+        name: "question5",
         type: "Written/Electronic",
         label: "How can interested parties apply for membership? ",
       },
@@ -182,12 +182,12 @@ export const ClubLeagalFormFields = [
 
   {
     groupName: "Organs",
-    groupLabel: "Organs of the Association",
+    groupLabel: "Organs of the Club",
     question: [
       {
-        name: "association",
+        name: "question6",
         type: "text",
-        label: "What are the organs of your association?",
+        label: "What are the organs of your club?",
       },
     ],
   },
@@ -243,10 +243,10 @@ export const ClubLeagalFormFields = [
     groupLabel: "Dissolution",
     question: [
       {
-        name: "office",
+        name: "dissolved",
         type: "textarea",
         label:
-          "How can the association be dissolved and what happens to the association's assets?",
+          "How can the club be dissolved and what happens to the club's assets?",
       },
     ],
   },

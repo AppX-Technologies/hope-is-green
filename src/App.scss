@@ -13,6 +13,11 @@ body,
   font-family: "Jost", sans-serif;
 }
 
+* {
+  scrollbar-color: #c8c8c8 #f0f0f0b9; /* thumb and track */
+  scrollbar-width: thin; /* 'auto', 'thin', 'none' */
+}
+
 .a {
   cursor: pointer;
   text-decoration: underline;

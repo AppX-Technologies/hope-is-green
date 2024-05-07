@@ -16,7 +16,7 @@ const Breadcrumb = ({ baseUrl }) => {
 
   const clubStatusApprovalMessage = useMemo(() => {
     let message = null;
-    if (user?.clubApprovalStatus === "Declined") {
+    if (user?.clubVerificationStatus === "Pending") {
       message = {
         message: "Your club verification is pending",
         className: "bg-yellow-100 border border-yellow-300",
@@ -24,7 +24,7 @@ const Breadcrumb = ({ baseUrl }) => {
         route: "/club-verification",
       };
     }
-    if (user?.clubApprovalStatus === "Pending") {
+    if (user?.clubVerificationStatus === "Declined") {
       message = {
         message: "Your club is not verified, please verify your club",
         className: "bg-red-100 border border-red-300",

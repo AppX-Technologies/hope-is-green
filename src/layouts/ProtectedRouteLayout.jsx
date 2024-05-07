@@ -12,10 +12,10 @@ const ProtectedRouteLayout = ({ headerVisible = true }) => {
         style={{ height: "100vh" }}
       >
         {headerVisible && <SideNavbar />}
-        <div className="grow p-2 flex flex-col gap-2">
+        <div className="grow flex flex-col gap-2">
           <Breadcrumb baseUrl={"/"} />
           {/* <div className="grow bg-[#ebfaf3] rounded p-4 overflow-y-auto"> */}
-          <div className="grow bg-[#f6fbf9] rounded p-4 overflow-y-auto">
+          <div className="grow bg-[#f6fbf9] rounded p-2 overflow-y-auto">
             <Outlet />
           </div>
         </div>
