@@ -21,12 +21,13 @@ const Breadcrumb = ({ baseUrl }) => {
     if (user?.clubVerificationStatus === "Pending") {
       message = {
         message: "Your club verification is pending",
-        className: "bg-yellow-100 border border-yellow-300",
+        className: "bg-yellow-50 border border-yellow-300",
         buttonText: "View Details",
         route: "/club-verification",
       };
-    }
-    if (user?.clubVerificationStatus === "Declined") {
+    } else if (user?.clubVerificationStatus === "Verified") {
+      message = null;
+    } else {
       message = {
         message: "Your club is not verified, please verify your club",
         className: "bg-red-100 border border-red-300",

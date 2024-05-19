@@ -48,7 +48,7 @@ const DocumentUploader = ({ documents, onPreviousClick, onNextClick }) => {
       <div className="flex gap-2 w-full justify-end">
         <Button text={"Previous"} onClick={onPreviousClick} />
         <Button
-          text={"Next"}
+          text={"Save"}
           onClick={() => onNextClick({ documents: files })}
         />
       </div>

@@ -6,7 +6,7 @@ import DocumentsType from "./documents-type/DocumentsType";
 import Documents from "./documents/Documents";
 import BoardMember from "./board-members/BoardMember";
 
-const UnverifiedClub = ({ clubVerificationStatus }) => {
+const UnverifiedClub = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [data, setData] = useState({ documentType: "yes" });
 
@@ -42,7 +42,9 @@ const UnverifiedClub = ({ clubVerificationStatus }) => {
 
   const handleDocumentsUploadSubmit = (documents) => {
     setData({ ...data, ...documents });
-    setCurrentStep(3);
+    if (data?.documentType === "no") {
+      setCurrentStep(3);
+    }
   };
 
   const onPreviousClick = () => {
@@ -72,7 +74,12 @@ const UnverifiedClub = ({ clubVerificationStatus }) => {
             onNextClick={handleDocumentsUploadSubmit}
           />
         )}
-        {currentStep === 3 && <BoardMember documentType={data?.documentType} />}
+        {currentStep === 3 && data?.documentType === "no" && (
+          <BoardMember
+            documentType={data?.documentType}
+            onPreviousClick={onPreviousClick}
+          />
+        )}
       </div>
     </div>
   );

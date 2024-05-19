@@ -10,7 +10,7 @@ const tabs = [
 const ClubVerified = () => {
   return (
     <div>
-      <div className="border rounded-md flex justify-center gap-4 items-center p-8 bg-green-50 shadow-md">
+      <div className="border rounded-md flex gap-4 items-center p-8 bg-green-50 shadow-md">
         <RiVerifiedBadgeFill className="text-green-600" size={70} />
         <div className="">
           <h6 className="text-4xl leading-9 font-medium text-green-600">
@@ -22,7 +22,7 @@ const ClubVerified = () => {
           </h6>
         </div>
       </div>
-      <Tabs className='mt-2' showSaveButton tabs={tabs} />
+      <Tabs className='mt-4' showSaveButton tabs={tabs} />
     </div>
   );
 };

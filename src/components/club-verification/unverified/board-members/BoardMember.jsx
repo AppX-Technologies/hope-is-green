@@ -9,7 +9,7 @@ const validationSchema = Yup.object().shape({});
 
 const defaultValues = {};
 
-export default function BoardMember({ initialValues }) {
+export default function BoardMember({ initialValues,onPreviousClick,onNextClick }) {
   return (
     <div className="p-2">
       <h6 className="font-normal text-xl">Provide Board Member Details</h6>
@@ -173,6 +173,7 @@ export default function BoardMember({ initialValues }) {
                 </div>
               </div>
               <div className="w-full flex gap-2 justify-end">
+              <Button text={"Previous"} onClick={onPreviousClick} />
                 <Button type="submit" text={"Submit"} />
               </div>
             </Form>
