@@ -11,19 +11,21 @@ const defaultValues = {};
 
 export default function BoardMember({ initialValues }) {
   return (
-    <div className="pe-2 py-2">
-      <h6 className="font-light text-xl mb-2">Board Members</h6>
+    <div className="p-2">
+      <h6 className="font-normal text-xl">Provide Board Member Details</h6>
+      <h6 className="text-sm font-light">
+        Please provide us all the board member details. Please be as
+        accurate as possible, we will use these details to legally register your
+        club
+      </h6>{" "}
       <Formik
         initialValues={initialValues || defaultValues}
         validationSchema={validationSchema}
         validateOnBlur={false}
         validateOnChange={false}
         onSubmit={async (values, { setSubmitting }) => {
-          try {
-            await onSubmit(values);
-            setCurrentStep(2);
-          } finally {
-            setSubmitting(false);
+          if (onNextClick) {
+            onNextClick(values);
           }
         }}
       >
@@ -31,7 +33,7 @@ export default function BoardMember({ initialValues }) {
           console.log(values, "values");
           return (
             <Form noValidate>
-              <div className="">
+              <div className="my-2 border-t pt-4">
                 {BoardMemberFormField.map((group) => (
                   <div
                     key={group.groupName}
@@ -169,6 +171,9 @@ export default function BoardMember({ initialValues }) {
                     )}
                   />
                 </div>
+              </div>
+              <div className="w-full flex gap-2 justify-end">
+                <Button type="submit" text={"Submit"} />
               </div>
             </Form>
           );

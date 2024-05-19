@@ -14,7 +14,7 @@ const ClubVerification = () => {
   return (
     <div className="w-full h-full flex flex-col">
       <Label label={"Club Verification"} size={"xl"} className={"font-bold"} />
-      <div className="bg-white grow p-4 rounded shadow-md mt-4 w-full">
+      <div className="bg-white grow p-2 rounded shadow-md mt-4 w-full">
         {clubVerificationStatus === "Verified" ? (
           <ClubVerified />
         ) : (

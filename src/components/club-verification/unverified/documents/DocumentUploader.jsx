@@ -1,34 +1,57 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ImageUploader from "../../../common/image-uploader/ImageUploader";
+import FileUploader from "../../../common/FileUploader";
+import Button from "../../../common/Button";
+import { BiCheckSquare } from "react-icons/bi";
 
-const DocumentUploader = () => {
-  const [images, setImages] = useState([]);
+const documentCategory = [
+  {
+    key: "legal",
+    title: "Legal Documents",
+  },
+  {
+    key: "boardMembers",
+    title: "Board Members",
+  },
+];
 
-  const handleAddImage = () => {
-    const fileInput = document.createElement("input");
-    fileInput.type = "file";
-    fileInput.accept = "image/*";
-    fileInput.onchange = (e) => {
-      const file = e.target.files[0];
-      if (file && file.type.substr(0, 5) === "image") {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          setImages([...images, e.target.result]);
-        };
-        reader.readAsDataURL(file);
-      } else {
-        console.error("File is not an image.");
-      }
-    };
-    fileInput.click();
-  };
-  const handleDeleteImage = (index) => {
-    setImages(images.filter((_, i) => i !== index));
-  };
+const DocumentUploader = ({ documents, onPreviousClick, onNextClick }) => {
+  const [files, setFiles] = useState({});
+
+  useEffect(() => {
+    setFiles(documents);
+  }, [documents]);
   return (
-    <div className="py-2">
-      <h6 className="font-light text-xl mb-2">Upload your documents</h6>
-      <ImageUploader images={images} onAddImage={handleAddImage} onDeleteImage={handleDeleteImage} />
+    <div className="h-full flex flex-col p-2">
+      <h6 className="font-normal text-xl">Upload your documents</h6>
+      <h6 className="text-sm font-light">
+        Please upload all the verification documents related to your club. We
+        will review and verify the documents uploaded
+      </h6>
+      <div className="grow mt-2 border-t pt-2">
+        {documentCategory?.map(({ key, title }) => {
+          return (
+            <div key={key}>
+              <div className="flex items-center gap-2 mb-2">
+                <BiCheckSquare /> <h6 className="text-lg ">{title}</h6>
+              </div>
+              <div className="ms-6">
+                <FileUploader
+                  files={files?.[key] || []}
+                  onChange={(data) => setFiles({ ...files, [key]: data })}
+                />
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      <div className="flex gap-2 w-full justify-end">
+        <Button text={"Previous"} onClick={onPreviousClick} />
+        <Button
+          text={"Next"}
+          onClick={() => onNextClick({ documents: files })}
+        />
+      </div>
     </div>
   );
 };

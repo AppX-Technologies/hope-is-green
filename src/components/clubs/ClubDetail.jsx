@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import Tabs from "../Tabs";
+import Tabs from "../common/Tabs";
 import { FaUsers, FaFileAlt } from "react-icons/fa";
 import ClubMembers from "./ClubMembers";
 import ClubDocuments from "./ClubDocuments";

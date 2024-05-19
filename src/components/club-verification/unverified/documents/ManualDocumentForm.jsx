@@ -10,25 +10,34 @@ const validationSchema = Yup.object().shape({});
 
 const defaultValues = {};
 
-export default function ManualDocumentForm({ initialValues, onSubmit }) {
+export default function ManualDocumentForm({
+  initialValues,
+  onPreviousClick,
+  onNextClick,
+}) {
   return (
-    <div className="pe-2 py-2">
-      <h6 className="font-light text-xl mb-2">Please fill all the details</h6>
+    <div className="p-2">
+      <h6 className="font-normal text-xl">Provide Club Details</h6>
+      <h6 className="text-sm font-light">
+        Please provide us all the details related to your club. Please be as
+        accurate as possible, we will use these details to legally register your
+        club
+      </h6>
       <Formik
         initialValues={initialValues || defaultValues}
         validationSchema={validationSchema}
         validateOnBlur={false}
         validateOnChange={false}
         onSubmit={(values) => {
-          if (onSubmit) {
-            onSubmit(values);
+          if (onNextClick) {
+            onNextClick(values);
           }
         }}
       >
         {({ values, setFieldValue }) => {
           return (
             <Form noValidate>
-              <div className="">
+              <div className="my-2 border-t pt-4">
                 {ClubLeagalFormFields.map((group) => (
                   <div
                     key={group.groupName}
@@ -99,7 +108,8 @@ export default function ManualDocumentForm({ initialValues, onSubmit }) {
                   </div>
                 ))}
               </div>
-              <div className="w-full flex justify-end p-2 bg-gray-100 ">
+              <div className="w-full flex gap-2 justify-end">
+                <Button text={"Previous"} onClick={onPreviousClick} />
                 <Button type="submit" text={"Next"} />
               </div>
             </Form>
