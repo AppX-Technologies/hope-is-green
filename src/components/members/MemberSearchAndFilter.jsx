@@ -2,6 +2,7 @@ import React from "react";
 import InputField from "../common/form-controls/InputField";
 import TextDropdownToggle from "../common/TextDropdownToggle";
 import { ALL_MEMBER_STATUS, ALL_ROLES } from "../../helpers/constants";
+import SelectField from "../common/form-controls/SelectField";
 
 const MemberSearchAndFilter = () => {
   return (
@@ -9,15 +10,17 @@ const MemberSearchAndFilter = () => {
       <div className="grow">
         <InputField placeholder={"Quick search..."} />
       </div>
-      <TextDropdownToggle
-        hint="Select Role"
-        options={ALL_ROLES}
-        onOptionClick={() => {}}
+      <SelectField
+        isMulti={false}
+        items={ALL_ROLES?.map((r) => ({ label: r, value: r }))}
+        onChange={() => {}}
+        placeholder="Select role"
       />
-      <TextDropdownToggle
-        hint="Select Status"
-        options={ALL_MEMBER_STATUS}
-        onOptionClick={() => {}}
+      <SelectField
+        isMulti={false}
+        items={ALL_MEMBER_STATUS?.map((r) => ({ label: r, value: r }))}
+        onChange={() => {}}
+        placeholder="Select status"
       />
     </div>
   );

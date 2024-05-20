@@ -1,10 +1,11 @@
 import * as Yup from "yup";
 import Select from "../../../common/Select";
 import { Formik, Form, Field, ErrorMessage, FieldArray } from "formik";
-import { BoardMemberFormField } from "../../../../helpers/constants";
+import { BOARD_MEMBER_ROLES, BoardMemberFormField } from "../../../../helpers/constants";
 import Button from "../../../common/Button";
 import { BiTrash } from "react-icons/bi";
 import FormButtons from "../../common/FormButtons";
+import SelectField from "../../../common/form-controls/SelectField";
 
 const validationSchema = Yup.object().shape({});
 
@@ -113,7 +114,27 @@ export default function BoardMember({
                                   onClick={() => arrayHelpers.remove(index)} // remove a friend from the list
                                 />
                               </div>
-                              <div className="grow grid sm:grid-cols-1 md:grid-cols-3 xs:grid-cols-1 lg:grid-cols-3 gap-2">
+                              <div className="grow grid sm:grid-cols-1 md:grid-cols-4 xs:grid-cols-1 lg:grid-cols-4 gap-2">
+                                <div className="relative">
+                                  <label className="text-sm mb-1">Role</label>
+                                  <SelectField
+                                    isMulti={false}
+                                    items={BOARD_MEMBER_ROLES?.map((r) => ({
+                                      label: r,
+                                      value: r,
+                                    }))}
+                                    selectedItems={values?.otherMembers?.[index]?.role}
+                                    onChange={(role) => setFieldValue(`otherMembers.${index}.role`,role)}
+                                    placeholder="Select role"
+                                    closeMenuOnSelect
+                                  />
+
+                                  <ErrorMessage
+                                    name={`otherMembers.${index}.name`}
+                                    component="div"
+                                    className="text-danger text-xs absolute bottom-0 left-0"
+                                  />
+                                </div>
                                 <div className="relative">
                                   <label className="text-sm mb-1">Name</label>
                                   <Field
@@ -176,7 +197,7 @@ export default function BoardMember({
                   />
                 </div>
               </div>
-             <FormButtons onPreviousClick={onPreviousClick} />
+              <FormButtons onPreviousClick={onPreviousClick} />
             </Form>
           );
         }}

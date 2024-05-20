@@ -5,6 +5,8 @@ export const BRAND_NAME = "Ethica CRM";
 export const RUJUM_APP_URL = process.env.REACT_APP_MAIN_APP_URL;
 export const CRM_APP_URL = process.env.PUBLIC_URL;
 
+export const BOARD_MEMBER_ROLES = ["Moderator", "Treasurer", "Administrator"];
+
 export const ENDPOINTS = {
   //Users
   LOGIN: "/users/login",
@@ -258,7 +260,7 @@ export const BoardMemberFormField = [
     details: [
       {
         name: "charimanName",
-        placeholder:'Enter chairperson name',
+        placeholder: "Enter chairperson name",
         type: "text",
         label: "Name",
       },
@@ -270,7 +272,7 @@ export const BoardMemberFormField = [
       {
         name: "chairmanAddress",
         type: "text",
-        placeholder:'Enter chairperson address',
+        placeholder: "Enter chairperson address",
         label: "Address",
       },
     ],
@@ -282,7 +284,7 @@ export const BoardMemberFormField = [
       {
         name: "viceChairpersonName",
         type: "text",
-        placeholder:'Enter vice chairperson name',
+        placeholder: "Enter vice chairperson name",
         label: "Name",
       },
       {
@@ -292,7 +294,7 @@ export const BoardMemberFormField = [
       },
       {
         name: "viceChairpersonAddress",
-        placeholder:'Enter vice chairperson address',
+        placeholder: "Enter vice chairperson address",
         type: "text",
         label: "Address",
       },
