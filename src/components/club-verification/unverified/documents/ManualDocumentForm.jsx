@@ -5,6 +5,7 @@ import useLocalization from "../../../../hooks/useLocalization";
 import Select from "../../../common/Select";
 import { ClubLeagalFormFields } from "../../../../helpers/constants";
 import Button from "../../../common/Button";
+import FormButtons from "../../common/FormButtons";
 
 const validationSchema = Yup.object().shape({});
 
@@ -12,7 +13,6 @@ const defaultValues = {};
 
 export default function ManualDocumentForm({
   initialValues,
-  onPreviousClick,
   onNextClick,
 }) {
   return (
@@ -41,7 +41,7 @@ export default function ManualDocumentForm({
                 {ClubLeagalFormFields.map((group) => (
                   <div
                     key={group.groupName}
-                    className="flex flex-col flex-wrap border shadow-sm bg-gray-50 rounded-md p-3 mb-4"
+                    className="flex flex-col flex-wrap border shadow-sm bg-gray-100 bg-opacity-65 rounded-md p-3 mb-4"
                   >
                     <label className="text-lg font-medium mb-2">
                       {group.groupLabel}
@@ -108,10 +108,7 @@ export default function ManualDocumentForm({
                   </div>
                 ))}
               </div>
-              <div className="w-full flex gap-2 justify-end">
-                <Button text={"Previous"} onClick={onPreviousClick} />
-                <Button type="submit" text={"Next"} />
-              </div>
+              <FormButtons />
             </Form>
           );
         }}

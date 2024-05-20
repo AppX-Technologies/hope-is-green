@@ -4,19 +4,23 @@ import { Formik, Form, Field, ErrorMessage, FieldArray } from "formik";
 import { BoardMemberFormField } from "../../../../helpers/constants";
 import Button from "../../../common/Button";
 import { BiTrash } from "react-icons/bi";
+import FormButtons from "../../common/FormButtons";
 
 const validationSchema = Yup.object().shape({});
 
 const defaultValues = {};
 
-export default function BoardMember({ initialValues,onPreviousClick,onNextClick }) {
+export default function BoardMember({
+  initialValues,
+  onPreviousClick,
+  onNextClick,
+}) {
   return (
     <div className="p-2">
       <h6 className="font-normal text-xl">Provide Board Member Details</h6>
       <h6 className="text-sm font-light">
-        Please provide us all the board member details. Please be as
-        accurate as possible, we will use these details to legally register your
-        club
+        Please provide us all the board member details. Please be as accurate as
+        possible, we will use these details to legally register your club
       </h6>{" "}
       <Formik
         initialValues={initialValues || defaultValues}
@@ -37,7 +41,7 @@ export default function BoardMember({ initialValues,onPreviousClick,onNextClick 
                 {BoardMemberFormField.map((group) => (
                   <div
                     key={group.groupName}
-                    className="flex flex-col flex-wrap border shadow-sm bg-gray-50 rounded-md p-3 mb-4"
+                    className="flex flex-col flex-wrap border shadow-sm bg-gray-100 bg-opacity-65 rounded-md p-3 mb-4"
                   >
                     <label className="text-lg font-medium mb-2">
                       {group.groupLabel}
@@ -172,10 +176,7 @@ export default function BoardMember({ initialValues,onPreviousClick,onNextClick 
                   />
                 </div>
               </div>
-              <div className="w-full flex gap-2 justify-end">
-              <Button text={"Previous"} onClick={onPreviousClick} />
-                <Button type="submit" text={"Submit"} />
-              </div>
+             <FormButtons onPreviousClick={onPreviousClick} />
             </Form>
           );
         }}

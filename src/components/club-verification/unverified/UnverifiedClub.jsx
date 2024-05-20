@@ -5,6 +5,8 @@ import { TbDevicesQuestion } from "react-icons/tb";
 import DocumentsType from "./documents-type/DocumentsType";
 import Documents from "./documents/Documents";
 import BoardMember from "./board-members/BoardMember";
+import ManualDocumentForm from "./documents/ManualDocumentForm";
+import DocumentUploader from "./documents/DocumentUploader";
 
 const UnverifiedClub = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -13,15 +15,9 @@ const UnverifiedClub = () => {
   const verificationSteps = useMemo(() => {
     let steps = [
       {
-        Icon: TbDevicesQuestion,
-        showStepName: true,
-        stepLabel: "Verification Type",
-        showStatus: true,
-      },
-      {
         Icon: IoDocumentTextOutline,
         showStepName: true,
-        stepLabel: "Documents",
+        stepLabel: "Additional Information",
         showStatus: true,
       },
       {
@@ -29,22 +25,27 @@ const UnverifiedClub = () => {
         showStepName: true,
         stepLabel: "Board Members",
         showStatus: true,
-        hide: data?.documentType === "yes",
+      },
+      {
+        Icon: TbDevicesQuestion,
+        showStepName: true,
+        stepLabel: "Documents",
+        showStatus: true,
       },
     ];
     return steps?.filter((s) => !s?.hide);
   }, [data]);
 
-  const handleVerificationTypeSubmit = (verificationData) => {
-    setData({ ...data, ...verificationData });
+  const handleDocumentsUploadSubmit = (documents) => {
+    setData({ ...data, ...documents });
+  };
+
+  const handleAdditionalInformationSubmit = (info) => {
     setCurrentStep(2);
   };
 
-  const handleDocumentsUploadSubmit = (documents) => {
-    setData({ ...data, ...documents });
-    if (data?.documentType === "no") {
-      setCurrentStep(3);
-    }
+  const handleBoardMemberSubmit = (members) => {
+    setCurrentStep(3);
   };
 
   const onPreviousClick = () => {
@@ -59,24 +60,22 @@ const UnverifiedClub = () => {
         currentStep={currentStep}
         // setCurrentStep={setCurrentStep}
       />
-      <div className="grow rounded-sm h-1 bg-gray-100 bg-opacity-65 border-t mt-9 overflow-auto">
+      <div className="grow rounded-sm h-1 border-t mt-9 overflow-auto">
         {currentStep === 1 && (
-          <DocumentsType
-            documentType={data?.documentType || "no"}
-            onNextClick={handleVerificationTypeSubmit}
+          <ManualDocumentForm
+            onNextClick={handleAdditionalInformationSubmit}
           />
         )}
         {currentStep === 2 && (
-          <Documents
-            data={data}
-            documentType={data?.documentType}
+          <BoardMember
             onPreviousClick={onPreviousClick}
-            onNextClick={handleDocumentsUploadSubmit}
+            onNextClick={handleBoardMemberSubmit}
           />
         )}
-        {currentStep === 3 && data?.documentType === "no" && (
-          <BoardMember
-            documentType={data?.documentType}
+        {currentStep === 3 && (
+          <DocumentUploader
+            documents={data?.documents}
+            onNextClick={handleDocumentsUploadSubmit}
             onPreviousClick={onPreviousClick}
           />
         )}

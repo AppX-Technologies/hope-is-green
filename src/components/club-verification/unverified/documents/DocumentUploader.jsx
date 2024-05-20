@@ -3,6 +3,7 @@ import ImageUploader from "../../../common/image-uploader/ImageUploader";
 import FileUploader from "../../../common/FileUploader";
 import Button from "../../../common/Button";
 import { BiCheckSquare } from "react-icons/bi";
+import FormButtons from "../../common/FormButtons";
 
 const documentCategory = [
   {
@@ -45,13 +46,12 @@ const DocumentUploader = ({ documents, onPreviousClick, onNextClick }) => {
           );
         })}
       </div>
-      <div className="flex gap-2 w-full justify-end">
-        <Button text={"Previous"} onClick={onPreviousClick} />
-        <Button
-          text={"Save"}
-          onClick={() => onNextClick({ documents: files })}
-        />
-      </div>
+
+      <FormButtons
+        nextButtonLabel="Save"
+        onNextClick={() => onNextClick({ documents: files })}
+        onPreviousClick={onPreviousClick}
+      />
     </div>
   );
 };
