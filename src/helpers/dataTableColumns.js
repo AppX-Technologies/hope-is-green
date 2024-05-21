@@ -1,10 +1,11 @@
 import { AiOutlineClose } from "react-icons/ai";
-import { FaRegTrashAlt } from "react-icons/fa";
+import { FaPen, FaRegTrashAlt } from "react-icons/fa";
 import { GoCheck } from "react-icons/go";
 import Progressbar from "../components/common/Progressbar";
 import TextDropdownToggle from "../components/common/TextDropdownToggle";
 import { ALL_MEMBER_STATUS, ALL_ORDER_STATUS } from "./constants";
 import { isAdmin } from "./session";
+import { BiPencil } from "react-icons/bi";
 
 const MemberStatusColor = {
   Active: "green",
@@ -170,6 +171,49 @@ export const getMemberColumns = (
       ),
     },
   ].filter((column) => !hiddenColumns?.includes(column.key));
+
+  return allLabels;
+};
+
+export const getDocumentTypesColumns = (onEditClick,onDeleteClick) => {
+  const allLabels = [
+    {
+      key: "image",
+      label: "Image",
+      cellRenderer: (dT) => (
+        <div className="flex justify-center gap-2">
+          <img
+            src={dT?.demo}
+            alt="demo"
+            className="rounded-md h-9 w-12 cursor-pointer"
+          />
+        </div>
+      ),
+    },
+    {
+      key: "documentType",
+      label: "Document Type",
+      type: "text",
+      align: "left",
+      width: 100,
+    },
+    {
+      key: "view",
+      label: "Actions",
+      cellRenderer: (dT) => (
+        <div className="flex justify-center gap-2">
+          <FaPen
+            className="text-primary cursor-pointer"
+            onClick={() => onEditClick(dT)}
+          />
+           <FaRegTrashAlt
+            className="text-danger cursor-pointer"
+            onClick={() => onDeleteClick(dT)}
+          />
+        </div>
+      ),
+    },
+  ];
 
   return allLabels;
 };
