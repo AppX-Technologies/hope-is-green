@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import ImageUploader from "../../../common/image-uploader/ImageUploader";
 import FileUploader from "../../../common/FileUploader";
 import Button from "../../../common/Button";
-import { BiCheckSquare } from "react-icons/bi";
+import { BiCheckSquare, BiDownload } from "react-icons/bi";
 import FormButtons from "../../common/FormButtons";
+import { FcDocument } from "react-icons/fc";
+import { GrDocument } from "react-icons/gr";
 
 const documentCategory = [
   {
@@ -32,9 +34,15 @@ const DocumentUploader = ({ documents, onPreviousClick, onNextClick }) => {
       <div className="grow mt-2 border-t pt-2">
         {documentCategory?.map(({ key, title }) => {
           return (
-            <div key={key}>
+            <div key={key} className="mb-3">
               <div className="flex items-center gap-2 mb-2">
-                <BiCheckSquare /> <h6 className="text-lg ">{title}</h6>
+                <GrDocument /> <h6 className="text-lg ">{title}</h6>{" "}
+                <h6
+                  class="flex items-center  text-blue-600 hover:underline cursor-pointer text-xs mx-3"
+                  download
+                >
+                  Download Template <BiDownload className="mx-1"/>
+                </h6>
               </div>
               <div className="ms-6">
                 <FileUploader
