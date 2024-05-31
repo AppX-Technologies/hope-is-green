@@ -1,5 +1,6 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
+import { GrClose } from "react-icons/gr";
 
 export default function AppModal({
   show,
@@ -9,6 +10,14 @@ export default function AppModal({
   TitleIcon,
   title,
 }) {
+  // Define size classes for the modal
+  const sizeClasses = {
+    sm: "max-w-xl",
+    md: "max-w-3xl",
+    lg: "max-w-6xl",
+    fullscreen: "max-w-full h-full p-0 rounded-none",
+  };
+
   return (
     <Transition appear show={show} as={Fragment}>
       <Dialog as="div" className="relative z-[100]" onClose={onHide}>
@@ -25,13 +34,7 @@ export default function AppModal({
         </Transition.Child>
 
         <div className="fixed inset-0 overflow-y-auto">
-          <div
-            className={`flex h-${
-              !size || size === "fullscreen" ? "full" : "auto"
-            } min-h-full items-center justify-center p-${
-              !size || size === "fullscreen" ? "0" : "4"
-            } text-center`}
-          >
+          <div className="flex min-h-full items-center justify-center p-4 text-center">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -42,20 +45,20 @@ export default function AppModal({
               leaveTo="opacity-0 scale-95"
             >
               <Dialog.Panel
-                className={`w-full max-w-${
-                  size === "sm" ? "xl" : size === "md" ? "3xl" : "full"
-                } transform overflow-hidden min-h-full rounded-${
-                  !size || size === "fullscreen" ? "0" : "md"
-                } bg-white p-2 text-left align-middle shadow-xl transition-all`}
+                className={`w-full transform overflow-hidden rounded-md bg-white p-2 text-left align-middle shadow-xl transition-all ${sizeClasses[size]}`}
               >
                 <Dialog.Title
                   as="h3"
                   className="text-lg font-medium leading-6 text-gray-900"
                 >
+                  <div className="flex justify-between items-center">
                   <div className="flex gap-2 items-center">
                     {TitleIcon && <TitleIcon />}
                     {title}
                   </div>
+                  <GrClose className="cursor-pointer" onClick={onHide}/>
+                  </div>
+                  
                 </Dialog.Title>
                 <hr className="my-1" />
                 <div className="mt-2">{children}</div>
