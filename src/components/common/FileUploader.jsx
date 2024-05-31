@@ -1,6 +1,6 @@
 import React from "react";
 
-const FileUploader = ({ files, onChange }) => {
+const FileUploader = ({ files, onChange,multiple=false }) => {
   const handleFileChange = (event) => {
     const newFiles = Array.from(event.target.files);
     onChange([...files, ...newFiles]);
@@ -19,6 +19,7 @@ const FileUploader = ({ files, onChange }) => {
                      file:bg-purple-50 file:text-gray-500
                      hover:file:bg-purple-100"
           onChange={handleFileChange}
+          multiple={multiple}
         />
       </label>
       <div className="flex flex-col gap-2 my-2">
