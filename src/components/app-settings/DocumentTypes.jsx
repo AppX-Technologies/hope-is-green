@@ -4,6 +4,7 @@ import DataTable from "../common/data-table/DataTable";
 import AppModal from "../AppModal";
 import AddEditDataTypeModal from "./AddEditDataTypeModal";
 import AlertModal from "../common/AlertModal";
+import Button from "../common/Button";
 const data = [
   {
     _id: 231243,
@@ -34,7 +35,13 @@ const DocumentTypes = () => {
 
   return (
     <div className="mt-4">
-      <h6 className="font-normal text-gray-500">Please add documents type</h6>
+      <div className="flex justify-between items-center">
+        <h6 className="font-normal text-gray-500">Please add documents type</h6>
+        <Button
+          text={"Add New"}
+          onClick={() => setAddEditModalMeta({ data: {} })}
+        />
+      </div>
       <hr className="my-1" />
       <div>
         <DataTable
@@ -47,6 +54,7 @@ const DocumentTypes = () => {
         />
       </div>
       <AddEditDataTypeModal
+      data={addEditModalMeta?.data}
         show={Boolean(addEditModalMeta)}
         onHide={() => setAddEditModalMeta(null)}
       />
@@ -54,7 +62,7 @@ const DocumentTypes = () => {
         onHide={() => setDeleteModalMeta(null)}
         show={Boolean(deleteModalMeta)}
         text={"Are your sure you want to delete this document type?"}
-        onContinue={()=>{}}
+        onContinue={() => {}}
       />
     </div>
   );

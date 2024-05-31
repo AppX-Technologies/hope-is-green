@@ -6,6 +6,11 @@ import ClubMembers from "./ClubMembers";
 import ClubDocuments from "./ClubDocuments";
 import Select from "../common/Select";
 import { MdLocationPin } from "react-icons/md";
+import SelectField from "../common/form-controls/SelectField";
+import { BiMessageSquareDetail } from "react-icons/bi";
+import { HiUserGroup } from "react-icons/hi";
+import ClubDetails from "./ClubDetails";
+import ClubBoardMembers from "./ClubBoardMembers";
 
 const ClubDetail = () => {
   const location = useLocation();
@@ -15,7 +20,9 @@ const ClubDetail = () => {
 
   const tabs = [
     { title: "Members", icon: <FaUsers />, content: ClubMembers },
+    { title: "Details", icon: <BiMessageSquareDetail />, content: ClubDetails },
     { title: "Documents", icon: <FaFileAlt />, content: ClubDocuments },
+    { title: "Board Member", icon: <HiUserGroup />, content: ClubBoardMembers },
   ];
 
   return (
@@ -30,7 +37,9 @@ const ClubDetail = () => {
             />
             <div>
               <p className="text-xl font-semibold">{clubDetail?.name}</p>
-              <p className="text-gray-600 text-sm text-center">Active members: 30</p>
+              <p className="text-gray-600 text-sm text-center">
+                Active members: 30
+              </p>
             </div>
           </div>
           <div className="bg-white p-4 flex gap-3 rounded items-center shadow-md h-full">
@@ -52,9 +61,15 @@ const ClubDetail = () => {
               <MdLocationPin />
               <p>{clubDetail?.location}</p>
             </div>
-            <p className="bg-primary/20 w-20 px-3 py-1 text-sm rounded-full text-primary text-center">
-              Active
-            </p>
+            <SelectField
+              items={["Active", "Pending", "Declined"].map((s) => ({
+                label: s,
+                value: s,
+              }))}
+              placeholder="Select status"
+              selectedItems={[]}
+              onChange={()=>{}}
+            />
           </div>
           <div className="flex flex-wrap gap-2">
             {[

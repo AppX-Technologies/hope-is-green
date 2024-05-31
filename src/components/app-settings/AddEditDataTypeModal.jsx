@@ -5,7 +5,10 @@ import Button from "../common/Button";
 import { BiCheckCircle } from "react-icons/bi";
 import FileUploader from "../common/FileUploader";
 
-const AddEditDataTypeModal = ({ show, onHide }) => {
+const AddEditDataTypeModal = ({ data,onChange,show, onHide }) => {
+  const onFormValueChange = (value,field)=>{
+
+  }
   return (
     <div>
       <AppModal
@@ -20,7 +23,8 @@ const AddEditDataTypeModal = ({ show, onHide }) => {
               label={"Document type"}
               placeholder={"Enter document type"}
               type={"text"}
-              value={""}
+              value={data?.documentType}
+              onChange={(documentType)=>onFormValueChange(documentType,'documentType')}
               className="grow"
             />
             <InputField
