@@ -1,9 +1,9 @@
 import React, { useMemo, useState } from "react";
 import { toast } from "react-toastify";
-import { getMemberColumns } from "../../helpers/dataTableColumns";
-import AlertModal from "../common/AlertModal";
-import DataTable from "../common/data-table/DataTable";
-import useAuth from "../../hooks/useAuth";
+import { getMemberColumns } from "../../../helpers/dataTableColumns";
+import AlertModal from "../../common/AlertModal";
+import DataTable from "../../common/data-table/DataTable";
+import useAuth from "../../../hooks/useAuth";
 const dummyMembers = [
   {
     _id: 231243,

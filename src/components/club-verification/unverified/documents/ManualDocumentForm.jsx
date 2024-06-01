@@ -1,10 +1,7 @@
-import Label from "../../../common/Label";
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import useLocalization from "../../../../hooks/useLocalization";
 import Select from "../../../common/Select";
 import { ClubLeagalFormFields } from "../../../../helpers/constants";
-import Button from "../../../common/Button";
 import FormButtons from "../../common/FormButtons";
 
 const validationSchema = Yup.object().shape({});
@@ -14,15 +11,22 @@ const defaultValues = {};
 export default function ManualDocumentForm({
   initialValues,
   onNextClick,
+  nextButtonLabel,
+  hideTitle = false,
 }) {
   return (
     <div className="p-2">
-      <h6 className="font-normal text-xl">Provide Club Details</h6>
-      <h6 className="text-sm font-light">
-        Please provide us all the details related to your club. Please be as
-        accurate as possible, we will use these details to legally register your
-        club
-      </h6>
+      {!hideTitle && (
+        <>
+          <h6 className="font-normal text-xl">Provide Club Details</h6>
+          <h6 className="text-sm font-light">
+            Please provide us all the details related to your club. Please be as
+            accurate as possible, we will use these details to legally register
+            your club
+          </h6>{" "}
+        </>
+      )}
+
       <Formik
         initialValues={initialValues || defaultValues}
         validationSchema={validationSchema}
@@ -108,7 +112,7 @@ export default function ManualDocumentForm({
                   </div>
                 ))}
               </div>
-              <FormButtons />
+              <FormButtons nextButtonLabel={nextButtonLabel} />
             </Form>
           );
         }}

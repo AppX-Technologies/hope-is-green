@@ -5,10 +5,8 @@ import Button from "../common/Button";
 import { BiCheckCircle } from "react-icons/bi";
 import FileUploader from "../common/FileUploader";
 
-const AddEditDataTypeModal = ({ data,onChange,show, onHide }) => {
-  const onFormValueChange = (value,field)=>{
-
-  }
+const AddEditDataTypeModal = ({ data, onChange, show, onHide }) => {
+  const onFormValueChange = (value, field) => {};
   return (
     <div>
       <AppModal
@@ -18,26 +16,26 @@ const AddEditDataTypeModal = ({ data,onChange,show, onHide }) => {
         size="sm"
       >
         <div className="flex flex-col p-2 gap-4">
-          <div className="flex  gap-3">
-            <InputField
-              label={"Document type"}
-              placeholder={"Enter document type"}
-              type={"text"}
-              value={data?.documentType}
-              onChange={(documentType)=>onFormValueChange(documentType,'documentType')}
-              className="grow"
-            />
-            <InputField
-              label={"Is this a compulsory document?"}
-              onChange={(e) => console.log(e.target.checked)}
-              type={"checkbox"}
-              className=""
-            />
-          </div>
+          <InputField
+            label={"Document type"}
+            placeholder={"Enter document type"}
+            type={"text"}
+            value={data?.documentType}
+            onChange={(documentType) =>
+              onFormValueChange(documentType, "documentType")
+            }
+            className="grow"
+          />
+          <InputField
+            label={"Is this a compulsory document?"}
+            onChange={(e) => console.log(e.target.checked)}
+            type={"checkbox"}
+            className=""
+          />
           <div className="">
-              <h6 className="text-sm text-gray-700">Templete</h6>
-              <FileUploader files={[]} onChange={(data) => {}} />
-            </div>
+            <h6 className="text-sm text-gray-700">Templete</h6>
+            <FileUploader files={[]} onChange={(data) => {}} />
+          </div>
         </div>
 
         <div className="flex items-center mt-4">

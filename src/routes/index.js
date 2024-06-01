@@ -19,10 +19,9 @@ import CreateClub from "../components/auth/create-club/CreateClub";
 import { isAdmin } from "../helpers/session";
 import Clubs from "../components/clubs/Clubs";
 import AppSettings from "../components/app-settings/AppSettings";
-import ClubDetail from "../components/clubs/ClubDetail";
-import ClubDocuments from "../components/clubs/ClubDocuments";
 import ClubSettings from "../components/club-settings/ClubSettings";
 import ClubVerification from "../components/club-verification/ClubVerification";
+import ClubDetails from "../components/clubs/club-details/ClubDetails";
 
 const AppRoutes = () => {
   const { pathname } = useLocation();
@@ -64,13 +63,12 @@ const AppRoutes = () => {
             <Route path="members">
               <Route path="" element={<Member />} />
             </Route>
-            <Route path="c" element={<ClubDocuments />} />
 
             {isAdmin(role) && (
               <>
                 <Route path="clubs">
                   <Route path="" element={<Clubs />} />
-                  <Route path="/clubs/:_id" element={<ClubDetail />} />
+                  <Route path="/clubs/:_id" element={<ClubDetails />} />
                 </Route>{" "}
                 <Route path="app-settings">
                   <Route path="" element={<AppSettings />} />

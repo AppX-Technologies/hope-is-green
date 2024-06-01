@@ -8,7 +8,7 @@ import {
   FaFileDownload,
   FaEye,
 } from "react-icons/fa";
-import Button from "../common/Button";
+import Button from "../../common/Button";
 
 const ClubDocuments = () => {
   const dummyDocuments = [

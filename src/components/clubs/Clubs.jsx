@@ -138,7 +138,7 @@ const Clubs = () => {
         <Label label={"Clubs"} size={"xl"} className={"font-bold"} />
         <Button
           rightIcon={BiPlus}
-          title={"New Club"}
+          text={"New Club"}
           variant="primary"
           size="sm"
           onClick={() => setAddEditClubMeta(true)}

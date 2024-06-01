@@ -1,28 +1,29 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import Tabs from "../common/Tabs";
+import Tabs from "../../common/Tabs";
 import { FaUsers, FaFileAlt } from "react-icons/fa";
 import ClubMembers from "./ClubMembers";
 import ClubDocuments from "./ClubDocuments";
-import Select from "../common/Select";
+import Select from "../../common/Select";
 import { MdLocationPin } from "react-icons/md";
-import SelectField from "../common/form-controls/SelectField";
+import SelectField from "../../common/form-controls/SelectField";
 import { BiMessageSquareDetail } from "react-icons/bi";
 import { HiUserGroup } from "react-icons/hi";
-import ClubDetails from "./ClubDetails";
+import BoardMember from "../../club-verification/unverified/board-members/BoardMember";
 import ClubBoardMembers from "./ClubBoardMembers";
+import ClubAdditionalInformation from "./ClubAdditionalInformation";
 
-const ClubDetail = () => {
+const ClubDetails = () => {
   const location = useLocation();
   const clubDetail = location?.state || {};
 
   const options = ["Yes", "No"];
 
   const tabs = [
-    { title: "Members", icon: <FaUsers />, content: ClubMembers },
-    { title: "Details", icon: <BiMessageSquareDetail />, content: ClubDetails },
+    { title: "Club Members", icon: <FaUsers />, content: ClubMembers },
+    { title: "Additional Information", icon: <BiMessageSquareDetail />, content: <ClubAdditionalInformation /> },
     { title: "Documents", icon: <FaFileAlt />, content: ClubDocuments },
-    { title: "Board Member", icon: <HiUserGroup />, content: ClubBoardMembers },
+    { title: "Board Members", icon: <HiUserGroup />, content: ClubBoardMembers },
   ];
 
   return (
@@ -106,4 +107,4 @@ const ClubDetail = () => {
   );
 };
 
-export default ClubDetail;
+export default ClubDetails;

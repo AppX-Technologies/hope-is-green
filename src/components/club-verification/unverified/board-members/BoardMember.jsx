@@ -1,9 +1,11 @@
 import * as Yup from "yup";
 import Select from "../../../common/Select";
 import { Formik, Form, Field, ErrorMessage, FieldArray } from "formik";
-import { BOARD_MEMBER_ROLES, BoardMemberFormField } from "../../../../helpers/constants";
+import {
+  BOARD_MEMBER_ROLES,
+  BoardMemberFormField,
+} from "../../../../helpers/constants";
 import Button from "../../../common/Button";
-import { BiTrash } from "react-icons/bi";
 import FormButtons from "../../common/FormButtons";
 import SelectField from "../../../common/form-controls/SelectField";
 
@@ -15,14 +17,21 @@ export default function BoardMember({
   initialValues,
   onPreviousClick,
   onNextClick,
+  hideTitle=false,
+  nextButtonLabel
 }) {
   return (
     <div className="p-2">
-      <h6 className="font-normal text-xl">Provide Board Member Details</h6>
-      <h6 className="text-sm font-light">
-        Please provide us all the board member details. Please be as accurate as
-        possible, we will use these details to legally register your club
-      </h6>{" "}
+      {!hideTitle && (
+        <>
+          <h6 className="font-normal text-xl">Provide Board Member Details</h6>
+          <h6 className="text-sm font-light">
+            Please provide us all the board member details. Please be as
+            accurate as possible, we will use these details to legally register
+            your club
+          </h6>
+        </>
+      )}{" "}
       <Formik
         initialValues={initialValues || defaultValues}
         validationSchema={validationSchema}
@@ -123,8 +132,15 @@ export default function BoardMember({
                                       label: r,
                                       value: r,
                                     }))}
-                                    selectedItems={values?.otherMembers?.[index]?.role}
-                                    onChange={(role) => setFieldValue(`otherMembers.${index}.role`,role)}
+                                    selectedItems={
+                                      values?.otherMembers?.[index]?.role
+                                    }
+                                    onChange={(role) =>
+                                      setFieldValue(
+                                        `otherMembers.${index}.role`,
+                                        role
+                                      )
+                                    }
                                     placeholder="Select role"
                                     closeMenuOnSelect
                                   />
@@ -197,7 +213,7 @@ export default function BoardMember({
                   />
                 </div>
               </div>
-              <FormButtons onPreviousClick={onPreviousClick} />
+              <FormButtons onPreviousClick={onPreviousClick} nextButtonLabel={nextButtonLabel} />
             </Form>
           );
         }}
