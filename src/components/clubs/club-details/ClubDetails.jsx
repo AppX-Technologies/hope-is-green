@@ -12,6 +12,7 @@ import { HiUserGroup } from "react-icons/hi";
 import BoardMember from "../../club-verification/unverified/board-members/BoardMember";
 import ClubBoardMembers from "./ClubBoardMembers";
 import ClubAdditionalInformation from "./ClubAdditionalInformation";
+import Docs from "./Docs";
 
 const ClubDetails = () => {
   const location = useLocation();
@@ -22,8 +23,9 @@ const ClubDetails = () => {
   const tabs = [
     { title: "Club Members", icon: <FaUsers />, content: ClubMembers },
     { title: "Additional Information", icon: <BiMessageSquareDetail />, content: <ClubAdditionalInformation /> },
-    { title: "Documents", icon: <FaFileAlt />, content: ClubDocuments },
     { title: "Board Members", icon: <HiUserGroup />, content: ClubBoardMembers },
+    { title: "Documents", icon: <FaFileAlt />, content: Docs },
+
   ];
 
   return (
