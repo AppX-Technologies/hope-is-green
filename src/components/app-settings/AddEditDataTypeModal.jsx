@@ -33,7 +33,7 @@ const AddEditDataTypeModal = ({ data, onChange, show, onHide }) => {
             className=""
           />
           <div className="">
-            <h6 className="text-sm text-gray-700">Templete</h6>
+            <h6 className="text-sm text-gray-700">Template</h6>
             <FileUploader files={[]} onChange={(data) => {}} />
           </div>
         </div>

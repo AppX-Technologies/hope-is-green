@@ -8,13 +8,13 @@ import Button from "../common/Button";
 const data = [
   {
     _id: 231243,
-    documentType: "Alice Smith",
-    demo: `https://source.unsplash.com/random?1`,
+    documentType: "Legal Document",
+    isCompulsory: true,
   },
   {
     _id: 2243123,
-    documentType: "John Doe",
-    demo: `https://source.unsplash.com/random?2`,
+    documentType: "Board Members Documents",
+    isCompulsory: false,
   },
 ];
 const DocumentTypes = () => {
@@ -54,7 +54,7 @@ const DocumentTypes = () => {
         />
       </div>
       <AddEditDataTypeModal
-      data={addEditModalMeta?.data}
+        data={addEditModalMeta?.data}
         show={Boolean(addEditModalMeta)}
         onHide={() => setAddEditModalMeta(null)}
       />

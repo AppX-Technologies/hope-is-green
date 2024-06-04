@@ -5,7 +5,7 @@ import Progressbar from "../components/common/Progressbar";
 import TextDropdownToggle from "../components/common/TextDropdownToggle";
 import { ALL_MEMBER_STATUS, ALL_ORDER_STATUS } from "./constants";
 import { isAdmin } from "./session";
-import { BiPencil } from "react-icons/bi";
+import { BiDownload, BiPencil } from "react-icons/bi";
 
 const MemberStatusColor = {
   Active: "green",
@@ -175,27 +175,31 @@ export const getMemberColumns = (
   return allLabels;
 };
 
-export const getDocumentTypesColumns = (onEditClick,onDeleteClick) => {
+export const getDocumentTypesColumns = (onEditClick, onDeleteClick) => {
   const allLabels = [
-    {
-      key: "image",
-      label: "Image",
-      cellRenderer: (dT) => (
-        <div className="flex justify-center gap-2">
-          <img
-            src={dT?.demo}
-            alt="demo"
-            className="rounded-md h-9 w-12 cursor-pointer"
-          />
-        </div>
-      ),
-    },
     {
       key: "documentType",
       label: "Document Type",
       type: "text",
       align: "left",
       width: 100,
+    },
+    {
+      key: "isCompulsory",
+      label: "Is Compulsory?",
+      cellRenderer: (dT) => (dT.isCompulsory ? "Yes" : "No"),
+    },
+    {
+      key: "template",
+      label: "Template",
+      cellRenderer: (dT) => (
+        <h6
+          class="flex items-center justify-center text-blue-600 hover:underline cursor-pointer text-xs"
+          download
+        >
+          Download Template <BiDownload className="mx-1" />
+        </h6>
+      ),
     },
     {
       key: "view",
@@ -206,7 +210,7 @@ export const getDocumentTypesColumns = (onEditClick,onDeleteClick) => {
             className="text-primary cursor-pointer"
             onClick={() => onEditClick(dT)}
           />
-           <FaRegTrashAlt
+          <FaRegTrashAlt
             className="text-danger cursor-pointer"
             onClick={() => onDeleteClick(dT)}
           />
