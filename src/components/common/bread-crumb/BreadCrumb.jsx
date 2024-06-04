@@ -5,7 +5,7 @@ import { IoIosLogOut } from "react-icons/io";
 import { IoPersonCircleOutline } from "react-icons/io5";
 import { LuHome } from "react-icons/lu";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { breadcrumbLabel } from "../../../helpers/constants";
+import { CLUB_OWNER, breadcrumbLabel } from "../../../helpers/constants";
 import useAuth from "../../../hooks/useAuth";
 import Button from "../Button";
 import { isAdmin } from "../../../helpers/session";
@@ -17,7 +17,7 @@ const Breadcrumb = ({ baseUrl }) => {
 
   const clubStatusApprovalMessage = useMemo(() => {
     let message = null;
-    if (isAdmin(user?.role)) return null;
+    if (user?.role !== CLUB_OWNER) return null;
     if (user?.clubVerificationStatus === "Pending") {
       message = {
         message: "Your club verification is pending",

@@ -53,7 +53,7 @@ const SideNavbar = () => {
       {
         label: "Members",
         path: "/members",
-        roles: ALL_ROLES,
+        roles: [ADMIN_ROLE, CLUB_OWNER],
         icon: BsPersonFillGear,
       },
       {

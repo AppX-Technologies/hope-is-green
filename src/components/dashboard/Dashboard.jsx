@@ -5,7 +5,7 @@ import { MdOutlineProductionQuantityLimits } from "react-icons/md";
 import useAuth from "../../hooks/useAuth";
 import Label from "../common/Label";
 import { MdOutlineFestival } from "react-icons/md";
-import { ADMIN_ROLE, ALL_ROLES } from "../../helpers/constants";
+import { ADMIN_ROLE, ALL_ROLES, CLUB_OWNER } from "../../helpers/constants";
 
 const StatCard = ({ title, value, icon, extraInfo }) => {
   return (
@@ -35,14 +35,14 @@ const Dashboard = () => {
           value: 2543,
           icon: IoPersonAddOutline,
           extraInfo: "+430",
-          roles: ALL_ROLES,
+          roles: [CLUB_OWNER, ADMIN_ROLE],
         },
         {
           title: "Total Sales",
           value: 1423,
           icon: FaMoneyBillTrendUp,
           extraInfo: "+544",
-          roles: ALL_ROLES,
+          roles: [CLUB_OWNER, ADMIN_ROLE],
         },
         {
           title: "Total Quantity This Month",
