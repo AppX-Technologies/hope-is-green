@@ -12,16 +12,17 @@ import Dashboard from "../components/dashboard/Dashboard";
 import Orders from "../components/orders/Orders";
 import Discussion from "../components/discussion/Discussion";
 import Profile from "../components/profile/Profile";
-import SignUp from "../components/auth/SignUp";
+import SignUp from "../components/auth/register-as-member/Register";
 import ResetPassword from "../components/auth/ResetPassword";
 import Member from "../components/members/Member";
-import ClubSettings from "../components/club-settings/ClubSettings";
-import CreateClub from "../components/auth/CreateClub";
+import CreateClub from "../components/auth/create-club/CreateClub";
 import { isAdmin } from "../helpers/session";
 import Clubs from "../components/clubs/Clubs";
 import AppSettings from "../components/app-settings/AppSettings";
 import ClubDetail from "../components/clubs/ClubDetail";
 import ClubDocuments from "../components/clubs/ClubDocuments";
+import ClubSettings from "../components/club-settings/ClubSettings";
+import ClubVerification from "../components/club-verification/ClubVerification";
 
 const AppRoutes = () => {
   const { pathname } = useLocation();
@@ -81,7 +82,12 @@ const AppRoutes = () => {
               <Route path="club-settings">
                 <Route path="" element={<ClubSettings />} />
               </Route>
-            )}
+             )}
+               {role === CLUB_OWNER && (
+              <Route path="club-verification">
+                <Route path="" element={<ClubVerification />} />
+              </Route>
+             )}
 
             <Route path="*" element={<NotFound />} />
           </Route>

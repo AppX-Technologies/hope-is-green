@@ -13,7 +13,7 @@ const AlertModal = ({ show, onHide, text, onContinue }) => {
     >
       <div className="text-center flex items-center justify-center text-lg py-10">{text}</div>
       <div className="flex justify-end gap-2">
-        <Button size="sm" variant="danger" title={"Cancel"} onClick={onHide} />
+        <Button size="sm" variant="danger" text={"Cancel"} onClick={onHide} />
         <Button
           size="sm"
           variant="primary"

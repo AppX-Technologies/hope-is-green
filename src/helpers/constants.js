@@ -5,6 +5,8 @@ export const BRAND_NAME = "Ethica CRM";
 export const RUJUM_APP_URL = process.env.REACT_APP_MAIN_APP_URL;
 export const CRM_APP_URL = process.env.PUBLIC_URL;
 
+export const BOARD_MEMBER_ROLES = ["Moderator", "Treasurer", "Administrator"];
+
 export const ENDPOINTS = {
   //Users
   LOGIN: "/users/login",
@@ -77,3 +79,244 @@ export const breadcrumbLabel = {
   "study-abroad": "Study Abroad",
   news: "News",
 };
+
+export const ClubLeagalFormFields = [
+  {
+    groupName: "PurposeAssociation",
+    groupLabel: "Purpose of Club",
+    question: [
+      {
+        name: "mainObjective",
+        type: "text",
+        label: "What is the main objective of your club?",
+      },
+      {
+        name: "objectiveDescription",
+        type: "textarea",
+        label:
+          "Describe in detail how your club intends to achieve this objective: ",
+      },
+    ],
+  },
+  {
+    groupName: "nonProfitActivity",
+    groupLabel: "Non Profit Activity",
+    question: [
+      {
+        name: "hasProfit",
+        type: "yesNo",
+        label: "Does your club operate selflessly and not for profit?",
+      },
+      {
+        name: "thirdPartyBenifit",
+        type: "yesNo",
+        label: "Is it prohibited to financially benefit third parties? ",
+      },
+      {
+        name: "question2",
+        type: "yesNo",
+        label: "Can the funds of the club be used only for statutory purposes?",
+      },
+    ],
+  },
+  {
+    groupName: "Prohibition",
+    groupLabel: "Prohibition and Benefits",
+    question: [
+      {
+        name: "question3",
+        type: "yesNo",
+        label: "Are high remunerations to members prohibited? ",
+      },
+    ],
+  },
+  {
+    groupName: "Acquisition",
+    groupLabel: "Acquisition and Termination of Membership",
+    question: [
+      {
+        name: "question4",
+        type: "text",
+        label: "Who can become a member and what conditions must be met? ",
+      },
+      {
+        name: "question5",
+        type: "Written/Electronic",
+        label: "How can interested parties apply for membership? ",
+      },
+    ],
+  },
+
+  {
+    groupName: "RightsAndObligations",
+    groupLabel: "Rights and Obligations of Members",
+    question: [
+      {
+        name: "duties",
+        type: "text",
+        label: "What are the main duties of the members?",
+      },
+      {
+        name: "votings",
+        type: "yesNo",
+        label: "Do members have voting rights at meetings?",
+      },
+    ],
+  },
+
+  {
+    groupName: "Contributions",
+    groupLabel: "Contributions",
+    question: [
+      {
+        name: "membershipFee",
+        type: "text",
+        label: "How much are the membership fees?",
+      },
+      {
+        name: "paid",
+        type: "text",
+        label: "When must fees be paid?",
+      },
+    ],
+  },
+
+  {
+    groupName: "Organs",
+    groupLabel: "Organs of the Club",
+    question: [
+      {
+        name: "question6",
+        type: "text",
+        label: "What are the organs of your club?",
+      },
+    ],
+  },
+
+  {
+    groupName: "GeneralMeeting",
+    groupLabel: "General Meeting",
+    question: [
+      {
+        name: "generalMeetings",
+        type: "text",
+        label: "How often does the general meeting take place?",
+      },
+      {
+        name: "convening",
+        type: "text",
+        label: "What rules apply for convening the meeting?",
+      },
+    ],
+  },
+
+  {
+    groupName: "VotingRights",
+    groupLabel: "Voting Rights and Eligibility",
+    question: [
+      {
+        name: "eligible",
+        type: "text",
+        label: "From what age are members eligible to vote and be elected?",
+      },
+      {
+        name: "conducted",
+        type: "election/voting",
+        label: "How are elections conducted?",
+      },
+    ],
+  },
+
+  {
+    groupName: "Board",
+    groupLabel: "Board",
+    question: [
+      {
+        name: "office",
+        type: "text",
+        label: "How is the board composed and what are the terms of office? ",
+      },
+    ],
+  },
+
+  {
+    groupName: "Dissolution",
+    groupLabel: "Dissolution",
+    question: [
+      {
+        name: "dissolved",
+        type: "textarea",
+        label:
+          "How can the club be dissolved and what happens to the club's assets?",
+      },
+    ],
+  },
+];
+
+export const BoardMemberFormField = [
+  {
+    groupName: "Chairperson",
+    groupLabel: "Chairperson",
+    details: [
+      {
+        name: "charimanName",
+        placeholder: "Enter chairperson name",
+        type: "text",
+        label: "Name",
+      },
+      {
+        name: "chairmanDateOfBirth",
+        type: "date",
+        label: "Date of Birth",
+      },
+      {
+        name: "chairmanAddress",
+        type: "text",
+        placeholder: "Enter chairperson address",
+        label: "Address",
+      },
+    ],
+  },
+  {
+    groupName: "ViceChairperson",
+    groupLabel: "Vice Chairperson",
+    details: [
+      {
+        name: "viceChairpersonName",
+        type: "text",
+        placeholder: "Enter vice chairperson name",
+        label: "Name",
+      },
+      {
+        name: "viceChairpersonDateOfBirth",
+        type: "date",
+        label: "Date of Birth ",
+      },
+      {
+        name: "viceChairpersonAddress",
+        placeholder: "Enter vice chairperson address",
+        type: "text",
+        label: "Address",
+      },
+    ],
+  },
+];
+
+export const courtRegisteryFields = [
+  {
+    groupName: "AdditionalInformation",
+    groupLabel: "Additional Information",
+    details: [
+      {
+        name: "Name",
+        type: "text",
+        label: "Name of the Court of Registry",
+      },
+      {
+        name: "dateOfBirth",
+        type: "text",
+        label: "Address of the Court of Registry",
+      },
+    ],
+  },
+];

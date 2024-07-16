@@ -1,60 +1,51 @@
-import React from "react";
-import { Badge } from "react-bootstrap";
-import useLocalization from "../../hooks/useLocalization";
-import { snakeCase } from "lodash";
+import React, { useState } from "react";
+import { Tab, Transition } from "@headlessui/react";
+import Button from "./Button";
 
-const dividedRows = (tabs, numOfRows) => {
-  if (numOfRows === 1) return [tabs];
+const Tabs = ({ className, tabs }) => {
+  const [tabIndex, setTabIndex] = useState(0);
 
-  const tempTabs = [...tabs];
-  let result = [];
-  for (let i = numOfRows; i > 0; i--) {
-    result.push(tempTabs.splice(0, Math.ceil(tempTabs.length / i)));
-  }
-  return result;
-};
-
-const Tabs = ({
-  tabs = [],
-  onTabSelect,
-  activeTab,
-  scrollable,
-  numOfScrollableRows = 1,
-}) => {
-  const { translate } = useLocalization();
-
-  return scrollable ? (
-    <div style={{ whiteSpace: "nowrap", overflowX: "scroll" }} className="mb-2">
-      {dividedRows(tabs, numOfScrollableRows).map((row) => (
-        <div className="mb-1 w-100">
-          {row.map(({ key: t, icon: Icon }) => (
-            <Badge
-              className="hover-light p-2 me-1"
-              onClick={() => onTabSelect(t)}
-              key={t}
-              bg={activeTab === t ? "primary" : "dark"}
-            >
-              {Icon && <Icon />}
-              {translate(snakeCase(t))}
-            </Badge>
+  return (
+    <div className={className}>
+      <Tab.Group selectedIndex={tabIndex} onChange={setTabIndex}>
+        <Tab.List className="flex justify-between items-center">
+          <div className="flex space-x-1 rounded p-1 border-b bg-purple-400 w-fit px-5">
+            {tabs.map((tab, index) => (
+              <Tab
+                key={index}
+                className={`px-2 mx-2 py-1 text-sm focus:outline-none text-white border-b-2 ${
+                  index === tabIndex
+                    ? "border-gray-600"
+                    : "border-b-2 border-transparent"
+                }`}
+              >
+                <div className="flex items-center gap-1 font-medium">
+                  {tab.icon}
+                  {tab.title}
+                </div>
+              </Tab>
+            ))}
+          </div>
+        </Tab.List>
+        <Tab.Panels>
+          {tabs.map((tab, index) => (
+            <Tab.Panel key={index}>
+              <Transition
+                appear
+                show={tabIndex === index}
+                enter="transition-opacity duration-500"
+                enterFrom="opacity-0"
+                enterTo="opacity-100"
+                leave="transition-opacity duration-500"
+                leaveFrom="opacity-100"
+                leaveTo="opacity-0"
+              >
+                {tab.content}
+              </Transition>
+            </Tab.Panel>
           ))}
-        </div>
-      ))}
-    </div>
-  ) : (
-    <div className="mb-2 w-100">
-      {tabs.map(({ key: t, icon: Icon }) => (
-        <Badge
-          className="hover-light p-2 me-1"
-          style={{ fontSize: "12px" }}
-          onClick={() => onTabSelect(t)}
-          key={t}
-          bg={activeTab === t ? "primary" : "dark"}
-        >
-          {Icon && <Icon className="mx-1" size={12} />}
-          {translate(snakeCase(t))}
-        </Badge>
-      ))}
+        </Tab.Panels>
+      </Tab.Group>
     </div>
   );
 };

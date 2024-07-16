@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import useLocalization from "../../hooks/useLocalization";
+import useLocalization from "../../../hooks/useLocalization";
 import { useNavigate } from "react-router-dom";
-import CreateClubForm from "../forms/CreateClubForm";
-import SignUpForm from "../forms/SignupForm";
-import useAuth from "../../hooks/useAuth";
-import Button from "../common/Button";
-import OrDivider from "../common/OrDivider";
-import { Stepper } from "../common/Stepper";
+import SignUpForm from "../../forms/SignupForm";
+import useAuth from "../../../hooks/useAuth";
+import Button from "../../common/Button";
+import OrDivider from "../../common/OrDivider";
+import { Stepper } from "../../common/Stepper";
+import ClubGeneralInfoForm from "./ClubGeneralInfoForm";
 
 function CreateClub() {
   const { translate } = useLocalization();
@@ -16,10 +16,13 @@ function CreateClub() {
 
   const isLoading = false;
 
-  const onSubmit = async (value) => {
+  const onSubmit = (value) => {
     console.log(value);
   };
 
+  const onGeneralInfoSubmit = (generalInfo) => {
+    setCurrentStep(2);
+  };
   return (
     <div className="flex flex-col justify-center items-center">
       <div className="bg-white shadow-md rounded flex flex-col w-[300px] sm:w-[350px] md:w-[400px] xl:w-[450px] p-6 h-fit">
@@ -38,17 +41,12 @@ function CreateClub() {
         </h6>
         <hr className="my-4" />
         {currentStep === 1 ? (
-          <CreateClubForm
-            isCreatingClub={isLoading}
-            creatingClubError={loginError}
-            onSubmit={onSubmit}
-            setCurrentStep={setCurrentStep}
-          />
+          <ClubGeneralInfoForm onSubmit={onGeneralInfoSubmit} />
         ) : (
           <>
             <SignUpForm
-              isRegistering={isLoading}
-              signUpError={loginError}
+              showProgress={isLoading}
+              errorMessage={loginError}
               onSubmit={onSubmit}
               submitButtonLabel="create_club"
             />

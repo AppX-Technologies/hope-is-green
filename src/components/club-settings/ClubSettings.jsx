@@ -1,58 +1,14 @@
 import React from "react";
 import Label from "../common/Label";
-import { FaUsersGear } from "react-icons/fa6";
-import InputField from "../common/form-controls/InputField";
-import TextDropdownToggle from "../common/TextDropdownToggle";
-import Button from "../common/Button";
+import ClubSettingForm from "./ClubSettingForm";
 
 const ClubSettings = () => {
   return (
-    <div className="">
-      <Label label={"Club Settings"} className={'font-bold'} size={"xl"} />
-      <div className="flex flex-col gap-3 justify-center items-center h-fit">
-        <img
-          src="https://dfstudio-d420.kxcdn.com/wordpress/wp-content/uploads/2019/06/digital_camera_photo-1080x675.jpg"
-          className="rounded-[50%] h-24 w-24"
-          alt="Logo"
-        />
-        <h6 className="text-xl font-medium text-gray-800">Club A pvt. ltd</h6>
-        <div className="flex flex-col gap-2 shadow-sm bg-gray-50 p-4 max-w-[500px] w-full">
-          <div className="flex justify-end">
-            <Button variant="primary" title={"Update"} />
-          </div>
-          <h6 className="text-sm font-bold text-gray-700">General Info</h6>
-          <hr className="my-0" />
-          <InputField label={"Club Name"} />
-          <InputField label={"Address"} />
-          <h6 className="text-sm font-bold text-gray-700 mt-1">Settings</h6>
-          <hr className="my-0" />
-          <div className="flex gap-2 justify-between  items-center">
-            <h6 className="text-sm text-gray-700 mb-1">
-              Do new members need to be approved before joining?
-            </h6>
-            <TextDropdownToggle
-              options={["Yes", "No"]}
-              onOptionClick={() => {}}
-            />
-          </div>
-          <div className="flex gap-2 justify-between items-center">
-            <h6 className="text-sm text-gray-700 mb-1">
-              Can people search your club when joining?
-            </h6>
-            <TextDropdownToggle
-              options={["Yes", "No"]}
-              onOptionClick={() => {}}
-            />
-          </div>
-          <div className="flex gap-2 justify-between items-center">
-            <h6 className="text-sm text-gray-700 mb-1">
-              Does new threads need to be approved by admins before publishing?
-            </h6>
-            <TextDropdownToggle
-              options={["Yes", "No"]}
-              onOptionClick={() => {}}
-            />
-          </div>
+    <div className="w-full h-full flex flex-col">
+      <Label label={"Club Settings"} size={"xl"} className={"font-bold"} />
+      <div className="bg-white grow p-4 rounded shadow-md mt-4 w-full">
+        <div className="w-full lg:w-[50%] md:w-[60%]">
+          <ClubSettingForm />
         </div>
       </div>
     </div>

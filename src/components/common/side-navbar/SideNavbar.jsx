@@ -13,6 +13,7 @@ import { FaUsersGear } from "react-icons/fa6";
 import { ADMIN_ROLE, ALL_ROLES, CLUB_OWNER } from "../../../helpers/constants";
 import { HiUserGroup } from "react-icons/hi";
 import useAuth from "../../../hooks/useAuth";
+import { TiInputChecked } from "react-icons/ti";
 
 const NavItem = (props) => {
   const { label, path, role, icon: Icon, pathname } = props;
@@ -74,6 +75,12 @@ const SideNavbar = () => {
         icon: FaUsersGear,
       },
       {
+        label: "Club Verification",
+        path: "/club-verification",
+        roles: [CLUB_OWNER],
+        icon: TiInputChecked,
+      },
+      {
         label: "App Settings",
         path: "/app-settings",
         roles: [ADMIN_ROLE],
@@ -86,7 +93,7 @@ const SideNavbar = () => {
   const [toggleSideNavbar, setToggleSideNavbar] = useState(false);
 
   return (
-    <div className="flex flex-col items-center w-60 min-h-screen overflow-hidden text-gray-400 bg-white">
+    <div className="flex flex-col items-center w-60 min-w-60 max-w-60 min-h-screen overflow-hidden text-gray-400 bg-white">
       <div className="flex w-full mt-3">
         <Link to={"/"}>
           <div className="flex items-center gap-2">
